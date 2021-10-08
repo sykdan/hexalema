@@ -1,7 +1,7 @@
 extends Control
 
 const txt_nastartu = "Na startu: "
-const txt_vcili = "Na startu: "
+const txt_vcili = "V cíli: "
 
 var current_dice_roll = 0
 var turn = "CerveneKameny"
@@ -246,8 +246,8 @@ func move_stone_to(obj,index):
 				blue += 1
 		redDone = red
 		blueDone = blue
-		$RedStatus/Start.text = txt_vcili + str(red)
-		$BlueStatus/Start.text = txt_vcili + str(blue)
+		$RedStatus/End.text = txt_vcili + str(red)
+		$BlueStatus/End.text = txt_vcili + str(blue)
 
 func get_line_curve(from,to,curve):
 	var r = PoolVector2Array()
@@ -298,7 +298,7 @@ func _input(event):
 	if event.is_action_pressed("right") and (current_dice_roll != 0):
 		var brk = false
 		var target
-		for i in range(kb_cursor+1,13,1):
+		for i in range(kb_cursor+1,14,1):
 			for loop_kamen in gameBoard[i]:
 				if loop_kamen.get_node("..").name == turn:
 					kb_cursor = i
