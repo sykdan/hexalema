@@ -11,6 +11,9 @@ var blueDone = 0
 
 var gameBoard = []
 
+var kb_cursor = 5
+var kb_target
+
 func _process(d):
 	var pos = $Planek.rect_position
 	$Grid.margin_left = -137 + (int(pos.x) % 137) - 3
@@ -136,11 +139,18 @@ func walk_possible_moves():
 	var kameny = get_node(turn).get_children()
 	for kamen in kameny:
 		var pos = get_point_from_pos(kamen)
-		if test_move(pos): return true
+		if test_move(pos): 
+			kb_target = kamen
+			kb_cursor = pos
+			if Kb.inputType == 1:
+				lockon()
+				hint_stone(kamen)
+			return true
 	
 	return false
 
 func swap_turn():
+	unlockon()
 	$ColorRect.hide()
 	$HintLine.hide()
 	turn = get_not_turn()
@@ -166,6 +176,7 @@ func toast(txt):
 	$Tween.start()
 
 func _on_Hzet_pressed():
+	if $Trofej.visible or $Pauza.visible: return
 	$ColorRect.show()
 	$Tween.interpolate_property($ColorRect,"self_modulate:a",null,1,0.1,Tween.TRANS_CIRC,Tween.EASE_OUT)
 	$Tween.interpolate_property($ColorRect,"rect_scale",null,Vector2(1,1),0.1,Tween.TRANS_CIRC,Tween.EASE_OUT)
@@ -186,7 +197,6 @@ func _on_Hzet_pressed():
 		if dices[i] == 1:
 			$ColorRect/HBoxContainer.get_child(i).get_child(0).show()
 		yield(get_tree().create_timer(0.3),"timeout")
-		
 	yield(get_tree().create_timer(0.7),"timeout")
 	
 	hzet_2()
@@ -256,9 +266,70 @@ func konec():
 	get_tree().change_scene("res://Main.tscn")
 
 func _on_Tween_tween_completed(object, key):
-	if key == ":rect_global_position":
+	if key == ":rect_global_position" and object is TextureButton:
 		if object.disabled: object.disabled = false
 
 func _input(event):
 	if event.is_action_pressed("roll") and $"Házet".visible:
 		_on_Hzet_pressed()
+	elif event.is_action_pressed("roll") and $LockOn.modulate.a != 0:
+		click_kamen(kb_target)
+	
+	if event.is_action_pressed("left") and (current_dice_roll != 0):
+		var brk = false
+		var target
+		for i in range(kb_cursor-1,-1,-1):
+			for loop_kamen in gameBoard[i]:
+				if loop_kamen.get_node("..").name == turn:
+					kb_cursor = i
+					target = loop_kamen
+					brk = true
+					break
+			if brk: break
+		
+		if target:
+			target.grab_focus()
+			hint_stone(target)
+			kb_target = target
+			lockon()
+		else:
+			lockon()
+	
+	if event.is_action_pressed("right") and (current_dice_roll != 0):
+		var brk = false
+		var target
+		for i in range(kb_cursor+1,13,1):
+			for loop_kamen in gameBoard[i]:
+				if loop_kamen.get_node("..").name == turn:
+					kb_cursor = i
+					target = loop_kamen
+					brk = true
+					break
+			if brk: break
+		
+		if target:
+			target.grab_focus()
+			hint_stone(target)
+			kb_target = target
+			lockon()
+		else:
+			lockon()
+
+func lockon():
+	if not (kb_target is TextureButton): return
+	$Tween.interpolate_property($LockOn,"rect_size",null,kb_target.rect_size,0.5,Tween.TRANS_QUAD,Tween.EASE_OUT)
+	$Tween.interpolate_property($LockOn,"rect_global_position",null,kb_target.rect_global_position,0.5,Tween.TRANS_QUAD,Tween.EASE_OUT)
+	$Tween.interpolate_property($LockOn,"modulate:a",null,1,0.5,Tween.TRANS_QUAD,Tween.EASE_OUT)
+	$Tween.start()
+
+func unlockon():
+	$Tween.interpolate_property($LockOn,"rect_size",null,rect_size,0.5,Tween.TRANS_QUAD,Tween.EASE_OUT)
+	$Tween.interpolate_property($LockOn,"rect_global_position",null,rect_global_position,0.5,Tween.TRANS_QUAD,Tween.EASE_OUT)
+	$Tween.interpolate_property($LockOn,"modulate:a",null,0,0.5,Tween.TRANS_QUAD,Tween.EASE_OUT)
+	$Tween.start()
+
+func _on_fullscreen_pressed():
+	OS.window_fullscreen = !OS.window_fullscreen
+
+func _on_pauseButton_pressed():
+	$Pauza.visible = !$Pauza.visible

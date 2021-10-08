@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=2]
+[gd_scene load_steps=32 format=2]
 
 [ext_resource path="res://planek_trans.png" type="Texture" id=1]
 [ext_resource path="res://Hra.gd" type="Script" id=2]
@@ -48,22 +48,37 @@ _data = {
 "points": PoolVector2Array( 0, 0, 0, 0, 208, 894.725, 0, 0, 0, 0, 344.865, 894.725, 0, 0, 0, 0, 481.525, 894.725, 0, 0, 0, 0, 549.714, 776.607, 0, 0, 0, 0, 618.465, 658.954, 0, 0, 0, 0, 755.276, 658.954, 0, 0, 0, 0, 823.416, 539.427, 0, 0, 0, 0, 960.356, 539.427, 0, 0, 0, 0, 1028.55, 658.954, 0, 0, 0, 0, 1165.49, 658.954, 0, 0, 0, 0, 1233.96, 539.427, 0, 0, 0, 0, 1165.49, 421.625, 0, 0, 0, 0, 1233.96, 303.822, 0, 0, 0, 0, 1165.49, 184.969, 0, 0, 0, 0, 1028.55, 184.969 )
 }
 
-[sub_resource type="DynamicFont" id=10]
-size = 32
-font_data = ExtResource( 6 )
-
-[sub_resource type="StyleBoxEmpty" id=13]
-content_margin_left = 20.0
-
-[sub_resource type="DynamicFont" id=14]
-size = 92
-font_data = ExtResource( 14 )
+[sub_resource type="DynamicFontData" id=10]
+font_path = "res://Roboto-Regular.ttf"
 
 [sub_resource type="DynamicFont" id=11]
 size = 48
+font_data = SubResource( 10 )
+
+[sub_resource type="StyleBoxFlat" id=12]
+bg_color = Color( 0.6, 0.6, 0.6, 0 )
+border_width_left = 6
+border_width_top = 6
+border_width_right = 6
+border_width_bottom = 6
+border_color = Color( 1, 0.278431, 0.988235, 1 )
+
+[sub_resource type="DynamicFont" id=13]
+size = 32
 font_data = ExtResource( 6 )
 
-[sub_resource type="DynamicFont" id=12]
+[sub_resource type="StyleBoxEmpty" id=14]
+content_margin_left = 20.0
+
+[sub_resource type="DynamicFont" id=15]
+size = 92
+font_data = ExtResource( 14 )
+
+[sub_resource type="DynamicFont" id=16]
+size = 48
+font_data = ExtResource( 6 )
+
+[sub_resource type="DynamicFont" id=17]
 size = 28
 font_data = ExtResource( 6 )
 
@@ -246,6 +261,31 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="pauseButton" type="Button" parent="."]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -40.0
+margin_top = 24.0
+margin_right = 40.0
+margin_bottom = 104.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_fonts/font = SubResource( 11 )
+text = "||"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="LockOn" type="Panel" parent="."]
+modulate = Color( 1, 1, 1, 0 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+custom_styles/panel = SubResource( 12 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="ColorRect" type="ColorRect" parent="."]
 visible = false
 anchor_right = 1.0
@@ -362,7 +402,7 @@ margin_left = -277.5
 margin_top = -260.0
 margin_right = 277.5
 margin_bottom = -40.0
-custom_fonts/font = SubResource( 10 )
+custom_fonts/font = SubResource( 13 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -392,8 +432,8 @@ margin_left = 183.0
 margin_top = 23.0
 margin_right = 491.0
 margin_bottom = 132.0
-custom_styles/normal = SubResource( 13 )
-custom_fonts/font = SubResource( 14 )
+custom_styles/normal = SubResource( 14 )
+custom_fonts/font = SubResource( 15 )
 text = "Kostky"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -416,7 +456,7 @@ __meta__ = {
 [node name="Label" type="Label" parent="Message"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-custom_fonts/font = SubResource( 11 )
+custom_fonts/font = SubResource( 16 )
 text = "Nemůže táhnout!"
 align = 1
 valign = 1
@@ -427,6 +467,75 @@ __meta__ = {
 }
 
 [node name="Tween" type="Tween" parent="."]
+
+[node name="Pauza" type="ColorRect" parent="."]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0, 0, 0, 0.807843 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Panel" type="Panel" parent="Pauza"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -411.5
+margin_top = -276.0
+margin_right = 411.5
+margin_bottom = 276.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Pauza/Panel"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 32.0
+margin_top = 32.0
+margin_right = -32.0
+margin_bottom = -32.0
+custom_constants/separation = 32
+alignment = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="fullscreen" type="Button" parent="Pauza/Panel/VBoxContainer"]
+margin_top = 152.0
+margin_right = 759.0
+margin_bottom = 228.0
+custom_fonts/font = ExtResource( 7 )
+text = "Na celou obrazovku"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="konec" type="Button" parent="Pauza/Panel/VBoxContainer"]
+modulate = Color( 1, 0.137255, 0.137255, 1 )
+margin_top = 260.0
+margin_right = 759.0
+margin_bottom = 336.0
+custom_fonts/font = ExtResource( 7 )
+text = "Ukončit hru"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label2" type="Label" parent="Pauza/Panel"]
+anchor_right = 1.0
+margin_bottom = 184.0
+custom_fonts/font = SubResource( 16 )
+text = "Pozastaveno"
+align = 1
+valign = 1
+autowrap = true
+clip_text = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="Trofej" type="ColorRect" parent="."]
 visible = false
@@ -461,7 +570,7 @@ margin_left = -87.5
 margin_top = -173.0
 margin_right = 99.5
 margin_bottom = -100.0
-custom_fonts/font = SubResource( 12 )
+custom_fonts/font = SubResource( 17 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "Vyhrává
 "
@@ -486,6 +595,9 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[connection signal="pressed" from="pauseButton" to="." method="_on_pauseButton_pressed"]
 [connection signal="pressed" from="Házet" to="." method="_on_Hzet_pressed"]
 [connection signal="tween_completed" from="Tween" to="." method="_on_Tween_tween_completed"]
+[connection signal="pressed" from="Pauza/Panel/VBoxContainer/fullscreen" to="." method="_on_fullscreen_pressed"]
+[connection signal="pressed" from="Pauza/Panel/VBoxContainer/konec" to="." method="konec"]
 [connection signal="pressed" from="Trofej/Button" to="." method="konec"]

@@ -99,9 +99,9 @@ __meta__ = {
 }
 
 [node name="Pravidla" type="Button" parent="Options/Panel/VBoxContainer"]
-margin_top = 101.0
+margin_top = 38.0
 margin_right = 1113.0
-margin_bottom = 177.0
+margin_bottom = 114.0
 custom_fonts/font = ExtResource( 2 )
 text = "Pravidla hry"
 __meta__ = {
@@ -109,9 +109,9 @@ __meta__ = {
 }
 
 [node name="Zdroje" type="Button" parent="Options/Panel/VBoxContainer"]
-margin_top = 227.0
+margin_top = 164.0
 margin_right = 1113.0
-margin_bottom = 303.0
+margin_bottom = 240.0
 custom_fonts/font = ExtResource( 2 )
 text = "Zdroje"
 __meta__ = {
@@ -119,11 +119,22 @@ __meta__ = {
 }
 
 [node name="Prezentace" type="Button" parent="Options/Panel/VBoxContainer"]
-margin_top = 353.0
+margin_top = 290.0
 margin_right = 1113.0
-margin_bottom = 429.0
+margin_bottom = 366.0
 custom_fonts/font = ExtResource( 2 )
 text = "Představení hry"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="konec" type="Button" parent="Options/Panel/VBoxContainer"]
+modulate = Color( 1, 0.137255, 0.137255, 1 )
+margin_top = 416.0
+margin_right = 1113.0
+margin_bottom = 492.0
+custom_fonts/font = ExtResource( 2 )
+text = "Uzavřít program"
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -198,8 +209,16 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="Label2" type="Label" parent="."]
+margin_left = 24.0
+margin_top = 24.0
+margin_right = 84.0
+margin_bottom = 38.0
+text = "Verze 1.0"
+
 [connection signal="pressed" from="Button" to="." method="_on_Button_pressed"]
 [connection signal="pressed" from="Options/Panel/VBoxContainer/Pravidla" to="." method="_on_Pravidla_pressed"]
 [connection signal="pressed" from="Options/Panel/VBoxContainer/Zdroje" to="." method="_on_Zdroje_pressed"]
 [connection signal="pressed" from="Options/Panel/VBoxContainer/Prezentace" to="." method="prezentacni_rezim"]
+[connection signal="pressed" from="Options/Panel/VBoxContainer/konec" to="." method="_on_konec_pressed"]
 [connection signal="pressed" from="Button2" to="." method="_on_Button2_pressed"]

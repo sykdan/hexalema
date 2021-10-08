@@ -12,6 +12,9 @@ config_version=4
 
 config/name="Hexalema"
 run/main_scene="res://Main.tscn"
+boot_splash/image="res://icon.png"
+boot_splash/fullsize=false
+boot_splash/bg_color=Color( 0.101961, 0.101961, 0.101961, 1 )
 config/icon="res://icon.png"
 
 [autoload]
