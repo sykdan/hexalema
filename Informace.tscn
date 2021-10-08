@@ -43,8 +43,8 @@ bbcode_text = "[center]Cíl hry:[/center]
 [center]Popis herního pole:[/center]
 
   - Na herním plánu jsou políčka 3 různých barev.
-  - Světle fialová a oranžová políčka označují tzv. nasazovací a vyváděcí části, tyto políčka jsou určena pouze pro hráče jedné barvy
-  - Tmavě fialová políčka značí společnou část - místo, kde se hráči mohou (až na výjimky) vyhazovat
+  - Červená a modrá políčka označují tzv. nasazovací a vyváděcí části, tyto políčka jsou určena pouze pro hráče dané barvy
+  - Fialová políčka značí společnou část - místo, kde se hráči mohou (až na výjimky) vyhazovat
 
 [center]Jak hrát:[/center]
 
@@ -54,17 +54,19 @@ bbcode_text = "[center]Cíl hry:[/center]
   - Hráč posune jeden ze svých kamenů o hozený počet bodů (tj. kolikrát padla označená stěna kostky)
 -Na jednom políčku nemůžou být 2 hrací kameny současně
   - Pokud hráč hodí 0 bodů, ztrácí tím tah a hraje soupeř.
-  - Hráč také ztrácí tah, když nemůže posunout žádný kámen o počet      hozených bodů
+  - Hráč také ztrácí tah, když nemůže posunout žádný kámen o počet hozených bodů
   - Hráči se smějí navzájem vyhazovat, podobně jako u hry Člověče, nezlob se!
 
-[center]Výjimečné situace[/center]:
+[center]Výjimečné situace:[/center]
+
   - Ve hře je několik označených políček
-  - Pokud se hráč na nějakém z nic ocitne, hází ještě jednou
-  - Hrací kámen, ležící na takto označeném políčku nemůže být vyhozen 
+  - Pokud se hráč na nějakém z nich ocitne, hází ještě jednou
+  - Hrací kámen, ležící na takto označeném políčku, nemůže být vyhozen 
 
 [center]Nasazování a vyvádění kamenů:[/center]
+
   - Hráč může nasadit kámen o hozený počet bodů, pokud ještě může nějaký nasadit a pokud už na daném políčku nestojí další kámen
-  - Kameny se vyvádějí hozením POUZE PŘESNÉHO ČÍSLA, nikoliv hozením stejného nebo vyššího (př: hráč má hrací kámen 2 políčka před koncem desky a hodí 3 body; hrací kámen tak nemůže vyvést)"
+  - Kameny se vyvádějí hozením POUZE PŘESNÉHO ČÍSLA, nikoliv hozením vyššího (př: hráč má hrací kámen 2 políčka před koncem desky a hodí 3 body; hrací kámen tak nemůže vyvést)"
 text = "Cíl hry:
 
   - Cílem hry je vynést všech 7 hracích kamenů své barvy ven z hrací desky
@@ -72,8 +74,8 @@ text = "Cíl hry:
 Popis herního pole:
 
   - Na herním plánu jsou políčka 3 různých barev.
-  - Světle fialová a oranžová políčka označují tzv. nasazovací a vyváděcí části, tyto políčka jsou určena pouze pro hráče jedné barvy
-  - Tmavě fialová políčka značí společnou část - místo, kde se hráči mohou (až na výjimky) vyhazovat
+  - Červená a modrá políčka označují tzv. nasazovací a vyváděcí části, tyto políčka jsou určena pouze pro hráče dané barvy
+  - Fialová políčka značí společnou část - místo, kde se hráči mohou (až na výjimky) vyhazovat
 
 Jak hrát:
 
@@ -83,17 +85,19 @@ Jak hrát:
   - Hráč posune jeden ze svých kamenů o hozený počet bodů (tj. kolikrát padla označená stěna kostky)
 -Na jednom políčku nemůžou být 2 hrací kameny současně
   - Pokud hráč hodí 0 bodů, ztrácí tím tah a hraje soupeř.
-  - Hráč také ztrácí tah, když nemůže posunout žádný kámen o počet      hozených bodů
+  - Hráč také ztrácí tah, když nemůže posunout žádný kámen o počet hozených bodů
   - Hráči se smějí navzájem vyhazovat, podobně jako u hry Člověče, nezlob se!
 
 Výjimečné situace:
+
   - Ve hře je několik označených políček
-  - Pokud se hráč na nějakém z nic ocitne, hází ještě jednou
-  - Hrací kámen, ležící na takto označeném políčku nemůže být vyhozen 
+  - Pokud se hráč na nějakém z nich ocitne, hází ještě jednou
+  - Hrací kámen, ležící na takto označeném políčku, nemůže být vyhozen 
 
 Nasazování a vyvádění kamenů:
+
   - Hráč může nasadit kámen o hozený počet bodů, pokud ještě může nějaký nasadit a pokud už na daném políčku nestojí další kámen
-  - Kameny se vyvádějí hozením POUZE PŘESNÉHO ČÍSLA, nikoliv hozením stejného nebo vyššího (př: hráč má hrací kámen 2 políčka před koncem desky a hodí 3 body; hrací kámen tak nemůže vyvést)"
+  - Kameny se vyvádějí hozením POUZE PŘESNÉHO ČÍSLA, nikoliv hozením vyššího (př: hráč má hrací kámen 2 políčka před koncem desky a hodí 3 body; hrací kámen tak nemůže vyvést)"
 __meta__ = {
 "_edit_use_anchors_": false
 }

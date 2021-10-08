@@ -11,32 +11,35 @@
 size = 128
 font_data = ExtResource( 2 )
 
-[sub_resource type="DynamicFontData" id=4]
+[sub_resource type="DynamicFontData" id=2]
 font_path = "res://Roboto-Regular.ttf"
 
-[sub_resource type="DynamicFont" id=5]
+[sub_resource type="DynamicFont" id=3]
 size = 64
 extra_spacing_bottom = 20
-font_data = SubResource( 4 )
+font_data = SubResource( 2 )
 
 [node name="Control" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 theme = ExtResource( 12 )
+
+[node name="Pres" type="Control" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
 script = ExtResource( 10 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="1" type="TextureRect" parent="."]
-visible = false
+[node name="1" type="TextureRect" parent="Pres"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 texture = ExtResource( 14 )
 expand = true
 stretch_mode = 7
 
-[node name="Label" type="Label" parent="1"]
+[node name="Label" type="Label" parent="Pres/1"]
 margin_left = 71.0
 margin_top = 50.0
 margin_right = 1217.0
@@ -47,7 +50,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Label2" type="Label" parent="1"]
+[node name="Label2" type="Label" parent="Pres/1"]
 anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
@@ -65,17 +68,18 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="2" type="TextureRect" parent="."]
+[node name="2" type="TextureRect" parent="Pres"]
 visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 texture = ExtResource( 4 )
 expand = true
+stretch_mode = 7
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Title" type="Label" parent="2"]
+[node name="Title" type="Label" parent="Pres/2"]
 margin_left = 71.0
 margin_top = 50.0
 margin_right = 1217.0
@@ -86,31 +90,32 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="RichTextLabel" type="RichTextLabel" parent="2"]
+[node name="RichTextLabel" type="RichTextLabel" parent="Pres/2"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 76.0
 margin_top = 226.0
 margin_right = -76.0
 margin_bottom = -76.0
-custom_fonts/normal_font = SubResource( 5 )
+custom_fonts/normal_font = SubResource( 3 )
 text = "Daniel Sýkora - Technické zpracování
 Žaneta Znachorová - Grafický design herní plochy
 Monika Králová - Grafický design, návrhy
 Jan Bürger - Sepsání herních pravidel
 "
 
-[node name="3" type="TextureRect" parent="."]
+[node name="3" type="TextureRect" parent="Pres"]
 visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 texture = ExtResource( 4 )
 expand = true
+stretch_mode = 7
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Title" type="Label" parent="3"]
+[node name="Title" type="Label" parent="Pres/3"]
 margin_left = 71.0
 margin_top = 50.0
 margin_right = 1217.0
@@ -121,28 +126,29 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="RichTextLabel" type="RichTextLabel" parent="3"]
+[node name="RichTextLabel" type="RichTextLabel" parent="Pres/3"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 76.0
 margin_top = 226.0
 margin_right = -76.0
 margin_bottom = -76.0
-custom_fonts/normal_font = SubResource( 5 )
+custom_fonts/normal_font = SubResource( 3 )
 text = "Filip Znachor - Děkujeme za poskytnutí domény a HTTPS
 Lukáš Dvořák - Děkujeme za pomoc s testováním na macOS"
 
-[node name="4" type="TextureRect" parent="."]
+[node name="4" type="TextureRect" parent="Pres"]
 visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 texture = ExtResource( 4 )
 expand = true
+stretch_mode = 7
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Title" type="Label" parent="4"]
+[node name="Title" type="Label" parent="Pres/4"]
 margin_left = 71.0
 margin_top = 50.0
 margin_right = 1217.0
@@ -153,14 +159,14 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="RichTextLabel" type="RichTextLabel" parent="4"]
+[node name="RichTextLabel" type="RichTextLabel" parent="Pres/4"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 76.0
 margin_top = 226.0
 margin_right = -76.0
 margin_bottom = -76.0
-custom_fonts/normal_font = SubResource( 5 )
+custom_fonts/normal_font = SubResource( 3 )
 text = "Hra vznikla jako \"nadstandard\" 
 k domácímu úkolu v hodinách IVT - Vymyslet vlastní deskovou hru a nakreslit ji v GIMPu, Inkscape, atd...
 
@@ -169,17 +175,18 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="5" type="TextureRect" parent="."]
+[node name="5" type="TextureRect" parent="Pres"]
 visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 texture = ExtResource( 4 )
 expand = true
+stretch_mode = 7
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Title" type="Label" parent="5"]
+[node name="Title" type="Label" parent="Pres/5"]
 margin_left = 71.0
 margin_top = 50.0
 margin_right = 1217.0
@@ -190,14 +197,14 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="RichTextLabel" type="RichTextLabel" parent="5"]
+[node name="RichTextLabel" type="RichTextLabel" parent="Pres/5"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 76.0
 margin_top = 226.0
 margin_right = -76.0
 margin_bottom = -76.0
-custom_fonts/normal_font = SubResource( 5 )
+custom_fonts/normal_font = SubResource( 3 )
 text = "Podobně jako Člověče, nezlob se nebo Královská hra z Uru.
 
 Dva hráči (na stejném počítači) posouvají své kameny z bodu A do bodu B, a ve společné části desky se smí vyhazovat.
@@ -207,17 +214,18 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="6" type="TextureRect" parent="."]
+[node name="6" type="TextureRect" parent="Pres"]
 visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 texture = ExtResource( 4 )
 expand = true
+stretch_mode = 7
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Title" type="Label" parent="6"]
+[node name="Title" type="Label" parent="Pres/6"]
 margin_left = 71.0
 margin_top = 50.0
 margin_right = 1217.0
@@ -229,14 +237,14 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="RichTextLabel" type="RichTextLabel" parent="6"]
+[node name="RichTextLabel" type="RichTextLabel" parent="Pres/6"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 76.0
 margin_top = 226.0
 margin_right = -76.0
 margin_bottom = -364.0
-custom_fonts/normal_font = SubResource( 5 )
+custom_fonts/normal_font = SubResource( 3 )
 text = "Hra byla vytvořena ve svobodném herním enginu Godot.
 Díky jeho licenci za používání enginu a šíření naší hry nemusíme nic platit.
 
@@ -245,7 +253,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Title2" type="Label" parent="6"]
+[node name="Title2" type="Label" parent="Pres/6"]
 anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
@@ -261,14 +269,15 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="7" type="TextureRect" parent="."]
+[node name="7" type="TextureRect" parent="Pres"]
 visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 texture = ExtResource( 4 )
 expand = true
+stretch_mode = 7
 
-[node name="Title" type="Label" parent="7"]
+[node name="Title" type="Label" parent="Pres/7"]
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
@@ -287,7 +296,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Title2" type="Label" parent="7"]
+[node name="Title2" type="Label" parent="Pres/7"]
 anchor_left = 1.0
 anchor_top = 0.5
 anchor_right = 1.0
@@ -304,7 +313,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Button" type="Button" parent="7"]
+[node name="Button" type="Button" parent="Pres/7"]
 anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
@@ -319,4 +328,35 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[connection signal="pressed" from="7/Button" to="." method="_on_Button_pressed"]
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+anchor_top = 1.0
+anchor_bottom = 1.0
+margin_left = 24.0
+margin_top = -151.0
+margin_right = 285.0
+margin_bottom = -24.0
+custom_constants/separation = 20
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="prev" type="Button" parent="HBoxContainer"]
+margin_right = 120.0
+margin_bottom = 127.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_fonts/font = ExtResource( 11 )
+text = "<--"
+
+[node name="next" type="Button" parent="HBoxContainer"]
+margin_left = 140.0
+margin_right = 261.0
+margin_bottom = 127.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_fonts/font = ExtResource( 11 )
+text = "-->"
+
+[connection signal="pressed" from="Pres/7/Button" to="Pres" method="_on_Button_pressed"]
+[connection signal="pressed" from="HBoxContainer/prev" to="Pres" method="left"]
+[connection signal="pressed" from="HBoxContainer/next" to="Pres" method="right"]

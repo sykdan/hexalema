@@ -248,15 +248,17 @@ func get_line_curve(from,to,curve):
 func win():
 	$Trofej.show()
 	if turn == "ModreKameny":
-		$Trofej/TextureRect/Label.text += "FIALOVÝ"
+		$Trofej/TextureRect/Label.text += "MODRÝ"
 	else:
 		$Trofej/TextureRect/Label.text += "ČERVENÝ"
-
 
 func konec():
 	get_tree().change_scene("res://Main.tscn")
 
-
 func _on_Tween_tween_completed(object, key):
 	if key == ":rect_global_position":
 		if object.disabled: object.disabled = false
+
+func _input(event):
+	if event.is_action_pressed("roll") and $"Házet".visible:
+		_on_Hzet_pressed()

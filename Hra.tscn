@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=2]
+[gd_scene load_steps=29 format=2]
 
 [ext_resource path="res://planek_trans.png" type="Texture" id=1]
 [ext_resource path="res://Hra.gd" type="Script" id=2]
@@ -12,49 +12,58 @@
 [ext_resource path="res://tile.png" type="Texture" id=10]
 [ext_resource path="res://Roboto-BoldItalic.ttf" type="DynamicFontData" id=11]
 [ext_resource path="res://Roboto-Italic.ttf" type="DynamicFontData" id=12]
+[ext_resource path="res://cubes.png" type="Texture" id=13]
+[ext_resource path="res://Roboto-Black.ttf" type="DynamicFontData" id=14]
 
-[sub_resource type="Gradient" id=9]
+[sub_resource type="Gradient" id=1]
 colors = PoolColorArray( 1, 0.290196, 0.258824, 1, 0, 0, 0, 0 )
 
-[sub_resource type="GradientTexture" id=10]
-gradient = SubResource( 9 )
+[sub_resource type="GradientTexture" id=2]
+gradient = SubResource( 1 )
 
-[sub_resource type="DynamicFont" id=11]
+[sub_resource type="DynamicFont" id=3]
 size = 84
 font_data = ExtResource( 11 )
 
-[sub_resource type="DynamicFont" id=14]
+[sub_resource type="DynamicFont" id=4]
 size = 42
 font_data = ExtResource( 12 )
 
-[sub_resource type="Gradient" id=12]
+[sub_resource type="Gradient" id=5]
 colors = PoolColorArray( 0, 0, 0, 0, 0.498039, 0.164706, 1, 1 )
 
-[sub_resource type="GradientTexture" id=13]
-gradient = SubResource( 12 )
+[sub_resource type="GradientTexture" id=6]
+gradient = SubResource( 5 )
 
-[sub_resource type="Gradient" id=1]
+[sub_resource type="Gradient" id=7]
 colors = PoolColorArray( 0.961761, 1, 0.300781, 1, 1, 0.459534, 0.101563, 1 )
 
-[sub_resource type="Curve2D" id=2]
+[sub_resource type="Curve2D" id=8]
 _data = {
 "points": PoolVector2Array( 0, 0, 0, 0, 208, 421.625, 0, 0, 0, 0, 344.865, 421.625, 0, 0, 0, 0, 481.525, 421.625, 0, 0, 0, 0, 549.714, 539.427, 0, 0, 0, 0, 618.465, 658.954, 0, 0, 0, 0, 755.276, 658.954, 0, 0, 0, 0, 823.416, 539.427, 0, 0, 0, 0, 960.356, 539.427, 0, 0, 0, 0, 1028.55, 658.954, 0, 0, 0, 0, 1165.49, 658.954, 0, 0, 0, 0, 1233.96, 539.427, 0, 0, 0, 0, 1370.62, 539.427, 0, 0, 0, 0, 1507.28, 539.427, 0, 0, 0, 0, 1575.75, 658.954, 0, 0, 0, 0, 1712, 658.954 )
 }
 
-[sub_resource type="Curve2D" id=3]
+[sub_resource type="Curve2D" id=9]
 _data = {
 "points": PoolVector2Array( 0, 0, 0, 0, 208, 894.725, 0, 0, 0, 0, 344.865, 894.725, 0, 0, 0, 0, 481.525, 894.725, 0, 0, 0, 0, 549.714, 776.607, 0, 0, 0, 0, 618.465, 658.954, 0, 0, 0, 0, 755.276, 658.954, 0, 0, 0, 0, 823.416, 539.427, 0, 0, 0, 0, 960.356, 539.427, 0, 0, 0, 0, 1028.55, 658.954, 0, 0, 0, 0, 1165.49, 658.954, 0, 0, 0, 0, 1233.96, 539.427, 0, 0, 0, 0, 1165.49, 421.625, 0, 0, 0, 0, 1233.96, 303.822, 0, 0, 0, 0, 1165.49, 184.969, 0, 0, 0, 0, 1028.55, 184.969 )
 }
 
-[sub_resource type="DynamicFont" id=4]
+[sub_resource type="DynamicFont" id=10]
 size = 32
 font_data = ExtResource( 6 )
 
-[sub_resource type="DynamicFont" id=7]
+[sub_resource type="StyleBoxEmpty" id=13]
+content_margin_left = 20.0
+
+[sub_resource type="DynamicFont" id=14]
+size = 92
+font_data = ExtResource( 14 )
+
+[sub_resource type="DynamicFont" id=11]
 size = 48
 font_data = ExtResource( 6 )
 
-[sub_resource type="DynamicFont" id=8]
+[sub_resource type="DynamicFont" id=12]
 size = 28
 font_data = ExtResource( 6 )
 
@@ -80,7 +89,7 @@ __meta__ = {
 [node name="RedStatus" type="TextureRect" parent="."]
 anchor_bottom = 1.0
 margin_right = 324.0
-texture = SubResource( 10 )
+texture = SubResource( 2 )
 expand = true
 __meta__ = {
 "_edit_use_anchors_": false
@@ -90,7 +99,7 @@ __meta__ = {
 margin_left = 100.0
 margin_right = 494.0
 margin_bottom = 216.0
-custom_fonts/font = SubResource( 11 )
+custom_fonts/font = SubResource( 3 )
 text = "ČERVENÝ"
 valign = 1
 __meta__ = {
@@ -102,7 +111,7 @@ margin_left = 100.0
 margin_top = 166.0
 margin_right = 494.0
 margin_bottom = 216.0
-custom_fonts/font = SubResource( 14 )
+custom_fonts/font = SubResource( 4 )
 text = "Na startu: 0"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -113,7 +122,7 @@ margin_left = 100.0
 margin_top = 222.0
 margin_right = 494.0
 margin_bottom = 272.0
-custom_fonts/font = SubResource( 14 )
+custom_fonts/font = SubResource( 4 )
 text = "V cíli: 0"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -125,7 +134,7 @@ anchor_left = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = -324.0
-texture = SubResource( 13 )
+texture = SubResource( 6 )
 expand = true
 __meta__ = {
 "_edit_use_anchors_": false
@@ -137,7 +146,7 @@ anchor_right = 1.0
 margin_left = -472.0
 margin_right = -100.0
 margin_bottom = 216.0
-custom_fonts/font = SubResource( 11 )
+custom_fonts/font = SubResource( 3 )
 text = "MODRÝ"
 align = 2
 valign = 1
@@ -152,7 +161,7 @@ margin_left = -494.0
 margin_top = 166.0
 margin_right = -100.0
 margin_bottom = -216.0
-custom_fonts/font = SubResource( 14 )
+custom_fonts/font = SubResource( 4 )
 text = "Na startu: 0"
 align = 2
 __meta__ = {
@@ -166,7 +175,7 @@ margin_left = -494.0
 margin_top = 222.0
 margin_right = -100.0
 margin_bottom = 272.0
-custom_fonts/font = SubResource( 14 )
+custom_fonts/font = SubResource( 4 )
 text = "V cíli: 0"
 align = 2
 __meta__ = {
@@ -193,17 +202,17 @@ __meta__ = {
 visible = false
 points = PoolVector2Array( 228.163, 152.653, 931.963, 416.419 )
 default_color = Color( 1, 1, 1, 1 )
-gradient = SubResource( 1 )
+gradient = SubResource( 7 )
 joint_mode = 2
 begin_cap_mode = 2
 end_cap_mode = 2
 antialiased = true
 
 [node name="RedPath" type="Path2D" parent="."]
-curve = SubResource( 2 )
+curve = SubResource( 8 )
 
 [node name="BluePath" type="Path2D" parent="."]
-curve = SubResource( 3 )
+curve = SubResource( 9 )
 
 [node name="CerveneKameny" type="Node2D" parent="."]
 
@@ -349,12 +358,43 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-margin_left = -176.0
-margin_top = -88.0
-margin_right = 176.0
-margin_bottom = -24.0
-custom_fonts/font = SubResource( 4 )
-text = ">>  Hodit kostkami  <<"
+margin_left = -277.5
+margin_top = -260.0
+margin_right = 277.5
+margin_bottom = -40.0
+custom_fonts/font = SubResource( 10 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Házet"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 32.0
+margin_top = 32.0
+margin_right = -32.0
+margin_bottom = -32.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect" type="TextureRect" parent="Házet/HBoxContainer"]
+margin_right = 179.0
+margin_bottom = 156.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+texture = ExtResource( 13 )
+expand = true
+stretch_mode = 6
+
+[node name="Label" type="Label" parent="Házet/HBoxContainer"]
+margin_left = 183.0
+margin_top = 23.0
+margin_right = 491.0
+margin_bottom = 132.0
+custom_styles/normal = SubResource( 13 )
+custom_fonts/font = SubResource( 14 )
+text = "Kostky"
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -376,7 +416,7 @@ __meta__ = {
 [node name="Label" type="Label" parent="Message"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-custom_fonts/font = SubResource( 7 )
+custom_fonts/font = SubResource( 11 )
 text = "Nemůže táhnout!"
 align = 1
 valign = 1
@@ -398,12 +438,14 @@ __meta__ = {
 }
 
 [node name="TextureRect" type="TextureRect" parent="Trofej"]
-anchor_right = 1.0
-anchor_bottom = 1.0
-margin_left = 100.0
-margin_top = 60.0
-margin_right = -125.0
-margin_bottom = -140.0
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -860.0
+margin_top = -440.0
+margin_right = 860.0
+margin_bottom = 440.0
 texture = ExtResource( 9 )
 stretch_mode = 6
 __meta__ = {
@@ -419,7 +461,7 @@ margin_left = -87.5
 margin_top = -173.0
 margin_right = 99.5
 margin_bottom = -100.0
-custom_fonts/font = SubResource( 8 )
+custom_fonts/font = SubResource( 12 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "Vyhrává
 "
@@ -430,14 +472,14 @@ __meta__ = {
 }
 
 [node name="Button" type="Button" parent="Trofej"]
-anchor_left = 0.5
+anchor_left = 1.0
 anchor_top = 1.0
-anchor_right = 0.5
+anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = -147.0
-margin_top = -140.0
-margin_right = 147.0
-margin_bottom = -40.0
+margin_left = -342.0
+margin_top = -148.0
+margin_right = -48.0
+margin_bottom = -48.0
 custom_fonts/font = ExtResource( 7 )
 text = "KONEC"
 __meta__ = {
