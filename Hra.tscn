@@ -1,0 +1,345 @@
+[gd_scene load_steps=18 format=2]
+
+[ext_resource path="res://planek.png" type="Texture" id=1]
+[ext_resource path="res://Hra.gd" type="Script" id=2]
+[ext_resource path="res://redbenzen.png" type="Texture" id=3]
+[ext_resource path="res://bluebenzen.png" type="Texture" id=4]
+[ext_resource path="res://kostka.png" type="Texture" id=5]
+[ext_resource path="res://Roboto-Regular.ttf" type="DynamicFontData" id=6]
+[ext_resource path="res://font big.tres" type="DynamicFont" id=7]
+[ext_resource path="res://HexaTheme.tres" type="Theme" id=8]
+[ext_resource path="res://trophy.png" type="Texture" id=9]
+
+[sub_resource type="Gradient" id=1]
+colors = PoolColorArray( 0.961761, 1, 0.300781, 1, 1, 0.459534, 0.101563, 1 )
+
+[sub_resource type="Curve2D" id=2]
+_data = {
+"points": PoolVector2Array( 0, 0, 0, 0, 208, 421.625, 0, 0, 0, 0, 344.865, 421.625, 0, 0, 0, 0, 481.525, 421.625, 0, 0, 0, 0, 549.714, 539.427, 0, 0, 0, 0, 618.465, 658.954, 0, 0, 0, 0, 755.276, 658.954, 0, 0, 0, 0, 823.416, 539.427, 0, 0, 0, 0, 960.356, 539.427, 0, 0, 0, 0, 1028.55, 658.954, 0, 0, 0, 0, 1165.49, 658.954, 0, 0, 0, 0, 1233.96, 539.427, 0, 0, 0, 0, 1370.62, 539.427, 0, 0, 0, 0, 1507.28, 539.427, 0, 0, 0, 0, 1575.75, 658.954, 0, 0, 0, 0, 1712, 658.954 )
+}
+
+[sub_resource type="Curve2D" id=3]
+_data = {
+"points": PoolVector2Array( 0, 0, 0, 0, 208, 894.725, 0, 0, 0, 0, 344.865, 894.725, 0, 0, 0, 0, 481.525, 894.725, 0, 0, 0, 0, 549.714, 776.607, 0, 0, 0, 0, 618.465, 658.954, 0, 0, 0, 0, 755.276, 658.954, 0, 0, 0, 0, 823.416, 539.427, 0, 0, 0, 0, 960.356, 539.427, 0, 0, 0, 0, 1028.55, 658.954, 0, 0, 0, 0, 1165.49, 658.954, 0, 0, 0, 0, 1233.96, 539.427, 0, 0, 0, 0, 1165.49, 421.625, 0, 0, 0, 0, 1233.96, 303.822, 0, 0, 0, 0, 1165.49, 184.969, 0, 0, 0, 0, 1028.55, 184.969 )
+}
+
+[sub_resource type="DynamicFont" id=4]
+size = 32
+font_data = ExtResource( 6 )
+
+[sub_resource type="StyleBoxFlat" id=5]
+bg_color = Color( 0.729412, 0.729412, 0.729412, 1 )
+
+[sub_resource type="DynamicFont" id=6]
+font_data = ExtResource( 6 )
+
+[sub_resource type="DynamicFont" id=7]
+size = 48
+font_data = ExtResource( 6 )
+
+[sub_resource type="DynamicFont" id=8]
+size = 28
+font_data = ExtResource( 6 )
+
+[node name="Node2D" type="TextureRect"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+theme = ExtResource( 8 )
+texture = ExtResource( 1 )
+expand = true
+stretch_mode = 7
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_horizontal_guides_": [ 658.954, 184.969, 421.625, 303.822, 539.427, 776.607, 894.725 ],
+"_edit_use_anchors_": false,
+"_edit_vertical_guides_": [ 344.865, 481.525, 549.714, 618.465, 686.655, 755.276, 823.416, 960.356, 1028.55, 1165.49, 1233.96, 1370.62, 1507.28, 1575.75, 208.0, 1712.0 ]
+}
+
+[node name="HintLine" type="Line2D" parent="."]
+visible = false
+points = PoolVector2Array( 228.163, 152.653, 931.963, 416.419 )
+default_color = Color( 1, 1, 1, 1 )
+gradient = SubResource( 1 )
+joint_mode = 2
+begin_cap_mode = 2
+end_cap_mode = 2
+antialiased = true
+
+[node name="RedPath" type="Path2D" parent="."]
+curve = SubResource( 2 )
+
+[node name="BluePath" type="Path2D" parent="."]
+curve = SubResource( 3 )
+
+[node name="CerveneKameny" type="Node2D" parent="."]
+
+[node name="kamen" type="TextureButton" parent="CerveneKameny"]
+margin_right = 100.0
+margin_bottom = 87.0
+rect_pivot_offset = Vector2( 50, 43 )
+texture_normal = ExtResource( 3 )
+texture_pressed = ExtResource( 3 )
+texture_hover = ExtResource( 3 )
+texture_disabled = ExtResource( 3 )
+texture_focused = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ModreKameny" type="Node2D" parent="."]
+
+[node name="kamen" type="TextureButton" parent="ModreKameny"]
+margin_right = 100.0
+margin_bottom = 87.0
+rect_pivot_offset = Vector2( 50, 43 )
+texture_normal = ExtResource( 4 )
+texture_pressed = ExtResource( 4 )
+texture_hover = ExtResource( 4 )
+texture_disabled = ExtResource( 4 )
+texture_focused = ExtResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ColorRect" type="ColorRect" parent="."]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+rect_pivot_offset = Vector2( 1920, 1080 )
+color = Color( 0.0980392, 0.0980392, 0.0980392, 0.709804 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HBoxContainer" type="HBoxContainer" parent="ColorRect"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -690.5
+margin_top = -100.0
+margin_right = 690.5
+margin_bottom = 100.0
+rect_pivot_offset = Vector2( 1381, 200 )
+custom_constants/separation = 72
+alignment = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ColorRect" type="ColorRect" parent="ColorRect/HBoxContainer"]
+margin_left = 46.0
+margin_right = 246.0
+margin_bottom = 200.0
+rect_min_size = Vector2( 200, 200 )
+color = Color( 0.92549, 0.137255, 0.929412, 1 )
+
+[node name="TextureRect" type="TextureRect" parent="ColorRect/HBoxContainer/ColorRect"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+rect_min_size = Vector2( 200, 200 )
+texture = ExtResource( 5 )
+expand = true
+stretch_mode = 6
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ColorRect2" type="ColorRect" parent="ColorRect/HBoxContainer"]
+margin_left = 318.0
+margin_right = 518.0
+margin_bottom = 200.0
+rect_min_size = Vector2( 200, 200 )
+color = Color( 0.92549, 0.137255, 0.929412, 1 )
+
+[node name="TextureRect2" type="TextureRect" parent="ColorRect/HBoxContainer/ColorRect2"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+rect_min_size = Vector2( 120, 0 )
+texture = ExtResource( 5 )
+expand = true
+stretch_mode = 6
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ColorRect3" type="ColorRect" parent="ColorRect/HBoxContainer"]
+margin_left = 590.0
+margin_right = 790.0
+margin_bottom = 200.0
+rect_min_size = Vector2( 200, 200 )
+color = Color( 0.92549, 0.137255, 0.929412, 1 )
+
+[node name="TextureRect3" type="TextureRect" parent="ColorRect/HBoxContainer/ColorRect3"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+rect_min_size = Vector2( 120, 0 )
+texture = ExtResource( 5 )
+expand = true
+stretch_mode = 6
+
+[node name="ColorRect4" type="ColorRect" parent="ColorRect/HBoxContainer"]
+margin_left = 862.0
+margin_right = 1062.0
+margin_bottom = 200.0
+rect_min_size = Vector2( 200, 200 )
+color = Color( 0.92549, 0.137255, 0.929412, 1 )
+
+[node name="TextureRect4" type="TextureRect" parent="ColorRect/HBoxContainer/ColorRect4"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+rect_min_size = Vector2( 120, 0 )
+texture = ExtResource( 5 )
+expand = true
+stretch_mode = 6
+
+[node name="ColorRect5" type="ColorRect" parent="ColorRect/HBoxContainer"]
+margin_left = 1134.0
+margin_right = 1334.0
+margin_bottom = 200.0
+rect_min_size = Vector2( 200, 200 )
+color = Color( 0.92549, 0.137255, 0.929412, 1 )
+
+[node name="TextureRect5" type="TextureRect" parent="ColorRect/HBoxContainer/ColorRect5"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+rect_min_size = Vector2( 120, 0 )
+texture = ExtResource( 5 )
+expand = true
+stretch_mode = 6
+
+[node name="Házet" type="Button" parent="."]
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -392.0
+margin_top = -104.0
+margin_right = -40.0
+margin_bottom = -40.0
+custom_fonts/font = SubResource( 4 )
+text = ">>  Hodit kostkami  <<"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Status" type="Panel" parent="."]
+self_modulate = Color( 0.878431, 0.141176, 0.141176, 1 )
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -392.0
+margin_top = 24.0
+margin_right = -24.0
+margin_bottom = 120.0
+custom_styles/panel = SubResource( 5 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="Status"]
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 8.0
+margin_top = -76.0
+margin_right = -8.0
+custom_fonts/font = ExtResource( 7 )
+text = "ČERVENÝ"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label2" type="Label" parent="Status"]
+margin_left = 12.0
+margin_top = 8.0
+margin_right = 92.0
+margin_bottom = 27.0
+custom_fonts/font = SubResource( 6 )
+text = "Na tahu je"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Message" type="Panel" parent="."]
+modulate = Color( 1, 1, 1, 0 )
+margin_left = 24.0
+margin_top = 24.0
+margin_right = 512.0
+margin_bottom = 264.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="Message"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_fonts/font = SubResource( 7 )
+text = "Nemůže táhnout!"
+align = 1
+valign = 1
+autowrap = true
+clip_text = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Tween" type="Tween" parent="."]
+
+[node name="Trofej" type="ColorRect" parent="."]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0, 0, 0, 0.807843 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect" type="TextureRect" parent="Trofej"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 100.0
+margin_top = 60.0
+margin_right = -125.0
+margin_bottom = -140.0
+texture = ExtResource( 9 )
+stretch_mode = 6
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="Trofej/TextureRect"]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -87.5
+margin_top = -173.0
+margin_right = 99.5
+margin_bottom = -100.0
+custom_fonts/font = SubResource( 8 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Vyhrává
+"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Button" type="Button" parent="Trofej"]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -147.0
+margin_top = -140.0
+margin_right = 147.0
+margin_bottom = -40.0
+custom_fonts/font = ExtResource( 7 )
+text = "KONEC"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[connection signal="pressed" from="Házet" to="." method="_on_Hzet_pressed"]
+[connection signal="pressed" from="Trofej/Button" to="." method="konec"]
