@@ -19,6 +19,8 @@ func _process(d):
 	$BluePath.position = pos
 	$HintLine.position = pos
 	
+	$ColorRect.rect_pivot_offset.x = $ColorRect.rect_size.x/2
+	
 	for place in range(len(gameBoard)): # 0 - 14
 		for stone in gameBoard[place]:
 			if stone.disabled: return
@@ -139,6 +141,7 @@ func walk_possible_moves():
 	return false
 
 func swap_turn():
+	$ColorRect.hide()
 	$HintLine.hide()
 	turn = get_not_turn()
 	if turn == "ModreKameny":
@@ -206,17 +209,17 @@ func hzet_2():
 	$Tween.start()
 
 func move_stone_to(obj,index):
-	get_point_from_pos(obj,true)
+	var orig = get_point_from_pos(obj,true)
 	gameBoard[index].append(obj)
 	obj.disabled = true
 	var curve = get_curve(obj.get_node("..").name)
 	var to = curve.curve.get_point_position(index) - obj.rect_pivot_offset + curve.position
 	$Tween.interpolate_property(obj,"rect_global_position",null,to,0.5,Tween.TRANS_SINE,Tween.EASE_OUT)
 	$Tween.start()
-	if index == 0:
+	if index == 0 or orig == 0:
 		var blue = 0
 		var red = 0
-		for s in get_stones_in_index(index):
+		for s in get_stones_in_index(0):
 			if s.get_node("..").name == "CerveneKameny":
 				red += 1
 			if s.get_node("..").name == "ModreKameny":
@@ -226,7 +229,7 @@ func move_stone_to(obj,index):
 	if index == 14:
 		var blue = 0
 		var red = 0
-		for s in get_stones_in_index(index):
+		for s in get_stones_in_index(14):
 			if s.get_node("..").name == "CerveneKameny":
 				red += 1
 			if s.get_node("..").name == "ModreKameny":
