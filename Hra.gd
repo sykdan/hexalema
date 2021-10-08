@@ -1,10 +1,15 @@
 extends Control
 
+const txt_nastartu = "Na startu: "
+const txt_vcili = "Na startu: "
+
 var current_dice_roll = 0
 var turn = "CerveneKameny"
 
 var redDone = 0
 var blueDone = 0
+
+var gameBoard = []
 
 func _process(d):
 	var pos = $Planek.rect_position
@@ -12,64 +17,69 @@ func _process(d):
 	$Grid.margin_top = -238 + (int(pos.y) % 238) - 12
 	$RedPath.position = pos
 	$BluePath.position = pos
+	$HintLine.position = pos
+	
+	for place in range(len(gameBoard)): # 0 - 14
+		for stone in gameBoard[place]:
+			if stone.disabled: return
+			var stonePos: Vector2
+			if stone.get_node("..").name == "CerveneKameny":
+				stonePos = pos + $RedPath.curve.get_point_position(place)
+			if stone.get_node("..").name == "ModreKameny":
+				stonePos = pos + $BluePath.curve.get_point_position(place)
+			
+			stone.rect_global_position = stonePos - stone.rect_pivot_offset
 
 func get_stones_in_index(idx):
-	var r = []
-	for x in $CerveneKameny.get_children():
-		var pos = get_point_from_pos(x.rect_global_position + x.rect_pivot_offset,"CerveneKameny")
-		if pos == idx: r.append(x)
-	
-	for x in $ModreKameny.get_children():
-		var pos = get_point_from_pos(x.rect_global_position + x.rect_pivot_offset,"ModreKameny")
-		if pos == idx: r.append(x)
-	
-	return r
+	return gameBoard[idx]
 
-func get_point_from_pos(v: Vector2,color):
-	if color == "CerveneKameny":
-		var i = $RedPath.curve.get_point_count()
-		for p in range(i):
-			if v == $RedPath.curve.get_point_position(p):
-				return p
-	if color == "ModreKameny":
-		var i = $BluePath.curve.get_point_count()
-		for p in range(i):
-			if v == $BluePath.curve.get_point_position(p):
-				return p
+func get_point_from_pos(kamen,pop=false):
+	for place in range(len(gameBoard)): # 0 - 14
+		for stone in gameBoard[place]:
+			if stone == kamen:
+				if pop: gameBoard[place].erase(kamen)
+				return place
 
 func move_enemies_to_start(pos):
 	var st = get_stones_in_index(pos)
 	for stone in st:
 		var n = stone.get_node("..").name
 		if n != turn:
-			var nt = get_not_turn()
-			move_stone_to(stone, get_curve(nt).curve.get_point_position(0) - stone.rect_pivot_offset)
+			move_stone_to(stone, 0)
 
 func _ready():
-	connect("resized",self,"_resized")
 	if randi()%2 == 1: swap_turn()
+	for x in range(15): gameBoard.append([])
 	for x in range(6):
 		$CerveneKameny.add_child($CerveneKameny/kamen.duplicate())
 		$ModreKameny.add_child($ModreKameny/kamen.duplicate())
 	
 	for x in $CerveneKameny.get_children():
-		x.rect_global_position = $RedPath.curve.get_point_position(0) - x.rect_pivot_offset
+		gameBoard[0].append(x)
 		x.connect("pressed",self,"click_kamen",[x])
 		x.connect("mouse_entered",self,"hint_stone",[x])
 	
 	for x in $ModreKameny.get_children():
-		x.rect_global_position = $BluePath.curve.get_point_position(0) - x.rect_pivot_offset
+		gameBoard[0].append(x)
 		x.connect("pressed",self,"click_kamen",[x])
 		x.connect("mouse_entered",self,"hint_stone",[x])
+	
+	var blue = 0
+	var red = 0
+	for s in get_stones_in_index(0):
+		if s.get_node("..").name == "CerveneKameny":
+			red += 1
+		if s.get_node("..").name == "ModreKameny":
+			blue += 1
+	$RedStatus/Start.text = txt_nastartu + str(red)
+	$BlueStatus/Start.text = txt_nastartu + str(blue)
 
 func test_move(pos):
-	print("test for destination: ",pos," ",pos+current_dice_roll)
 	if pos+current_dice_roll > 14: return false
 	var naMiste = get_stones_in_index(pos+current_dice_roll)
 	
 	if len(naMiste) == 0: return 1
 	if len(naMiste) == 1:
-		print(naMiste[0].get_node("..").name)
 		if naMiste[0].get_node("..").name == turn:
 			pass
 		else:
@@ -88,7 +98,7 @@ func hint_stone(obj):
 	if current_dice_roll < 1: return
 	var trn = obj.get_node("..").name
 	if trn != turn: return
-	var pos = get_point_from_pos(obj.rect_position + obj.rect_pivot_offset,trn)
+	var pos = get_point_from_pos(obj)
 	if pos == 14 or pos+current_dice_roll > 14: return
 	
 	var c 
@@ -102,17 +112,14 @@ func click_kamen(obj):
 	var color = obj.get_node("..").name
 	if not color == turn: return
 	if current_dice_roll == 0: return
-	var pos = get_point_from_pos(obj.rect_global_position + obj.rect_pivot_offset,color)
+	var pos = get_point_from_pos(obj)
 	if pos == null: return
 	
 	var t = test_move(pos)
 	if t:
-		if pos + current_dice_roll == 14:
-			if turn == "CerveneKameny": redDone += 1
-			elif turn == "ModreKameny": blueDone += 1
 		if t == 2:
 			move_enemies_to_start(pos + current_dice_roll)
-		move_stone_to(obj, get_curve(turn).curve.get_point_position(pos + current_dice_roll) - obj.rect_pivot_offset)
+		move_stone_to(obj, pos + current_dice_roll)
 		if pos+current_dice_roll in [5,9]:
 			swap_turn()
 			toast("Stoupli jste na sublimační políčko!\nMůžete házet znovu.")
@@ -126,7 +133,7 @@ func click_kamen(obj):
 func walk_possible_moves():
 	var kameny = get_node(turn).get_children()
 	for kamen in kameny:
-		var pos = get_point_from_pos(kamen.rect_global_position + kamen.rect_pivot_offset,turn)
+		var pos = get_point_from_pos(kamen)
 		if test_move(pos): return true
 	
 	return false
@@ -135,11 +142,11 @@ func swap_turn():
 	$HintLine.hide()
 	turn = get_not_turn()
 	if turn == "ModreKameny":
-		$Status/Label.text = "FIALOVÝ"
-		$Status.self_modulate = Color("7f2aff")
+		$RedStatus.modulate.a = 0.5
+		$BlueStatus.modulate.a = 1
 	else:
-		$Status/Label.text = "ČERVENÝ"
-		$Status.self_modulate = Color("e02424")
+		$RedStatus.modulate.a = 1
+		$BlueStatus.modulate.a = 0.5
 
 func get_not_turn():
 	if turn == "CerveneKameny": return "ModreKameny"
@@ -173,9 +180,7 @@ func _on_Hzet_pressed():
 		i.hide()
 	for i in range(len(dices)):
 		$ColorRect/HBoxContainer.get_child(i).show()
-		print(dices[i])
 		if dices[i] == 1:
-			print("A")
 			$ColorRect/HBoxContainer.get_child(i).get_child(0).show()
 		yield(get_tree().create_timer(0.3),"timeout")
 		
@@ -200,10 +205,36 @@ func hzet_2():
 	$Tween.interpolate_property($ColorRect,"rect_scale",null,Vector2(0.3,0.3),0.5,Tween.TRANS_CIRC,Tween.EASE_OUT)
 	$Tween.start()
 
-func move_stone_to(obj,to):
+func move_stone_to(obj,index):
+	get_point_from_pos(obj,true)
+	gameBoard[index].append(obj)
+	obj.disabled = true
+	var curve = get_curve(obj.get_node("..").name)
+	var to = curve.curve.get_point_position(index) - obj.rect_pivot_offset + curve.position
 	$Tween.interpolate_property(obj,"rect_global_position",null,to,0.5,Tween.TRANS_SINE,Tween.EASE_OUT)
 	$Tween.start()
-	
+	if index == 0:
+		var blue = 0
+		var red = 0
+		for s in get_stones_in_index(index):
+			if s.get_node("..").name == "CerveneKameny":
+				red += 1
+			if s.get_node("..").name == "ModreKameny":
+				blue += 1
+		$RedStatus/Start.text = txt_nastartu + str(red)
+		$BlueStatus/Start.text = txt_nastartu + str(blue)
+	if index == 14:
+		var blue = 0
+		var red = 0
+		for s in get_stones_in_index(index):
+			if s.get_node("..").name == "CerveneKameny":
+				red += 1
+			if s.get_node("..").name == "ModreKameny":
+				blue += 1
+		redDone = red
+		blueDone = blue
+		$RedStatus/Start.text = txt_vcili + str(red)
+		$BlueStatus/Start.text = txt_vcili + str(blue)
 
 func get_line_curve(from,to,curve):
 	var r = PoolVector2Array()
@@ -221,3 +252,8 @@ func win():
 
 func konec():
 	get_tree().change_scene("res://Main.tscn")
+
+
+func _on_Tween_tween_completed(object, key):
+	if key == ":rect_global_position":
+		if object.disabled: object.disabled = false

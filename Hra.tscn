@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=2]
+[gd_scene load_steps=25 format=2]
 
 [ext_resource path="res://planek_trans.png" type="Texture" id=1]
 [ext_resource path="res://Hra.gd" type="Script" id=2]
@@ -10,6 +10,28 @@
 [ext_resource path="res://HexaTheme.tres" type="Theme" id=8]
 [ext_resource path="res://trophy.png" type="Texture" id=9]
 [ext_resource path="res://tile.png" type="Texture" id=10]
+[ext_resource path="res://Roboto-BoldItalic.ttf" type="DynamicFontData" id=11]
+[ext_resource path="res://Roboto-Italic.ttf" type="DynamicFontData" id=12]
+
+[sub_resource type="Gradient" id=9]
+colors = PoolColorArray( 1, 0.290196, 0.258824, 1, 0, 0, 0, 0 )
+
+[sub_resource type="GradientTexture" id=10]
+gradient = SubResource( 9 )
+
+[sub_resource type="DynamicFont" id=11]
+size = 84
+font_data = ExtResource( 11 )
+
+[sub_resource type="DynamicFont" id=14]
+size = 42
+font_data = ExtResource( 12 )
+
+[sub_resource type="Gradient" id=12]
+colors = PoolColorArray( 0, 0, 0, 0, 0.498039, 0.164706, 1, 1 )
+
+[sub_resource type="GradientTexture" id=13]
+gradient = SubResource( 12 )
 
 [sub_resource type="Gradient" id=1]
 colors = PoolColorArray( 0.961761, 1, 0.300781, 1, 1, 0.459534, 0.101563, 1 )
@@ -28,12 +50,6 @@ _data = {
 size = 32
 font_data = ExtResource( 6 )
 
-[sub_resource type="StyleBoxFlat" id=5]
-bg_color = Color( 0.729412, 0.729412, 0.729412, 1 )
-
-[sub_resource type="DynamicFont" id=6]
-font_data = ExtResource( 6 )
-
 [sub_resource type="DynamicFont" id=7]
 size = 48
 font_data = ExtResource( 6 )
@@ -47,6 +63,9 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 theme = ExtResource( 8 )
 script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="Grid" type="TextureRect" parent="."]
 anchor_right = 1.0
@@ -54,6 +73,101 @@ anchor_bottom = 1.0
 texture = ExtResource( 10 )
 expand = true
 stretch_mode = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="RedStatus" type="TextureRect" parent="."]
+anchor_bottom = 1.0
+margin_right = 324.0
+texture = SubResource( 10 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="RedStatus"]
+margin_left = 100.0
+margin_right = 494.0
+margin_bottom = 216.0
+custom_fonts/font = SubResource( 11 )
+text = "ČERVENÝ"
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Start" type="Label" parent="RedStatus"]
+margin_left = 100.0
+margin_top = 166.0
+margin_right = 494.0
+margin_bottom = 216.0
+custom_fonts/font = SubResource( 14 )
+text = "Na startu: 0"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="End" type="Label" parent="RedStatus"]
+margin_left = 100.0
+margin_top = 222.0
+margin_right = 494.0
+margin_bottom = 272.0
+custom_fonts/font = SubResource( 14 )
+text = "V cíli: 0"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="BlueStatus" type="TextureRect" parent="."]
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -324.0
+texture = SubResource( 13 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="BlueStatus"]
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -472.0
+margin_right = -100.0
+margin_bottom = 216.0
+custom_fonts/font = SubResource( 11 )
+text = "MODRÝ"
+align = 2
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Start" type="Label" parent="BlueStatus"]
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -494.0
+margin_top = 166.0
+margin_right = -100.0
+margin_bottom = -216.0
+custom_fonts/font = SubResource( 14 )
+text = "Na startu: 0"
+align = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="End" type="Label" parent="BlueStatus"]
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -494.0
+margin_top = 222.0
+margin_right = -100.0
+margin_bottom = 272.0
+custom_fonts/font = SubResource( 14 )
+text = "V cíli: 0"
+align = 2
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -244,43 +358,6 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Status" type="Panel" parent="."]
-self_modulate = Color( 0.878431, 0.141176, 0.141176, 1 )
-anchor_left = 1.0
-anchor_right = 1.0
-margin_left = -392.0
-margin_top = 24.0
-margin_right = -24.0
-margin_bottom = 120.0
-custom_styles/panel = SubResource( 5 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Label" type="Label" parent="Status"]
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-margin_left = 8.0
-margin_top = -76.0
-margin_right = -8.0
-custom_fonts/font = ExtResource( 7 )
-text = "ČERVENÝ"
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Label2" type="Label" parent="Status"]
-margin_left = 12.0
-margin_top = 8.0
-margin_right = 92.0
-margin_bottom = 27.0
-custom_fonts/font = SubResource( 6 )
-text = "Na tahu je"
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
 [node name="Message" type="Panel" parent="."]
 modulate = Color( 1, 1, 1, 0 )
 margin_left = 24.0
@@ -363,4 +440,5 @@ __meta__ = {
 }
 
 [connection signal="pressed" from="Házet" to="." method="_on_Hzet_pressed"]
+[connection signal="tween_completed" from="Tween" to="." method="_on_Tween_tween_completed"]
 [connection signal="pressed" from="Trofej/Button" to="." method="konec"]
