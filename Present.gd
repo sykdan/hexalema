@@ -12,15 +12,9 @@ func _input(event):
 		get_child(snimek).hide()
 		snimek += 1
 	
-	snimek = clamp(snimek,0,get_child_count())
+	snimek = clamp(snimek,0,get_child_count()-1)
 	
 	get_child(snimek).show()
-	
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass
 
 
 func _on_Button_pressed():

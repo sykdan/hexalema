@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/planek2.png-b1f6450a54b84c9f953772f2c422894b.stex"
+path="res://.import/hexalema_presblur.png-7c026f355d946f5e182bb483bce12f77.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://planek2.png"
-dest_files=[ "res://.import/planek2.png-b1f6450a54b84c9f953772f2c422894b.stex" ]
+source_file="res://hexalema_presblur.png"
+dest_files=[ "res://.import/hexalema_presblur.png-7c026f355d946f5e182bb483bce12f77.stex" ]
 
 [params]
 
