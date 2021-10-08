@@ -182,6 +182,9 @@ SOFTWARE.
 
 
 Portions of this software are copyright © 2021 The FreeType Project (www.freetype.org). All rights reserved."
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [connection signal="pressed" from="Button" to="." method="_on_Button_pressed"]
 [connection signal="pressed" from="Options/Panel/VBoxContainer/Pravidla" to="." method="_on_Pravidla_pressed"]

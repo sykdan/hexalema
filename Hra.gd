@@ -1,10 +1,17 @@
-extends TextureRect
+extends Control
 
 var current_dice_roll = 0
 var turn = "CerveneKameny"
 
 var redDone = 0
 var blueDone = 0
+
+func _process(d):
+	var pos = $Planek.rect_position
+	$Grid.margin_left = -137 + (int(pos.x) % 137) - 3
+	$Grid.margin_top = -238 + (int(pos.y) % 238) - 12
+	$RedPath.position = pos
+	$BluePath.position = pos
 
 func get_stones_in_index(idx):
 	var r = []
@@ -39,6 +46,7 @@ func move_enemies_to_start(pos):
 			move_stone_to(stone, get_curve(nt).curve.get_point_position(0) - stone.rect_pivot_offset)
 
 func _ready():
+	connect("resized",self,"_resized")
 	if randi()%2 == 1: swap_turn()
 	for x in range(6):
 		$CerveneKameny.add_child($CerveneKameny/kamen.duplicate())
