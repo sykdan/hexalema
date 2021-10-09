@@ -1,6 +1,6 @@
 [gd_scene load_steps=9 format=2]
 
-[ext_resource path="res://Roboto-Black.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://Fonts/Roboto-Black.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://font big.tres" type="DynamicFont" id=2]
 [ext_resource path="res://Main.gd" type="Script" id=3]
 [ext_resource path="res://hexalema_blur.png" type="Texture" id=4]
@@ -14,7 +14,7 @@ extra_spacing_char = 30
 font_data = ExtResource( 1 )
 
 [sub_resource type="DynamicFontData" id=2]
-font_path = "res://Roboto-Regular.ttf"
+font_path = "res://Fonts/Roboto-Regular.ttf"
 
 [sub_resource type="DynamicFont" id=3]
 size = 28

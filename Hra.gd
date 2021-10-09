@@ -272,10 +272,10 @@ func _on_Tween_tween_completed(object, key):
 func _input(event):
 	if event.is_action_pressed("roll") and $"Házet".visible:
 		_on_Hzet_pressed()
-	elif event.is_action_pressed("roll") and $LockOn.modulate.a != 0:
+	elif event.is_action_pressed("roll") and $LockOn.scale.x >= 1:
 		click_kamen(kb_target)
 	
-	if event.is_action_pressed("left") and (current_dice_roll != 0):
+	if event.is_action_pressed("left") and (current_dice_roll != 0) and $ColorRect.self_modulate.a != 1:
 		var brk = false
 		var target
 		for i in range(kb_cursor-1,-1,-1):
@@ -295,7 +295,7 @@ func _input(event):
 		else:
 			lockon()
 	
-	if event.is_action_pressed("right") and (current_dice_roll != 0):
+	if event.is_action_pressed("right") and (current_dice_roll != 0) and $ColorRect.self_modulate.a != 1:
 		var brk = false
 		var target
 		for i in range(kb_cursor+1,14,1):
@@ -317,15 +317,15 @@ func _input(event):
 
 func lockon():
 	if not (kb_target is TextureButton): return
-	$Tween.interpolate_property($LockOn,"rect_size",null,kb_target.rect_size,0.5,Tween.TRANS_QUAD,Tween.EASE_OUT)
-	$Tween.interpolate_property($LockOn,"rect_global_position",null,kb_target.rect_global_position,0.5,Tween.TRANS_QUAD,Tween.EASE_OUT)
-	$Tween.interpolate_property($LockOn,"modulate:a",null,1,0.5,Tween.TRANS_QUAD,Tween.EASE_OUT)
+	var pos = kb_target.rect_global_position + kb_target.rect_pivot_offset
+	if $LockOn.scale.x < 1:
+		$LockOn.position = pos
+	$Tween.interpolate_property($LockOn,"position",null,pos,0.5,Tween.TRANS_QUAD,Tween.EASE_OUT)
+	$Tween.interpolate_property($LockOn,"scale",Vector2.ONE * 1.2,Vector2.ONE,0.5,Tween.TRANS_QUAD,Tween.EASE_OUT)
 	$Tween.start()
 
 func unlockon():
-	$Tween.interpolate_property($LockOn,"rect_size",null,rect_size,0.5,Tween.TRANS_QUAD,Tween.EASE_OUT)
-	$Tween.interpolate_property($LockOn,"rect_global_position",null,rect_global_position,0.5,Tween.TRANS_QUAD,Tween.EASE_OUT)
-	$Tween.interpolate_property($LockOn,"modulate:a",null,0,0.5,Tween.TRANS_QUAD,Tween.EASE_OUT)
+	$Tween.interpolate_property($LockOn,"scale",null,Vector2.ZERO,0.5,Tween.TRANS_QUAD,Tween.EASE_OUT)
 	$Tween.start()
 
 func _on_fullscreen_pressed():
