@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=2]
+[gd_scene load_steps=32 format=2]
 
 [ext_resource path="res://planek_trans.png" type="Texture" id=1]
 [ext_resource path="res://Hra.gd" type="Script" id=2]
@@ -58,6 +58,10 @@ content_margin_left = 20.0
 [sub_resource type="DynamicFont" id=12]
 size = 92
 font_data = ExtResource( 14 )
+
+[sub_resource type="DynamicFont" id=17]
+size = 48
+font_data = ExtResource( 6 )
 
 [sub_resource type="DynamicFont" id=13]
 size = 48
@@ -419,24 +423,37 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Message" type="Panel" parent="."]
-modulate = Color( 1, 1, 1, 0 )
+[node name="MsgAnchor" type="Control" parent="."]
 anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = -512.0
+margin_left = 38.0
 margin_top = -264.0
-margin_right = -24.0
-margin_bottom = -24.0
+margin_right = 78.0
+margin_bottom = -224.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Label" type="Label" parent="Message"]
+[node name="Message" type="Panel" parent="MsgAnchor"]
+anchor_left = 1.0
+anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-custom_fonts/font = SubResource( 13 )
+margin_left = -40.0
+margin_top = -40.0
+margin_right = 448.0
+margin_bottom = 200.0
+rect_min_size = Vector2( 488, 240 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="MsgAnchor/Message"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_fonts/font = SubResource( 17 )
 text = "Nemůže táhnout!"
 align = 1
 valign = 1

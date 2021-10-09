@@ -12,7 +12,7 @@ var blueDone = 0
 var gameBoard = []
 
 var kb_cursor = 5
-var kb_target
+var kb_target;
 
 func _process(d):
 	var pos = $Planek.rect_position
@@ -23,6 +23,7 @@ func _process(d):
 	$HintLine.position = pos
 	
 	$ColorRect.rect_pivot_offset.x = $ColorRect.rect_size.x/2
+	$ColorRect.rect_pivot_offset.y = $ColorRect.rect_size.y
 	
 	for place in range(len(gameBoard)): # 0 - 14
 		for stone in gameBoard[place]:
@@ -171,8 +172,10 @@ func get_curve(t):
 	else: return $BluePath
 
 func toast(txt):
-	$Message/Label.text = txt
-	$Tween.interpolate_property($Message,"modulate:a",1,0,8,Tween.TRANS_EXPO,Tween.EASE_IN)
+	$Tween.stop($MsgAnchor/Message)
+	$MsgAnchor/Message/Label.text = txt
+	$MsgAnchor/Message.rect_position = Vector2.ZERO
+	$Tween.interpolate_property($MsgAnchor/Message,"rect_position:x",0,-550,0.5,Tween.TRANS_CIRC,Tween.EASE_OUT)
 	$Tween.start()
 
 func _on_Hzet_pressed():
@@ -268,8 +271,18 @@ func konec():
 func _on_Tween_tween_completed(object, key):
 	if key == ":rect_global_position" and object is TextureButton:
 		if object.disabled: object.disabled = false
+	
+	if key == ":rect_position:x" and object == $MsgAnchor/Message:
+		$Tween.interpolate_property($MsgAnchor/Message,"modulate:a",1,1,6,Tween.TRANS_CIRC,Tween.EASE_IN)
+		$Tween.start()
+	if key == ":modulate:a" and object == $MsgAnchor/Message:
+		$Tween.interpolate_property($MsgAnchor/Message,"rect_position:y",0,300,0.1,Tween.TRANS_CIRC,Tween.EASE_OUT)
+		$Tween.start()
 
 func _input(event):
+	if event.is_action_pressed("debug"):
+		toast("TEST")
+	
 	if event.is_action_pressed("roll") and $"Házet".visible:
 		_on_Hzet_pressed()
 	elif event.is_action_pressed("roll") and $LockOn.scale.x >= 1:
