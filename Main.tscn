@@ -215,7 +215,7 @@ margin_top = 24.0
 margin_right = 84.0
 margin_bottom = 38.0
 custom_fonts/font = ExtResource( 2 )
-text = "1.0.1"
+text = "1.1.1"
 __meta__ = {
 "_edit_use_anchors_": false
 }

@@ -59,22 +59,22 @@ content_margin_left = 20.0
 size = 92
 font_data = ExtResource( 14 )
 
-[sub_resource type="DynamicFont" id=17]
-size = 48
-font_data = ExtResource( 6 )
-
 [sub_resource type="DynamicFont" id=13]
 size = 48
 font_data = ExtResource( 6 )
 
-[sub_resource type="DynamicFontData" id=14]
+[sub_resource type="DynamicFont" id=14]
+size = 48
+font_data = ExtResource( 6 )
+
+[sub_resource type="DynamicFontData" id=15]
 font_path = "res://Fonts/Roboto-Regular.ttf"
 
-[sub_resource type="DynamicFont" id=15]
-size = 48
-font_data = SubResource( 14 )
-
 [sub_resource type="DynamicFont" id=16]
+size = 48
+font_data = SubResource( 15 )
+
+[sub_resource type="DynamicFont" id=17]
 size = 28
 font_data = ExtResource( 6 )
 
@@ -453,7 +453,7 @@ __meta__ = {
 [node name="Label" type="Label" parent="MsgAnchor/Message"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-custom_fonts/font = SubResource( 17 )
+custom_fonts/font = SubResource( 13 )
 text = "Nemůže táhnout!"
 align = 1
 valign = 1
@@ -524,7 +524,7 @@ __meta__ = {
 [node name="Label2" type="Label" parent="Pauza/Panel"]
 anchor_right = 1.0
 margin_bottom = 184.0
-custom_fonts/font = SubResource( 13 )
+custom_fonts/font = SubResource( 14 )
 text = "Pozastaveno"
 align = 1
 valign = 1
@@ -543,7 +543,7 @@ margin_right = 40.0
 margin_bottom = 104.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
-custom_fonts/font = SubResource( 15 )
+custom_fonts/font = SubResource( 16 )
 text = "||"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -582,7 +582,7 @@ margin_left = -87.5
 margin_top = -173.0
 margin_right = 99.5
 margin_bottom = -100.0
-custom_fonts/font = SubResource( 16 )
+custom_fonts/font = SubResource( 17 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "Vyhrává
 "
