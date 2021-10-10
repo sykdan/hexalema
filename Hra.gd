@@ -1,4 +1,5 @@
 extends Control
+var screensize = Vector2.ZERO
 
 const txt_nastartu = "Na startu: "
 const txt_vcili = "V cíli: "
@@ -14,9 +15,18 @@ var gameBoard = []
 var kb_cursor = 5
 var kb_target;
 
+
 func _process(d):
+	if rect_size != screensize:
+		screensize = rect_size
+		redraw()
+		if $Tween.is_active():
+			yield($Tween,"tween_all_completed")
+			redraw()
+
+func redraw():
 	var pos = $Planek.rect_position
-	$Grid.margin_left = -137 + (int(pos.x) % 137) - 3
+	$Grid.margin_left = -137 + (int(pos.x) % 137) - 2
 	$Grid.margin_top = -238 + (int(pos.y) % 238) - 12
 	$RedPath.position = pos
 	$BluePath.position = pos
@@ -35,6 +45,9 @@ func _process(d):
 				stonePos = pos + $BluePath.curve.get_point_position(place)
 			
 			stone.rect_global_position = stonePos - stone.rect_pivot_offset
+	
+	if kb_target is TextureButton:
+		$LockOn.position = kb_target.rect_global_position + kb_target.rect_pivot_offset
 
 func get_stones_in_index(idx):
 	return gameBoard[idx]
@@ -280,9 +293,6 @@ func _on_Tween_tween_completed(object, key):
 		$Tween.start()
 
 func _input(event):
-	if event.is_action_pressed("debug"):
-		toast("TEST")
-	
 	if event.is_action_pressed("roll") and $"Házet".visible:
 		_on_Hzet_pressed()
 	elif event.is_action_pressed("roll") and $LockOn.scale.x >= 1:
@@ -338,7 +348,7 @@ func lockon():
 	$Tween.start()
 
 func unlockon():
-	$Tween.interpolate_property($LockOn,"scale",null,Vector2.ZERO,0.5,Tween.TRANS_QUAD,Tween.EASE_OUT)
+	$Tween.interpolate_property($LockOn,"scale",null,Vector2.ZERO,0.5,Tween.TRANS_QUINT,Tween.EASE_OUT)
 	$Tween.start()
 
 func _on_fullscreen_pressed():
