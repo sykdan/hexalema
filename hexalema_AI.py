@@ -37,10 +37,30 @@ def kolik_ohrozuji(stav,MOJE_KAMENY,NEPRITEL_KAMENY):
 
             if NEPRITEL_KAMENY in stav[moznost]:
                 prob = sance_na_hozeni[moznost-ja]
-                print(kolik_ohrozuji([["A","B"] * 6,[],[],[],[],["A"],["A"],[],["B"],[],[],[],[],[],[]],"A","B")kolik_ohrozuji([["A","B"] * 6,[],[],[],[],["A"],["A"],[],["B"],[],[],[],[],[],[]],"A","B"))
                 sance_ze_vyhodim.append(prob)
     
-    return sance_ze_vyhodim
+    return sum(sance_ze_vyhodim)
+
+def kolik_me_ohrozuje(stav,MOJE_KAMENY,NEPRITEL_KAMENY):
+    nepritelem_obsazene = []
+    for i in range(len(stav)):
+        if NEPRITEL_KAMENY in stav[i]:
+            nepritelem_obsazene.append(i)
+
+    print(nepritelem_obsazene)
+    
+    sance_ze_me_vyhodi = []
+    for on in nepritelem_obsazene:
+        moznosti = range(on+1,on+6)
+        for moznost in moznosti:
+            if moznost in [5,9]: continue # Pokud by kamen skoncil na kvocne, urcite neohrozuje muj kamen
+            if moznost < 4 or moznost > 10: continue # Pokud by kamen skoncil v soukrome casti, urcite neohrozuje muj kamen
+
+            if MOJE_KAMENY in stav[moznost]:
+                prob = sance_na_hozeni[moznost-on]
+                sance_ze_me_vyhodi.append(prob)
+    
+    return sum(sance_ze_me_vyhodi)
 
 def vyhodnotit_stav(stav,MOJE_KAMENY,ai_params):
     NEPRITEL_KAMENY = {"A":"B","B":"A"}[MOJE_KAMENY] # Pokud je to A, vrat B. Pokud je to B, vrat A.
