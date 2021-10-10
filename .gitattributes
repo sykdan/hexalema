@@ -1,2 +1,1 @@
-* text=auto
-*.gd diff=gdscript linguist-language=GDScript
+*.gd linguist-language=GDScript
