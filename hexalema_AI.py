@@ -92,10 +92,11 @@ def muzu_tahnout(stav,od,o_kolik,MOJE_KAMENY):
         else: return 3 # Pokud na poli nic neni, tak muzu
     
 
-def hra():
+def hra(ai_params):
     turn = random.choice(["A","B"])
     gameBoard = [["A","B"] * 7,[],[],[],[],[],[],[],[],[],[],[],[],[],[]]
     done = False
+    winner = ""
     while not done:
         k = hod_kostkama() # Napred hodim kostkou...
         if k == 0: # Ztrata tahu.
@@ -114,7 +115,7 @@ def hra():
             turn = {"A":"B","B":"A"}[turn]
             continue
 
-        puvodni_stav = vyhodnotit_stav(gameBoard,turn,[])
+        puvodni_stav = vyhodnotit_stav(gameBoard,turn,ai_params[turn])
         nejlepsi_skore = -999999
         nejlepsi_tah = None
         for tah in mozne_tahy:
@@ -131,7 +132,7 @@ def hra():
                 odkud.remove(turn) # Seber jeden muj kamen
                 kam.append(turn) # Pridej tam jeden muj kamen
 
-            s = vyhodnotit_stav(tempGameBoard,turn,[]) - puvodni_stav
+            s = vyhodnotit_stav(tempGameBoard,turn,ai_params[turn]) - puvodni_stav
             if s > nejlepsi_skore:
                 nejlepsi_skore = s
                 nejlepsi_tah = tah
@@ -154,13 +155,19 @@ def hra():
 
         if gameBoard[-1].count("A") == 7:
             done = True
-            print("Vyhrava A")
+            winner = "A"
         elif gameBoard[-1].count("B") == 7:
             done = True
-            print("Vyhrava B")
+            winner = "B"
 
-    print("Hra skoncila.")
-                
-            
-        
-    
+    return winner
+
+def test(a_params,b_params):
+    h = []
+    for i in range(10):
+        h.append(hra({"A":a_params,"B":b_params}))
+    print("A vyhral {} her.".format(h.count("A")))
+    print("B vyhral {} her.".format(h.count("B")))
+
+
+test([],[])
