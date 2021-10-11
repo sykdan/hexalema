@@ -73,12 +73,14 @@ def vyhodnotit_stav(stav,MOJE_KAMENY,ai_params):
     # Pokud se mi dari, nechci prijit o kameny, a chci bit bliz k cili.
     # Pokud se mi nedari, chci spis ohrozovat nepritele.
 
-    vliv = kolik_ohrozuji(stav,MOJE_KAMENY,NEPRITEL_KAMENY)
-    hrozby = kolik_me_ohrozuje(stav,MOJE_KAMENY,NEPRITEL_KAMENY)
-    kvocna = stav[5].count(MOJE_KAMENY) + stav[9].count(MOJE_KAMENY)
-    zabezpecene_kameny = sum([stav[i].count(MOJE_KAMENY) for i in range(11,14)])
+    hroz = 1
 
-    return 0
+    vliv = kolik_ohrozuji(stav,MOJE_KAMENY,NEPRITEL_KAMENY) / ([1,hroz,1][ai_params[1]]) # pozitivni 
+    hrozby = kolik_me_ohrozuje(stav,MOJE_KAMENY,NEPRITEL_KAMENY) / ([hroz,1,1][ai_params[1]]) # negativni
+    kvocna = stav[5].count(MOJE_KAMENY) + stav[9].count(MOJE_KAMENY) # pozitivni
+    zabezpecene_kameny = sum([stav[i].count(MOJE_KAMENY) for i in range(11,14)]) # pozitivni
+
+    return (vliv - hrozby) + (kvocna * ai_params[0]) + zabezpecene_kameny
 
 def muzu_tahnout(stav,od,o_kolik,MOJE_KAMENY):
     NEPRITEL_KAMENY = {"A":"B","B":"A"}[MOJE_KAMENY]
@@ -164,10 +166,10 @@ def hra(ai_params):
 
 def test(a_params,b_params):
     h = []
-    for i in range(10):
+    for i in range(100):
         h.append(hra({"A":a_params,"B":b_params}))
     print("A vyhral {} her.".format(h.count("A")))
     print("B vyhral {} her.".format(h.count("B")))
 
 
-test([],[])
+test((3,1),(3,2))
