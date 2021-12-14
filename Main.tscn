@@ -1,10 +1,11 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://Fonts/Roboto-Black.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://font big.tres" type="DynamicFont" id=2]
 [ext_resource path="res://Main.gd" type="Script" id=3]
 [ext_resource path="res://hexalema_blur.png" type="Texture" id=4]
 [ext_resource path="res://HexaTheme.tres" type="Theme" id=5]
+[ext_resource path="res://PanelStyle.tres" type="StyleBox" id=6]
 
 [sub_resource type="DynamicFont" id=1]
 size = 128
@@ -17,8 +18,28 @@ font_data = ExtResource( 1 )
 font_path = "res://Fonts/Roboto-Regular.ttf"
 
 [sub_resource type="DynamicFont" id=3]
-size = 28
+size = 48
 font_data = SubResource( 2 )
+
+[sub_resource type="DynamicFontData" id=5]
+font_path = "res://Fonts/Roboto-Regular.ttf"
+
+[sub_resource type="DynamicFont" id=6]
+size = 22
+extra_spacing_bottom = 11
+font_data = SubResource( 5 )
+
+[sub_resource type="StyleBoxFlat" id=4]
+bg_color = Color( 0, 0, 0, 0.760784 )
+border_width_top = 32
+border_color = Color( 0, 0, 0, 1 )
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+corner_detail = 12
+expand_margin_top = 32.0
+shadow_color = Color( 0, 0, 0, 0 )
 
 [node name="Control" type="TextureRect"]
 anchor_right = 1.0
@@ -38,8 +59,8 @@ margin_left = -470.0
 margin_right = 470.0
 margin_bottom = 305.0
 rect_pivot_offset = Vector2( 470, 152.5 )
-custom_fonts/font = SubResource( 1 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 1 )
 text = "HEXALEMA"
 align = 1
 valign = 1
@@ -63,6 +84,30 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="Label2" type="Label" parent="."]
+margin_left = 24.0
+margin_top = 24.0
+margin_right = 166.0
+margin_bottom = 100.0
+custom_fonts/font = ExtResource( 2 )
+text = "1.2.1"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label3" type="Label" parent="."]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -734.0
+margin_right = 734.0
+margin_bottom = 86.0
+custom_fonts/font = SubResource( 3 )
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="Options" type="Panel" parent="."]
 visible = false
 self_modulate = Color( 0, 0, 0, 0.737255 )
@@ -77,31 +122,43 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -626.5
-margin_top = -335.5
-margin_right = 626.5
-margin_bottom = 335.5
+margin_left = -388.5
+margin_top = -295.0
+margin_right = 388.5
+margin_bottom = 295.0
+custom_styles/panel = ExtResource( 6 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Options/Panel"]
-anchor_right = 1.0
-anchor_bottom = 1.0
-margin_left = 70.0
-margin_top = 70.0
-margin_right = -70.0
-margin_bottom = -70.0
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -295.0
+margin_top = -229.0
+margin_right = 295.0
+margin_bottom = 245.0
 custom_constants/separation = 50
-alignment = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label3" type="Label" parent="Options/Panel/VBoxContainer"]
+margin_right = 590.0
+margin_bottom = 76.0
+custom_fonts/font = ExtResource( 2 )
+text = "Možnosti"
+align = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Pravidla" type="Button" parent="Options/Panel/VBoxContainer"]
-margin_top = 38.0
-margin_right = 1113.0
-margin_bottom = 114.0
+margin_top = 126.0
+margin_right = 590.0
+margin_bottom = 202.0
 custom_fonts/font = ExtResource( 2 )
 text = "Pravidla hry"
 __meta__ = {
@@ -109,43 +166,33 @@ __meta__ = {
 }
 
 [node name="Zdroje" type="Button" parent="Options/Panel/VBoxContainer"]
-margin_top = 164.0
-margin_right = 1113.0
-margin_bottom = 240.0
+margin_top = 252.0
+margin_right = 590.0
+margin_bottom = 328.0
 custom_fonts/font = ExtResource( 2 )
 text = "Zdroje"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Prezentace" type="Button" parent="Options/Panel/VBoxContainer"]
-margin_top = 290.0
-margin_right = 1113.0
-margin_bottom = 366.0
-custom_fonts/font = ExtResource( 2 )
-text = "Představení hry"
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
 [node name="konec" type="Button" parent="Options/Panel/VBoxContainer"]
 modulate = Color( 1, 0.137255, 0.137255, 1 )
-margin_top = 416.0
-margin_right = 1113.0
-margin_bottom = 492.0
+margin_top = 378.0
+margin_right = 590.0
+margin_bottom = 454.0
 custom_fonts/font = ExtResource( 2 )
-text = "Uzavřít program"
+text = "Zavřít hru"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Button2" type="Button" parent="."]
+[node name="MoreThings" type="Button" parent="."]
 anchor_left = 1.0
 anchor_right = 1.0
-margin_left = -131.0
-margin_top = 32.0
-margin_right = -32.0
-margin_bottom = 136.0
+margin_left = -120.0
+margin_top = 24.0
+margin_right = -23.0
+margin_bottom = 121.0
 rect_pivot_offset = Vector2( 49.5, 52 )
 custom_fonts/font = ExtResource( 2 )
 text = "+"
@@ -154,32 +201,104 @@ __meta__ = {
 }
 
 [node name="AcceptDialog" type="WindowDialog" parent="."]
-margin_left = 122.0
-margin_top = 150.0
-margin_right = 1672.0
-margin_bottom = 873.0
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -775.0
+margin_top = -361.5
+margin_right = 775.0
+margin_bottom = 361.5
+custom_colors/title_color = Color( 1, 1, 1, 1 )
+custom_fonts/title_font = SubResource( 6 )
+custom_styles/panel = SubResource( 4 )
 window_title = "Zdroje"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="RichTextLabel" type="RichTextLabel" parent="AcceptDialog"]
+[node name="RichTextLabel" type="ScrollContainer" parent="AcceptDialog"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = 20.0
-margin_top = 20.0
-margin_right = -20.0
-margin_bottom = -20.0
-custom_fonts/normal_font = SubResource( 3 )
-text = "Obrázky z Pixabay:
-https://pixabay.com/users/blickpixel-52945/ - Textura dřeva
-https://pixabay.com/users/openclipart-vectors-30363/ - Pohár vítěze
+margin_left = 14.0068
+margin_top = 21.4983
+margin_right = -25.9932
+margin_bottom = -18.5017
+scroll_horizontal_enabled = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
-Vytvořeno s Godot Engine
+[node name="VBoxContainer" type="VBoxContainer" parent="AcceptDialog/RichTextLabel"]
+margin_right = 1510.0
+margin_bottom = 1099.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
 
---- ZAČÁTEK LICENCE MIT
+[node name="Label4" type="Label" parent="AcceptDialog/RichTextLabel/VBoxContainer"]
+margin_right = 1498.0
+margin_bottom = 69.0
+size_flags_horizontal = 3
+text = "Hexalema, vytvořili společně Daniel, Monika, Honza, a Žaneta.
+Děkujeme za pomoc Filipovi a Lukášovi."
 
-Copyright (c) 2007-2021 Juan Linietsky, Ariel Manzur.
+[node name="HSeparator" type="HSeparator" parent="AcceptDialog/RichTextLabel/VBoxContainer"]
+margin_top = 73.0
+margin_right = 1498.0
+margin_bottom = 87.0
+size_flags_horizontal = 3
+
+[node name="Label" type="Label" parent="AcceptDialog/RichTextLabel/VBoxContainer"]
+margin_top = 91.0
+margin_right = 1498.0
+margin_bottom = 232.0
+size_flags_horizontal = 3
+text = "Ve hře je použito pár obrázků z Pixabay.
+
+https://pixabay.com/users/blickpixel-52945/ - Textura dřeva v pozadí.
+https://pixabay.com/users/openclipart-vectors-30363/ - Pohár vítěze."
+
+[node name="HSeparator2" type="HSeparator" parent="AcceptDialog/RichTextLabel/VBoxContainer"]
+margin_top = 236.0
+margin_right = 1498.0
+margin_bottom = 250.0
+size_flags_horizontal = 3
+
+[node name="Label2" type="Label" parent="AcceptDialog/RichTextLabel/VBoxContainer"]
+margin_top = 254.0
+margin_right = 1498.0
+margin_bottom = 323.0
+size_flags_horizontal = 3
+text = "Hra byla vytvořena v Godot Engine.
+Licence:"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="AcceptDialog/RichTextLabel/VBoxContainer"]
+margin_top = 327.0
+margin_right = 1498.0
+margin_bottom = 1044.0
+
+[node name="s" type="VSeparator" parent="AcceptDialog/RichTextLabel/VBoxContainer/HBoxContainer"]
+modulate = Color( 1, 1, 1, 0 )
+margin_right = 8.0
+margin_bottom = 717.0
+
+[node name="S" type="VSeparator" parent="AcceptDialog/RichTextLabel/VBoxContainer/HBoxContainer"]
+margin_left = 12.0
+margin_right = 20.0
+margin_bottom = 717.0
+
+[node name="s2" type="VSeparator" parent="AcceptDialog/RichTextLabel/VBoxContainer/HBoxContainer"]
+modulate = Color( 1, 1, 1, 0 )
+margin_left = 24.0
+margin_right = 32.0
+margin_bottom = 717.0
+
+[node name="Label" type="Label" parent="AcceptDialog/RichTextLabel/VBoxContainer/HBoxContainer"]
+margin_left = 36.0
+margin_right = 1498.0
+margin_bottom = 717.0
+size_flags_horizontal = 3
+text = "Copyright (c) 2007-2021 Juan Linietsky, Ariel Manzur.
 Copyright (c) 2014-2021 Godot Engine contributors (cf. AUTHORS.md).
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -198,31 +317,26 @@ FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
 AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-SOFTWARE.
+SOFTWARE."
 
---- KONEC LICENCE MIT
+[node name="HSeparator3" type="HSeparator" parent="AcceptDialog/RichTextLabel/VBoxContainer"]
+margin_top = 1048.0
+margin_right = 1498.0
+margin_bottom = 1062.0
+size_flags_horizontal = 3
 
-Portions of this software are copyright © 2021 The FreeType Project (www.freetype.org). All rights reserved.
+[node name="Label3" type="Label" parent="AcceptDialog/RichTextLabel/VBoxContainer"]
+margin_top = 1066.0
+margin_right = 1498.0
+margin_bottom = 1099.0
+size_flags_horizontal = 3
+text = "Portions of this software are copyright © 2021 The FreeType Project (www.freetype.org). All rights reserved."
 
-"
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Label2" type="Label" parent="."]
-margin_left = 24.0
-margin_top = 24.0
-margin_right = 84.0
-margin_bottom = 38.0
-custom_fonts/font = ExtResource( 2 )
-text = "1.1.2"
-__meta__ = {
-"_edit_use_anchors_": false
-}
+[node name="HTTPRequest" type="HTTPRequest" parent="."]
 
 [connection signal="pressed" from="Button" to="." method="_on_Button_pressed"]
 [connection signal="pressed" from="Options/Panel/VBoxContainer/Pravidla" to="." method="_on_Pravidla_pressed"]
 [connection signal="pressed" from="Options/Panel/VBoxContainer/Zdroje" to="." method="_on_Zdroje_pressed"]
-[connection signal="pressed" from="Options/Panel/VBoxContainer/Prezentace" to="." method="prezentacni_rezim"]
 [connection signal="pressed" from="Options/Panel/VBoxContainer/konec" to="." method="_on_konec_pressed"]
-[connection signal="pressed" from="Button2" to="." method="_on_Button2_pressed"]
+[connection signal="pressed" from="MoreThings" to="." method="_on_Button2_pressed"]
+[connection signal="request_completed" from="HTTPRequest" to="." method="_on_HTTPRequest_request_completed"]

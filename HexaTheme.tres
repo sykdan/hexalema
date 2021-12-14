@@ -1,4 +1,4 @@
-[gd_resource type="Theme" load_steps=3 format=2]
+[gd_resource type="Theme" load_steps=7 format=2]
 
 [sub_resource type="StyleBoxFlat" id=1]
 bg_color = Color( 0.768627, 0.768627, 0.768627, 0.705882 )
@@ -16,7 +16,23 @@ corner_radius_top_right = 50
 corner_radius_bottom_right = 50
 corner_radius_bottom_left = 50
 
+[sub_resource type="StyleBoxLine" id=3]
+color = Color( 1, 1, 1, 0.407843 )
+
+[sub_resource type="StyleBoxLine" id=4]
+color = Color( 1, 1, 1, 1 )
+thickness = 2
+vertical = true
+
+[sub_resource type="DynamicFontData" id=5]
+font_path = "res://Fonts/Roboto-Regular.ttf"
+
+[sub_resource type="DynamicFont" id=6]
+size = 28
+font_data = SubResource( 5 )
+
 [resource]
+default_font = SubResource( 6 )
 Button/colors/font_color = Color( 0.88, 0.88, 0.88, 1 )
 Button/colors/font_color_disabled = Color( 0.9, 0.9, 0.9, 0.2 )
 Button/colors/font_color_hover = Color( 0.94, 0.94, 0.94, 1 )
@@ -28,3 +44,9 @@ Button/styles/focus = null
 Button/styles/hover = SubResource( 1 )
 Button/styles/normal = SubResource( 2 )
 Button/styles/pressed = SubResource( 1 )
+Dialogs/constants/button_margin = 14
+Dialogs/constants/margin = 8
+HSeparator/constants/separation = 14
+HSeparator/styles/separator = SubResource( 3 )
+VSeparator/constants/separation = 8
+VSeparator/styles/separator = SubResource( 4 )

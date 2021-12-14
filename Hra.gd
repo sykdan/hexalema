@@ -141,7 +141,7 @@ func click_kamen(obj):
 		move_stone_to(obj, pos + current_dice_roll)
 		if pos+current_dice_roll in [5,9]:
 			swap_turn()
-			toast("Stoupli jste na políčko krystalu!\nMůžete házet znovu.")
+			toast("Stoupli jste na krystalové políčko!\nMůžete házet znovu.")
 		current_dice_roll = 0
 		
 		if max(redDone,blueDone) == 7:

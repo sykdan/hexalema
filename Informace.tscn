@@ -1,9 +1,14 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://font big.tres" type="DynamicFont" id=1]
 [ext_resource path="res://Informace.gd" type="Script" id=2]
 [ext_resource path="res://hexalema_blur.png" type="Texture" id=3]
 [ext_resource path="res://HexaTheme.tres" type="Theme" id=4]
+
+[sub_resource type="StyleBoxEmpty" id=1]
+content_margin_left = 50.0
+content_margin_right = 50.0
+content_margin_bottom = 50.0
 
 [node name="Control" type="TextureRect"]
 self_modulate = Color( 0.560784, 0.560784, 0.560784, 1 )
@@ -19,7 +24,7 @@ script = ExtResource( 2 )
 anchor_right = 1.0
 margin_bottom = 144.0
 custom_fonts/font = ExtResource( 1 )
-text = "JAK HRÁT HEXALEMU?"
+text = "JAK HRÁT HEXALEMA?"
 align = 1
 valign = 1
 __meta__ = {
@@ -27,13 +32,12 @@ __meta__ = {
 }
 
 [node name="RichTextLabel" type="RichTextLabel" parent="."]
-anchor_top = 0.119
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = 100.0
-margin_top = -0.520004
-margin_right = -100.0
-margin_bottom = -50.0
+margin_left = 10.0
+margin_top = 130.0
+margin_right = -10.0
+custom_styles/normal = SubResource( 1 )
 custom_fonts/normal_font = ExtResource( 1 )
 bbcode_enabled = true
 bbcode_text = "[center]Cíl hry:[/center]
@@ -52,7 +56,7 @@ bbcode_text = "[center]Cíl hry:[/center]
   - Každá kostka má 3 označené stěny a 3 neoznačené
   - Označená = 1 bod, neoznačená = 0 bodů
   - Hráč posune jeden ze svých kamenů o hozený počet bodů (tj. kolikrát padla označená stěna kostky)
--Na jednom políčku nemůžou být 2 hrací kameny současně
+  - Na jednom políčku nemůžou být 2 hrací kameny současně
   - Pokud hráč hodí 0 bodů, ztrácí tím tah a hraje soupeř.
   - Hráč také ztrácí tah, když nemůže posunout žádný kámen o počet hozených bodů
   - Hráči se smějí navzájem vyhazovat, podobně jako u hry Člověče, nezlob se!
@@ -83,7 +87,7 @@ Jak hrát:
   - Každá kostka má 3 označené stěny a 3 neoznačené
   - Označená = 1 bod, neoznačená = 0 bodů
   - Hráč posune jeden ze svých kamenů o hozený počet bodů (tj. kolikrát padla označená stěna kostky)
--Na jednom políčku nemůžou být 2 hrací kameny současně
+  - Na jednom políčku nemůžou být 2 hrací kameny současně
   - Pokud hráč hodí 0 bodů, ztrácí tím tah a hraje soupeř.
   - Hráč také ztrácí tah, když nemůže posunout žádný kámen o počet hozených bodů
   - Hráči se smějí navzájem vyhazovat, podobně jako u hry Člověče, nezlob se!

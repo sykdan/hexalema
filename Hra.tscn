@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=2]
+[gd_scene load_steps=33 format=2]
 
 [ext_resource path="res://planek_trans.png" type="Texture" id=1]
 [ext_resource path="res://Hra.gd" type="Script" id=2]
@@ -14,6 +14,7 @@
 [ext_resource path="res://Fonts/Roboto-Italic.ttf" type="DynamicFontData" id=12]
 [ext_resource path="res://cubes.png" type="Texture" id=13]
 [ext_resource path="res://Fonts/Roboto-Black.ttf" type="DynamicFontData" id=14]
+[ext_resource path="res://PanelStyle.tres" type="StyleBox" id=15]
 
 [sub_resource type="Gradient" id=1]
 colors = PoolColorArray( 1, 0.290196, 0.258824, 1, 0, 0, 0, 0 )
@@ -446,6 +447,7 @@ margin_top = -40.0
 margin_right = 448.0
 margin_bottom = 200.0
 rect_min_size = Vector2( 488, 240 )
+custom_styles/panel = ExtResource( 15 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -483,6 +485,7 @@ margin_left = -411.5
 margin_top = -276.0
 margin_right = 411.5
 margin_bottom = 276.0
+custom_styles/panel = ExtResource( 15 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
