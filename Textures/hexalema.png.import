@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/kostka.png-e6a3e8d84870e5ed94875907fc9d9150.stex"
+path="res://.import/hexalema.png-eb722c7d235b24c45d4242e3b5e88370.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://kostka.png"
-dest_files=[ "res://.import/kostka.png-e6a3e8d84870e5ed94875907fc9d9150.stex" ]
+source_file="res://Textures/hexalema.png"
+dest_files=[ "res://.import/hexalema.png-eb722c7d235b24c45d4242e3b5e88370.stex" ]
 
 [params]
 
@@ -28,6 +28,7 @@ process/fix_alpha_border=true
 process/premult_alpha=false
 process/HDR_as_SRGB=false
 process/invert_color=false
+process/normal_map_invert_y=false
 stream=false
 size_limit=0
 detect_3d=true

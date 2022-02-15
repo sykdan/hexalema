@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/hexalema.png-cce8987d69aa1e265e3fe2e7863907ec.stex"
+path="res://.import/cubes.png-ae8a8712f7609d64f17747e60c48273c.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://hexalema.png"
-dest_files=[ "res://.import/hexalema.png-cce8987d69aa1e265e3fe2e7863907ec.stex" ]
+source_file="res://Textures/cubes.png"
+dest_files=[ "res://.import/cubes.png-ae8a8712f7609d64f17747e60c48273c.stex" ]
 
 [params]
 
@@ -28,6 +28,7 @@ process/fix_alpha_border=true
 process/premult_alpha=false
 process/HDR_as_SRGB=false
 process/invert_color=false
+process/normal_map_invert_y=false
 stream=false
 size_limit=0
 detect_3d=true

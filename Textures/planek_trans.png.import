@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/hexalema_presblur.png-7c026f355d946f5e182bb483bce12f77.stex"
+path="res://.import/planek_trans.png-73e7066571c75c5c1db75e4b35d1d47c.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://hexalema_presblur.png"
-dest_files=[ "res://.import/hexalema_presblur.png-7c026f355d946f5e182bb483bce12f77.stex" ]
+source_file="res://Textures/planek_trans.png"
+dest_files=[ "res://.import/planek_trans.png-73e7066571c75c5c1db75e4b35d1d47c.stex" ]
 
 [params]
 
@@ -28,6 +28,7 @@ process/fix_alpha_border=true
 process/premult_alpha=false
 process/HDR_as_SRGB=false
 process/invert_color=false
+process/normal_map_invert_y=false
 stream=false
 size_limit=0
 detect_3d=true

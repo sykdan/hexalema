@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/tile.png-b6edd167b3cc7ec58612b18f9a6dce92.stex"
+path="res://.import/kostka.png-c7d07bbf8dd57b0db98d525617ba331e.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://tile.png"
-dest_files=[ "res://.import/tile.png-b6edd167b3cc7ec58612b18f9a6dce92.stex" ]
+source_file="res://Textures/kostka.png"
+dest_files=[ "res://.import/kostka.png-c7d07bbf8dd57b0db98d525617ba331e.stex" ]
 
 [params]
 
@@ -28,6 +28,7 @@ process/fix_alpha_border=true
 process/premult_alpha=false
 process/HDR_as_SRGB=false
 process/invert_color=false
+process/normal_map_invert_y=false
 stream=false
 size_limit=0
 detect_3d=true

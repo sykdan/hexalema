@@ -1,11 +1,8 @@
 extends Control
 var screensize = Vector2.ZERO
 
-const txt_nastartu = "Na startu: "
-const txt_vcili = "V cíli: "
-
 var current_dice_roll = 0
-var turn = "CerveneKameny"
+var turn = "RedStones"
 
 var redDone = 0
 var blueDone = 0
@@ -13,8 +10,7 @@ var blueDone = 0
 var gameBoard = []
 
 var kb_cursor = 5
-var kb_target;
-
+var kb_target
 
 func _process(d):
 	if rect_size != screensize:
@@ -32,16 +28,16 @@ func redraw():
 	$BluePath.position = pos
 	$HintLine.position = pos
 	
-	$ColorRect.rect_pivot_offset.x = $ColorRect.rect_size.x/2
-	$ColorRect.rect_pivot_offset.y = $ColorRect.rect_size.y
+	$DiceOverlay.rect_pivot_offset.x = $DiceOverlay.rect_size.x/2
+	$DiceOverlay.rect_pivot_offset.y = $DiceOverlay.rect_size.y
 	
 	for place in range(len(gameBoard)): # 0 - 14
 		for stone in gameBoard[place]:
 			if stone.disabled: return
 			var stonePos: Vector2
-			if stone.get_node("..").name == "CerveneKameny":
+			if stone.get_node("..").name == "RedStones":
 				stonePos = pos + $RedPath.curve.get_point_position(place)
-			if stone.get_node("..").name == "ModreKameny":
+			if stone.get_node("..").name == "BlueStones":
 				stonePos = pos + $BluePath.curve.get_point_position(place)
 			
 			stone.rect_global_position = stonePos - stone.rect_pivot_offset
@@ -70,28 +66,30 @@ func _ready():
 	if randi()%2 == 1: swap_turn()
 	for x in range(15): gameBoard.append([])
 	for x in range(6):
-		$CerveneKameny.add_child($CerveneKameny/kamen.duplicate())
-		$ModreKameny.add_child($ModreKameny/kamen.duplicate())
+		$RedStones.add_child($RedStones/stone.duplicate())
+		$BlueStones.add_child($BlueStones/stone.duplicate())
 	
-	for x in $CerveneKameny.get_children():
+	for x in $RedStones.get_children():
 		gameBoard[0].append(x)
-		x.connect("pressed",self,"click_kamen",[x])
+		x.connect("pressed",self,"stone_clicked",[x])
 		x.connect("mouse_entered",self,"hint_stone",[x])
 	
-	for x in $ModreKameny.get_children():
+	for x in $BlueStones.get_children():
 		gameBoard[0].append(x)
-		x.connect("pressed",self,"click_kamen",[x])
+		x.connect("pressed",self,"stone_clicked",[x])
 		x.connect("mouse_entered",self,"hint_stone",[x])
 	
 	var blue = 0
 	var red = 0
 	for s in get_stones_in_index(0):
-		if s.get_node("..").name == "CerveneKameny":
+		if s.get_node("..").name == "RedStones":
 			red += 1
-		if s.get_node("..").name == "ModreKameny":
+		if s.get_node("..").name == "BlueStones":
 			blue += 1
-	$RedStatus/Start.text = txt_nastartu + str(red)
-	$BlueStatus/Start.text = txt_nastartu + str(blue)
+	$RedStatus/Start.text = tr("GameTextUndeployed") + ": " + str(red)
+	$BlueStatus/Start.text = tr("GameTextUndeployed") + ": " + str(blue)
+	$RedStatus/End.text = tr("GameTextExited") + ": 0"
+	$BlueStatus/End.text = tr("GameTextExited") + ": 0"
 
 func test_move(pos):
 	if pos+current_dice_roll > 14: return false
@@ -121,13 +119,13 @@ func hint_stone(obj):
 	if pos == 14 or pos+current_dice_roll > 14: return
 	
 	var c 
-	if obj.get_node("..").name == "CerveneKameny": c = $RedPath
+	if obj.get_node("..").name == "RedStones": c = $RedPath
 	else: c = $BluePath
 	
 	$HintLine.show()
 	$HintLine.points = get_line_curve(pos,pos+current_dice_roll,c)
 
-func click_kamen(obj):
+func stone_clicked(obj):
 	var color = obj.get_node("..").name
 	if not color == turn: return
 	if current_dice_roll == 0: return
@@ -141,12 +139,12 @@ func click_kamen(obj):
 		move_stone_to(obj, pos + current_dice_roll)
 		if pos+current_dice_roll in [5,9]:
 			swap_turn()
-			toast("Stoupli jste na krystalové políčko!\nMůžete házet znovu.")
+			toast(tr("GameCrystalLanded"))
 		current_dice_roll = 0
 		
 		if max(redDone,blueDone) == 7:
 			win()
-		$"Házet".show()
+		$Roll.show()
 		swap_turn()
 
 func walk_possible_moves():
@@ -156,7 +154,7 @@ func walk_possible_moves():
 		if test_move(pos): 
 			kb_target = kamen
 			kb_cursor = pos
-			if Kb.inputType == 1:
+			if KeyboardDaemon.inputType == 1:
 				lockon()
 				hint_stone(kamen)
 			return true
@@ -165,10 +163,10 @@ func walk_possible_moves():
 
 func swap_turn():
 	unlockon()
-	$ColorRect.hide()
+	$DiceOverlay.hide()
 	$HintLine.hide()
 	turn = get_not_turn()
-	if turn == "ModreKameny":
+	if turn == "BlueStones":
 		$RedStatus.modulate.a = 0.5
 		$BlueStatus.modulate.a = 1
 	else:
@@ -176,11 +174,11 @@ func swap_turn():
 		$BlueStatus.modulate.a = 0.5
 
 func get_not_turn():
-	if turn == "CerveneKameny": return "ModreKameny"
-	else: return "CerveneKameny"
+	if turn == "RedStones": return "BlueStones"
+	else: return "RedStones"
 
 func get_curve(t):
-	if t == "CerveneKameny": 
+	if t == "RedStones": 
 		return $RedPath
 	else: return $BluePath
 
@@ -192,12 +190,14 @@ func toast(txt):
 	$Tween.start()
 
 func _on_Hzet_pressed():
-	if $Trofej.visible or $Pauza.visible: return
-	$ColorRect.show()
-	$Tween.interpolate_property($ColorRect,"self_modulate:a",null,1,0.1,Tween.TRANS_CIRC,Tween.EASE_OUT)
-	$Tween.interpolate_property($ColorRect,"rect_scale",null,Vector2(1,1),0.1,Tween.TRANS_CIRC,Tween.EASE_OUT)
+	if $Trophy.visible or $Pause.visible: return
+	$DiceOverlay.show()
+	
+	$Tween.remove($DiceOverlay)
+	$Tween.interpolate_property($DiceOverlay,"self_modulate:a",null,1,0.1,Tween.TRANS_CIRC,Tween.EASE_OUT)
+	$Tween.interpolate_property($DiceOverlay,"rect_scale",Vector2(0.3,0.3),Vector2.ONE,0.1,Tween.TRANS_CIRC,Tween.EASE_OUT)
 	$Tween.start()
-	$"Házet".hide()
+	$Roll.hide()
 	if not current_dice_roll == 0:
 		return
 	var dices = []
@@ -205,33 +205,34 @@ func _on_Hzet_pressed():
 		var n = randi() % 2
 		if n == 1: current_dice_roll += 1
 		dices.append(n)
-	for i in $ColorRect/HBoxContainer.get_children(): 
+	for i in $DiceOverlay/DiceView.get_children(): 
 		i.get_child(0).hide()
 		i.hide()
 	for i in range(len(dices)):
-		$ColorRect/HBoxContainer.get_child(i).show()
+		$DiceOverlay/DiceView.get_child(i).show()
 		if dices[i] == 1:
-			$ColorRect/HBoxContainer.get_child(i).get_child(0).show()
+			$DiceOverlay/DiceView.get_child(i).get_child(0).show()
 		yield(get_tree().create_timer(0.3),"timeout")
 	yield(get_tree().create_timer(0.7),"timeout")
 	
 	hzet_2()
-			
+
 func hzet_2():
 	var can = walk_possible_moves()
 	if current_dice_roll == 0:
-		toast("Nemůžete táhnout!\nNa kostkách jste hodili součet 0.")
+		toast(tr("GameZeroRolled"))
 		current_dice_roll = 0
-		$"Házet".show()
+		$Roll.show()
 		swap_turn()
 	elif not can:
-		toast("Nemůžete táhnout!\nVšechna pole jsou obsazena jinými kameny...")
+		toast(tr("GameNoFreeSpaces"))
 		current_dice_roll = 0
-		$"Házet".show()
+		$Roll.show()
 		swap_turn()
 	
-	$Tween.interpolate_property($ColorRect,"self_modulate:a",null,0,0.01,Tween.TRANS_CIRC,Tween.EASE_OUT)
-	$Tween.interpolate_property($ColorRect,"rect_scale",null,Vector2(0.3,0.3),0.5,Tween.TRANS_CIRC,Tween.EASE_OUT)
+	$Tween.remove($DiceOverlay)
+	$Tween.interpolate_property($DiceOverlay,"self_modulate:a",null,0,0.01,Tween.TRANS_CIRC,Tween.EASE_OUT)
+	$Tween.interpolate_property($DiceOverlay,"rect_scale",Vector2.ONE,Vector2(0.3,0.3),0.5,Tween.TRANS_CIRC,Tween.EASE_OUT)
 	$Tween.start()
 
 func move_stone_to(obj,index):
@@ -246,24 +247,24 @@ func move_stone_to(obj,index):
 		var blue = 0
 		var red = 0
 		for s in get_stones_in_index(0):
-			if s.get_node("..").name == "CerveneKameny":
+			if s.get_node("..").name == "RedStones":
 				red += 1
-			if s.get_node("..").name == "ModreKameny":
+			if s.get_node("..").name == "BlueStones":
 				blue += 1
-		$RedStatus/Start.text = txt_nastartu + str(red)
-		$BlueStatus/Start.text = txt_nastartu + str(blue)
+		$RedStatus/Start.text = tr("GameTextUndeployed") + ": " +  str(red)
+		$BlueStatus/Start.text = tr("GameTextUndeployed") + ": " + str(blue)
 	if index == 14:
 		var blue = 0
 		var red = 0
 		for s in get_stones_in_index(14):
-			if s.get_node("..").name == "CerveneKameny":
+			if s.get_node("..").name == "RedStones":
 				red += 1
-			if s.get_node("..").name == "ModreKameny":
+			if s.get_node("..").name == "BlueStones":
 				blue += 1
 		redDone = red
 		blueDone = blue
-		$RedStatus/End.text = txt_vcili + str(red)
-		$BlueStatus/End.text = txt_vcili + str(blue)
+		$RedStatus/End.text = tr("GameTextExited") + ": " + str(red)
+		$BlueStatus/End.text = tr("GameTextExited") + ": " + str(blue)
 
 func get_line_curve(from,to,curve):
 	var r = PoolVector2Array()
@@ -272,14 +273,14 @@ func get_line_curve(from,to,curve):
 	return r
 
 func win():
-	$Trofej.show()
-	if turn == "ModreKameny":
-		$Trofej/TextureRect/Label.text += "MODRÝ"
+	$Trophy.show()
+	if turn == "BlueStones":
+		$Trophy/TrophyTexture/WinnerLabel.text = tr("GameXWins").replace("{}",tr("GamePlayerBlue"))
 	else:
-		$Trofej/TextureRect/Label.text += "ČERVENÝ"
+		$Trophy/TrophyTexture/WinnerLabel.text += tr("GameXWins").replace("{}",tr("GamePlayerRed"))
 
-func konec():
-	get_tree().change_scene("res://Main.tscn")
+func EndGame():
+	get_tree().change_scene("res://Scenes/Main.tscn")
 
 func _on_Tween_tween_completed(object, key):
 	if key == ":rect_global_position" and object is TextureButton:
@@ -293,12 +294,12 @@ func _on_Tween_tween_completed(object, key):
 		$Tween.start()
 
 func _input(event):
-	if event.is_action_pressed("roll") and $"Házet".visible:
+	if event.is_action_pressed("roll") and $Roll.visible:
 		_on_Hzet_pressed()
 	elif event.is_action_pressed("roll") and $LockOn.scale.x >= 1:
-		click_kamen(kb_target)
+		stone_clicked(kb_target)
 	
-	if event.is_action_pressed("left") and (current_dice_roll != 0) and $ColorRect.self_modulate.a != 1:
+	if event.is_action_pressed("left") and (current_dice_roll != 0) and $DiceOverlay.self_modulate.a != 1:
 		var brk = false
 		var target
 		for i in range(kb_cursor-1,-1,-1):
@@ -318,7 +319,7 @@ func _input(event):
 		else:
 			lockon()
 	
-	if event.is_action_pressed("right") and (current_dice_roll != 0) and $ColorRect.self_modulate.a != 1:
+	if event.is_action_pressed("right") and (current_dice_roll != 0) and $DiceOverlay.self_modulate.a != 1:
 		var brk = false
 		var target
 		for i in range(kb_cursor+1,14,1):
@@ -351,8 +352,8 @@ func unlockon():
 	$Tween.interpolate_property($LockOn,"scale",null,Vector2.ZERO,0.5,Tween.TRANS_QUINT,Tween.EASE_OUT)
 	$Tween.start()
 
-func _on_fullscreen_pressed():
+func Fullscreen():
 	OS.window_fullscreen = !OS.window_fullscreen
 
-func _on_pauseButton_pressed():
-	$Pauza.visible = !$Pauza.visible
+func Pause():
+	$Pause.visible = !$Pause.visible

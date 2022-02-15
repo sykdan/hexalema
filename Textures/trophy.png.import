@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/logo_large_monochrome_dark.png-5be1e5590f5ed88a9cc01f78d318d890.stex"
+path="res://.import/trophy.png-d8ad3a811e3c36dc1609b53e27eba905.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://logo_large_monochrome_dark.png"
-dest_files=[ "res://.import/logo_large_monochrome_dark.png-5be1e5590f5ed88a9cc01f78d318d890.stex" ]
+source_file="res://Textures/trophy.png"
+dest_files=[ "res://.import/trophy.png-d8ad3a811e3c36dc1609b53e27eba905.stex" ]
 
 [params]
 
@@ -28,6 +28,7 @@ process/fix_alpha_border=true
 process/premult_alpha=false
 process/HDR_as_SRGB=false
 process/invert_color=false
+process/normal_map_invert_y=false
 stream=false
 size_limit=0
 detect_3d=true

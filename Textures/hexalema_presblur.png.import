@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/trophy.png-8a2a743fc220d2c0e8e268bfca083c30.stex"
+path="res://.import/hexalema_presblur.png-75ab160d93ebb474ada2c2be2d2732e4.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://trophy.png"
-dest_files=[ "res://.import/trophy.png-8a2a743fc220d2c0e8e268bfca083c30.stex" ]
+source_file="res://Textures/hexalema_presblur.png"
+dest_files=[ "res://.import/hexalema_presblur.png-75ab160d93ebb474ada2c2be2d2732e4.stex" ]
 
 [params]
 
@@ -28,6 +28,7 @@ process/fix_alpha_border=true
 process/premult_alpha=false
 process/HDR_as_SRGB=false
 process/invert_color=false
+process/normal_map_invert_y=false
 stream=false
 size_limit=0
 detect_3d=true

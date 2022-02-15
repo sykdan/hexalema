@@ -1,20 +1,20 @@
 [gd_scene load_steps=33 format=2]
 
-[ext_resource path="res://planek_trans.png" type="Texture" id=1]
-[ext_resource path="res://Hra.gd" type="Script" id=2]
-[ext_resource path="res://redbenzen.png" type="Texture" id=3]
-[ext_resource path="res://bluebenzen.png" type="Texture" id=4]
-[ext_resource path="res://kostka.png" type="Texture" id=5]
-[ext_resource path="res://Fonts/Roboto-Regular.ttf" type="DynamicFontData" id=6]
-[ext_resource path="res://font big.tres" type="DynamicFont" id=7]
-[ext_resource path="res://HexaTheme.tres" type="Theme" id=8]
-[ext_resource path="res://trophy.png" type="Texture" id=9]
-[ext_resource path="res://tile.png" type="Texture" id=10]
-[ext_resource path="res://Fonts/Roboto-BoldItalic.ttf" type="DynamicFontData" id=11]
-[ext_resource path="res://Fonts/Roboto-Italic.ttf" type="DynamicFontData" id=12]
-[ext_resource path="res://cubes.png" type="Texture" id=13]
-[ext_resource path="res://Fonts/Roboto-Black.ttf" type="DynamicFontData" id=14]
-[ext_resource path="res://PanelStyle.tres" type="StyleBox" id=15]
+[ext_resource path="res://Scripts/Game.gd" type="Script" id=1]
+[ext_resource path="res://Resources/HexaTheme.tres" type="Theme" id=2]
+[ext_resource path="res://Textures/planek_trans.png" type="Texture" id=3]
+[ext_resource path="res://Resources/PanelStyle.tres" type="StyleBox" id=4]
+[ext_resource path="res://Resources/BigFont.tres" type="DynamicFont" id=5]
+[ext_resource path="res://Fonts/Roboto-BoldItalic.ttf" type="DynamicFontData" id=6]
+[ext_resource path="res://Fonts/Roboto-Regular.ttf" type="DynamicFontData" id=7]
+[ext_resource path="res://Fonts/Roboto-Italic.ttf" type="DynamicFontData" id=8]
+[ext_resource path="res://Fonts/Roboto-Black.ttf" type="DynamicFontData" id=9]
+[ext_resource path="res://Textures/tile.png" type="Texture" id=10]
+[ext_resource path="res://Textures/redbenzen.png" type="Texture" id=11]
+[ext_resource path="res://Textures/cubes.png" type="Texture" id=12]
+[ext_resource path="res://Textures/trophy.png" type="Texture" id=13]
+[ext_resource path="res://Textures/kostka.png" type="Texture" id=14]
+[ext_resource path="res://Textures/bluebenzen.png" type="Texture" id=15]
 
 [sub_resource type="Gradient" id=1]
 colors = PoolColorArray( 1, 0.290196, 0.258824, 1, 0, 0, 0, 0 )
@@ -24,11 +24,11 @@ gradient = SubResource( 1 )
 
 [sub_resource type="DynamicFont" id=3]
 size = 84
-font_data = ExtResource( 11 )
+font_data = ExtResource( 6 )
 
 [sub_resource type="DynamicFont" id=4]
 size = 42
-font_data = ExtResource( 12 )
+font_data = ExtResource( 8 )
 
 [sub_resource type="Gradient" id=5]
 colors = PoolColorArray( 0, 0, 0, 0, 0.498039, 0.164706, 1, 1 )
@@ -51,22 +51,22 @@ _data = {
 
 [sub_resource type="DynamicFont" id=10]
 size = 32
-font_data = ExtResource( 6 )
+font_data = ExtResource( 7 )
+
+[sub_resource type="DynamicFont" id=12]
+size = 92
+font_data = ExtResource( 9 )
 
 [sub_resource type="StyleBoxEmpty" id=11]
 content_margin_left = 20.0
 
-[sub_resource type="DynamicFont" id=12]
-size = 92
-font_data = ExtResource( 14 )
-
 [sub_resource type="DynamicFont" id=13]
 size = 48
-font_data = ExtResource( 6 )
+font_data = ExtResource( 7 )
 
 [sub_resource type="DynamicFont" id=14]
 size = 48
-font_data = ExtResource( 6 )
+font_data = ExtResource( 7 )
 
 [sub_resource type="DynamicFontData" id=15]
 font_path = "res://Fonts/Roboto-Regular.ttf"
@@ -77,13 +77,13 @@ font_data = SubResource( 15 )
 
 [sub_resource type="DynamicFont" id=17]
 size = 28
-font_data = ExtResource( 6 )
+font_data = ExtResource( 7 )
 
-[node name="Node2D" type="Control"]
+[node name="Game" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-theme = ExtResource( 8 )
-script = ExtResource( 2 )
+theme = ExtResource( 2 )
+script = ExtResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -109,10 +109,10 @@ __meta__ = {
 
 [node name="Label" type="Label" parent="RedStatus"]
 margin_left = 100.0
-margin_right = 494.0
+margin_right = 991.0
 margin_bottom = 216.0
 custom_fonts/font = SubResource( 3 )
-text = "ČERVENÝ"
+text = "GamePlayerRed"
 valign = 1
 __meta__ = {
 "_edit_use_anchors_": false
@@ -121,7 +121,7 @@ __meta__ = {
 [node name="Start" type="Label" parent="RedStatus"]
 margin_left = 100.0
 margin_top = 166.0
-margin_right = 494.0
+margin_right = 1336.0
 margin_bottom = 216.0
 custom_fonts/font = SubResource( 4 )
 text = "Na startu: 0"
@@ -132,7 +132,7 @@ __meta__ = {
 [node name="End" type="Label" parent="RedStatus"]
 margin_left = 100.0
 margin_top = 222.0
-margin_right = 494.0
+margin_right = 1426.0
 margin_bottom = 272.0
 custom_fonts/font = SubResource( 4 )
 text = "V cíli: 0"
@@ -155,11 +155,11 @@ __meta__ = {
 [node name="Label" type="Label" parent="BlueStatus"]
 anchor_left = 1.0
 anchor_right = 1.0
-margin_left = -472.0
+margin_left = -1025.0
 margin_right = -100.0
 margin_bottom = 216.0
 custom_fonts/font = SubResource( 3 )
-text = "MODRÝ"
+text = "GamePlayerBlue"
 align = 2
 valign = 1
 __meta__ = {
@@ -169,10 +169,10 @@ __meta__ = {
 [node name="Start" type="Label" parent="BlueStatus"]
 anchor_left = 1.0
 anchor_right = 1.0
-margin_left = -494.0
+margin_left = -1395.0
 margin_top = 166.0
 margin_right = -100.0
-margin_bottom = -216.0
+margin_bottom = 216.0
 custom_fonts/font = SubResource( 4 )
 text = "Na startu: 0"
 align = 2
@@ -183,7 +183,7 @@ __meta__ = {
 [node name="End" type="Label" parent="BlueStatus"]
 anchor_left = 1.0
 anchor_right = 1.0
-margin_left = -494.0
+margin_left = -1420.0
 margin_top = 222.0
 margin_right = -100.0
 margin_bottom = 272.0
@@ -203,10 +203,11 @@ margin_left = -960.0
 margin_top = -540.0
 margin_right = 960.0
 margin_bottom = 540.0
-texture = ExtResource( 1 )
+texture = ExtResource( 3 )
 expand = true
 stretch_mode = 7
 __meta__ = {
+"_edit_lock_": true,
 "_edit_use_anchors_": false
 }
 
@@ -226,33 +227,33 @@ curve = SubResource( 8 )
 [node name="BluePath" type="Path2D" parent="."]
 curve = SubResource( 9 )
 
-[node name="CerveneKameny" type="Node2D" parent="."]
+[node name="RedStones" type="Node2D" parent="."]
 
-[node name="kamen" type="TextureButton" parent="CerveneKameny"]
+[node name="stone" type="TextureButton" parent="RedStones"]
 margin_right = 100.0
 margin_bottom = 87.0
 rect_pivot_offset = Vector2( 50, 43 )
-texture_normal = ExtResource( 3 )
-texture_pressed = ExtResource( 3 )
-texture_hover = ExtResource( 3 )
-texture_disabled = ExtResource( 3 )
-texture_focused = ExtResource( 3 )
+texture_normal = ExtResource( 11 )
+texture_pressed = ExtResource( 11 )
+texture_hover = ExtResource( 11 )
+texture_disabled = ExtResource( 11 )
+texture_focused = ExtResource( 11 )
 expand = true
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="ModreKameny" type="Node2D" parent="."]
+[node name="BlueStones" type="Node2D" parent="."]
 
-[node name="kamen" type="TextureButton" parent="ModreKameny"]
+[node name="stone" type="TextureButton" parent="BlueStones"]
 margin_right = 100.0
 margin_bottom = 87.0
 rect_pivot_offset = Vector2( 50, 43 )
-texture_normal = ExtResource( 4 )
-texture_pressed = ExtResource( 4 )
-texture_hover = ExtResource( 4 )
-texture_disabled = ExtResource( 4 )
-texture_focused = ExtResource( 4 )
+texture_normal = ExtResource( 15 )
+texture_pressed = ExtResource( 15 )
+texture_hover = ExtResource( 15 )
+texture_disabled = ExtResource( 15 )
+texture_focused = ExtResource( 15 )
 expand = true
 __meta__ = {
 "_edit_use_anchors_": false
@@ -271,7 +272,7 @@ sharp_limit = 10.0
 round_precision = 6
 antialiased = true
 
-[node name="ColorRect" type="ColorRect" parent="."]
+[node name="DiceOverlay" type="ColorRect" parent="."]
 visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -281,7 +282,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="HBoxContainer" type="HBoxContainer" parent="ColorRect"]
+[node name="DiceView" type="HBoxContainer" parent="DiceOverlay"]
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
@@ -297,88 +298,88 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="ColorRect" type="ColorRect" parent="ColorRect/HBoxContainer"]
+[node name="Dice1" type="ColorRect" parent="DiceOverlay/DiceView"]
 margin_left = 46.0
 margin_right = 246.0
 margin_bottom = 200.0
 rect_min_size = Vector2( 200, 200 )
 color = Color( 0.92549, 0.137255, 0.929412, 1 )
 
-[node name="TextureRect" type="TextureRect" parent="ColorRect/HBoxContainer/ColorRect"]
+[node name="X" type="TextureRect" parent="DiceOverlay/DiceView/Dice1"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 rect_min_size = Vector2( 200, 200 )
-texture = ExtResource( 5 )
+texture = ExtResource( 14 )
 expand = true
 stretch_mode = 6
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="ColorRect2" type="ColorRect" parent="ColorRect/HBoxContainer"]
+[node name="Dice2" type="ColorRect" parent="DiceOverlay/DiceView"]
 margin_left = 318.0
 margin_right = 518.0
 margin_bottom = 200.0
 rect_min_size = Vector2( 200, 200 )
 color = Color( 0.92549, 0.137255, 0.929412, 1 )
 
-[node name="TextureRect2" type="TextureRect" parent="ColorRect/HBoxContainer/ColorRect2"]
+[node name="X" type="TextureRect" parent="DiceOverlay/DiceView/Dice2"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 rect_min_size = Vector2( 120, 0 )
-texture = ExtResource( 5 )
+texture = ExtResource( 14 )
 expand = true
 stretch_mode = 6
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="ColorRect3" type="ColorRect" parent="ColorRect/HBoxContainer"]
+[node name="Dice3" type="ColorRect" parent="DiceOverlay/DiceView"]
 margin_left = 590.0
 margin_right = 790.0
 margin_bottom = 200.0
 rect_min_size = Vector2( 200, 200 )
 color = Color( 0.92549, 0.137255, 0.929412, 1 )
 
-[node name="TextureRect3" type="TextureRect" parent="ColorRect/HBoxContainer/ColorRect3"]
+[node name="X" type="TextureRect" parent="DiceOverlay/DiceView/Dice3"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 rect_min_size = Vector2( 120, 0 )
-texture = ExtResource( 5 )
+texture = ExtResource( 14 )
 expand = true
 stretch_mode = 6
 
-[node name="ColorRect4" type="ColorRect" parent="ColorRect/HBoxContainer"]
+[node name="Dice4" type="ColorRect" parent="DiceOverlay/DiceView"]
 margin_left = 862.0
 margin_right = 1062.0
 margin_bottom = 200.0
 rect_min_size = Vector2( 200, 200 )
 color = Color( 0.92549, 0.137255, 0.929412, 1 )
 
-[node name="TextureRect4" type="TextureRect" parent="ColorRect/HBoxContainer/ColorRect4"]
+[node name="X" type="TextureRect" parent="DiceOverlay/DiceView/Dice4"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 rect_min_size = Vector2( 120, 0 )
-texture = ExtResource( 5 )
+texture = ExtResource( 14 )
 expand = true
 stretch_mode = 6
 
-[node name="ColorRect5" type="ColorRect" parent="ColorRect/HBoxContainer"]
+[node name="Dice5" type="ColorRect" parent="DiceOverlay/DiceView"]
 margin_left = 1134.0
 margin_right = 1334.0
 margin_bottom = 200.0
 rect_min_size = Vector2( 200, 200 )
 color = Color( 0.92549, 0.137255, 0.929412, 1 )
 
-[node name="TextureRect5" type="TextureRect" parent="ColorRect/HBoxContainer/ColorRect5"]
+[node name="X" type="TextureRect" parent="DiceOverlay/DiceView/Dice5"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 rect_min_size = Vector2( 120, 0 )
-texture = ExtResource( 5 )
+texture = ExtResource( 14 )
 expand = true
 stretch_mode = 6
 
-[node name="Házet" type="Button" parent="."]
+[node name="Roll" type="Button" parent="."]
 anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
@@ -392,7 +393,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Házet"]
+[node name="RollContent" type="HBoxContainer" parent="Roll"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 32.0
@@ -403,23 +404,23 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="TextureRect" type="TextureRect" parent="Házet/HBoxContainer"]
-margin_right = 179.0
+[node name="Dice" type="TextureRect" parent="Roll/RollContent"]
 margin_bottom = 156.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
-texture = ExtResource( 13 )
+texture = ExtResource( 12 )
 expand = true
 stretch_mode = 6
 
-[node name="Label" type="Label" parent="Házet/HBoxContainer"]
-margin_left = 183.0
+[node name="Label" type="Label" parent="Roll/RollContent"]
+margin_left = 4.0
 margin_top = 23.0
-margin_right = 491.0
+margin_right = 726.0
 margin_bottom = 132.0
-custom_styles/normal = SubResource( 11 )
+size_flags_horizontal = 3
 custom_fonts/font = SubResource( 12 )
-text = "Kostky"
+custom_styles/normal = SubResource( 11 )
+text = "GameButtonDice"
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -447,7 +448,7 @@ margin_top = -40.0
 margin_right = 448.0
 margin_bottom = 200.0
 rect_min_size = Vector2( 488, 240 )
-custom_styles/panel = ExtResource( 15 )
+custom_styles/panel = ExtResource( 4 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -456,7 +457,6 @@ __meta__ = {
 anchor_right = 1.0
 anchor_bottom = 1.0
 custom_fonts/font = SubResource( 13 )
-text = "Nemůže táhnout!"
 align = 1
 valign = 1
 autowrap = true
@@ -467,7 +467,7 @@ __meta__ = {
 
 [node name="Tween" type="Tween" parent="."]
 
-[node name="Pauza" type="ColorRect" parent="."]
+[node name="Pause" type="ColorRect" parent="."]
 visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -476,7 +476,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Panel" type="Panel" parent="Pauza"]
+[node name="PauseContent" type="Panel" parent="Pause"]
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
@@ -485,12 +485,12 @@ margin_left = -411.5
 margin_top = -276.0
 margin_right = 411.5
 margin_bottom = 276.0
-custom_styles/panel = ExtResource( 15 )
+custom_styles/panel = ExtResource( 4 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Pauza/Panel"]
+[node name="ls" type="VBoxContainer" parent="Pause/PauseContent"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 32.0
@@ -503,32 +503,32 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="fullscreen" type="Button" parent="Pauza/Panel/VBoxContainer"]
+[node name="Fullscreen" type="Button" parent="Pause/PauseContent/ls"]
 margin_top = 152.0
 margin_right = 759.0
 margin_bottom = 228.0
-custom_fonts/font = ExtResource( 7 )
-text = "Na celou obrazovku"
+custom_fonts/font = ExtResource( 5 )
+text = "GamePauseFullscreen"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="konec" type="Button" parent="Pauza/Panel/VBoxContainer"]
+[node name="EndGame" type="Button" parent="Pause/PauseContent/ls"]
 modulate = Color( 1, 0.137255, 0.137255, 1 )
 margin_top = 260.0
 margin_right = 759.0
 margin_bottom = 336.0
-custom_fonts/font = ExtResource( 7 )
-text = "Ukončit hru"
+custom_fonts/font = ExtResource( 5 )
+text = "GamePauseEnd"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Label2" type="Label" parent="Pauza/Panel"]
+[node name="Title" type="Label" parent="Pause/PauseContent"]
 anchor_right = 1.0
 margin_bottom = 184.0
 custom_fonts/font = SubResource( 14 )
-text = "Pozastaveno"
+text = "GamePauseTitle"
 align = 1
 valign = 1
 autowrap = true
@@ -537,7 +537,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="pauseButton" type="Button" parent="."]
+[node name="PauseButton" type="Button" parent="."]
 anchor_left = 0.5
 anchor_right = 0.5
 margin_left = -40.0
@@ -552,7 +552,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Trofej" type="ColorRect" parent="."]
+[node name="Trophy" type="ColorRect" parent="."]
 visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -561,7 +561,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="TextureRect" type="TextureRect" parent="Trofej"]
+[node name="TrophyTexture" type="TextureRect" parent="Trophy"]
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
@@ -570,13 +570,13 @@ margin_left = -860.0
 margin_top = -440.0
 margin_right = 860.0
 margin_bottom = 440.0
-texture = ExtResource( 9 )
+texture = ExtResource( 13 )
 stretch_mode = 6
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Label" type="Label" parent="Trofej/TextureRect"]
+[node name="WinnerLabel" type="Label" parent="Trophy/TrophyTexture"]
 anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
@@ -585,17 +585,16 @@ margin_left = -87.5
 margin_top = -173.0
 margin_right = 99.5
 margin_bottom = -100.0
-custom_fonts/font = SubResource( 17 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
-text = "Vyhrává
-"
+custom_fonts/font = SubResource( 17 )
+text = "Vyhrává"
 align = 1
 valign = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Button" type="Button" parent="Trofej"]
+[node name="Finish" type="Button" parent="Trophy"]
 anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
@@ -604,15 +603,15 @@ margin_left = -342.0
 margin_top = -148.0
 margin_right = -48.0
 margin_bottom = -48.0
-custom_fonts/font = ExtResource( 7 )
-text = "KONEC"
+custom_fonts/font = ExtResource( 5 )
+text = "GameWinScreenEnd"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[connection signal="pressed" from="Házet" to="." method="_on_Hzet_pressed"]
+[connection signal="pressed" from="Roll" to="." method="_on_Hzet_pressed"]
 [connection signal="tween_completed" from="Tween" to="." method="_on_Tween_tween_completed"]
-[connection signal="pressed" from="Pauza/Panel/VBoxContainer/fullscreen" to="." method="_on_fullscreen_pressed"]
-[connection signal="pressed" from="Pauza/Panel/VBoxContainer/konec" to="." method="konec"]
-[connection signal="pressed" from="pauseButton" to="." method="_on_pauseButton_pressed"]
-[connection signal="pressed" from="Trofej/Button" to="." method="konec"]
+[connection signal="pressed" from="Pause/PauseContent/ls/Fullscreen" to="." method="Fullscreen"]
+[connection signal="pressed" from="Pause/PauseContent/ls/EndGame" to="." method="EndGame"]
+[connection signal="pressed" from="PauseButton" to="." method="Pause"]
+[connection signal="pressed" from="Trophy/Finish" to="." method="EndGame"]

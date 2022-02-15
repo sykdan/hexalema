@@ -1,0 +1,157 @@
+keys,cs,en,nl
+MenuGameName,HEXALEMA,HEXALEMA,HEXALEMA
+MenuPlayButton,HRÁT,PLAY,SPEEL
+MenuOptionsTitle,Možnosti,Settings,Opties
+MenuGameRules,Pravidla hry,How to play,Speluitleg
+MenuCredits,Zdroje,Credits,Credits
+MenuCloseGame,Zavřít hru,Quit,Sluit spel
+MenuWhatsNew,Novinky,Changelog,Wijzigingsoverzicht
+RulesTitle,JAK HRÁT HEXALEMA?,HOW DO I PLAY HEXALEMA?,HOE SPEEL IK HEXALEMA?
+RulesScreenText,"[center]Cíl hry:[/center]
+
+  - Cílem hry je vynést všech 7 hracích kamenů své barvy ven z hrací desky
+
+[center]Popis herního pole:[/center]
+
+  - Na herním plánu jsou políčka 3 různých barev.
+  - Červená a modrá políčka označují tzv. nasazovací a vyváděcí části, tyto políčka jsou určena pouze pro hráče dané barvy
+  - Fialová políčka značí společnou část - místo, kde se hráči mohou (až na výjimky) vyhazovat
+
+[center]Jak hrát:[/center]
+
+  - Na začátku tahu hráč hodí 5ti speciálními šestiplochými kostkami
+  - Každá kostka má 3 označené stěny a 3 neoznačené
+  - Označená = 1 bod, neoznačená = 0 bodů
+  - Hráč posune jeden ze svých kamenů o hozený počet bodů (tj. kolikrát padla označená stěna kostky)
+  - Na jednom políčku nemůžou být 2 hrací kameny současně
+  - Pokud hráč hodí 0 bodů, ztrácí tím tah a hraje soupeř.
+  - Hráč také ztrácí tah, když nemůže posunout žádný kámen o počet hozených bodů
+  - Hráči se smějí navzájem vyhazovat, podobně jako u hry Člověče, nezlob se!
+
+[center]Výjimečné situace:[/center]
+
+  - Ve hře je několik označených políček
+  - Pokud se hráč na nějakém z nich ocitne, hází ještě jednou
+  - Hrací kámen, ležící na takto označeném políčku, nemůže být vyhozen 
+
+[center]Nasazování a vyvádění kamenů:[/center]
+
+  - Hráč může nasadit kámen o hozený počet bodů, pokud ještě může nějaký nasadit a pokud už na daném políčku nestojí další kámen
+  - Kameny se vyvádějí hozením POUZE PŘESNÉHO ČÍSLA, nikoliv hozením vyššího (př: hráč má hrací kámen 2 políčka před koncem desky a hodí 3 body; hrací kámen tak nemůže vyvést)","[center]Goal:[/center]
+
+  - The goal of the game is to have all 7 of your pieces exit the board.
+
+[center]Description of playing field tiles:[/center]
+
+  - There are 3 tile colors on the board.
+  - The red and blue tiles are ""enter"" and ""exit"" tiles, these tiles are only for the player their color belongs to!
+  - The purple tiles are ""normal"" tiles - players can get kicked off the board here!
+
+[center]How to play:[/center]
+
+  - At the beginning of your turn, you roll 5 special 6-sided dice.
+  - All dice have 3 ""marked"" and 3 ""clear"" sides each.
+  - For every ""marked"" side you roll, you get to move one space.
+  - No two player pieces can share a tile.
+  - If you roll zero marked sides, your turn is immediately over.
+  - If you can't move any of your pieces the exact amount of spaces rolled, your turn is also immediately over.
+  - Similar to the German board game Don't Get Angry, you can kick the other player's pieces off of the board by landing on the same space.
+
+[center]Crystals:[/center]
+
+  - Some tiles on the board have crystals on them.
+  - If you land on one of them, you get to roll again.
+  - Crystals are ""safe spots"", a piece can't get kicked off of the board while it's on one.
+
+[center]Entering and exiting the board:[/center]
+
+  - You can make a piece enter the board, moving the amount of spaces you rolled, as long as the destination isn't occupied.
+  - Exiting the board can only be done by rolling the EXACT NUMBER OF SPACES NEEDED. You're not allowed to overshoot.","[center]Doel:[/center]
+
+  - Het doel van het spel is om al 7 van jouw spelstukken het einde van het bord te laten verlaten.
+
+[center]Omschrijving van velden op het spelbord:[/center]
+
+  - Er zijn 3 kleuren velden op het bord.
+  - De rode en blauwe velden zijn ingang en uitgang velden. Deze behoren tot de speler bij wie de kleur hoort!
+  - De paarse velden zijn normale velden - hier kan je van het bord afgegooid worden!
+
+[center]Speluitleg:[/center]
+
+  - Aan het begin van je beurt gooi je 5 speciale 6-zijdige dobbelstenen.
+  - Alle dobbelstenen hebben elk 3 gemarkeerde zijden en 3 lege zijden.
+  - Voor elke gemarkeerde zijde die je gooit, mag je een stap zetten.
+  - Een enkel veld op het bord mag maar een enkel spelstuk hebben.
+  - Als je nul gooit, is je beurt direct voorbij.
+  - Als je geen van je stukken de exacte hoeveelheid die je hebt gegooid kunt verplaatsen, is je beurt ook direct voorbij.
+  - Net zoals Mens Erger Je Niet, kan je andermans stukken van het bord afgooien als je op hetzelfde veld terecht komt.
+
+[center]Kristallen:[/center]
+
+  - Sommige velden op het bord hebben kristallen er op staan.
+  - Als je op eentje terecht komt, mag je nog een keer gooien.
+  - Kristallen zijn veilige plekken, een spelstuk kan niet van het bord afgegooid worden als hij er op staat.
+
+[center]Het bord opkomen en verlaten:[/center]
+
+  - Je kunt een spelstuk het bord op laten lopen, en hem de hoeveelheid velden laten lopen die je hebt gegooid, zolang de bestemming niet bezet is.
+  - Je kunt alleen het bord verlaten door de EXACTE HOEVEELDEID VELDEN TE GOOIEN. Je mag er niet overheen gaan."
+UpdateNudgeText,Vyšla nová aktualizace! Z našich stránek můžete stáhnout novou verzi hry!,An update is available! You can download the latest version of the game from our website!,Een update is beschikbaar! Je kunt de nieuwste versie van het spel van onze website downloaden.
+GamePlayerRed,ČERVENÝ,RED,ROOD
+GamePlayerBlue,MODRÝ,BLUE,BLAUW
+GameButtonDice,Kostky,Roll,Gooi
+GameTextUndeployed,Na startu,Undeployed pieces,Niet-ingezette stukken
+GameTextExited,V domečku,Exited pieces,"Stukken die het bord
+zijn verlaten"
+GameCrystalLanded,"Stoupli jste na krystalové políčko!
+Můžete házet znovu.","You have landed on a crystal!
+You get to roll again.","Je bent op een kristal geland!
+Je mag opnieuw gooien."
+GameZeroRolled,"Nemůžete táhnout!
+Na kostkách jste hodili součet 0.","You rolled 0 marks!
+Your turn has ended, because you can't move.","Je hebt 0 gegooid!
+Je beurt is over, omdat je niet kan bewegen."
+GameNoFreeSpaces,"Nemůžete táhnout!
+Všechna pole jsou obsazena jinými kameny...","Your turn has ended, because you can't move.","Je beurt is over, omdat je niet kan bewegen."
+GamePauseTitle,Pozastaveno,Paused,Gepauzeerd
+GamePauseFullscreen,Na celou obrazovku,Fullscreen,Volledig scherm
+GamePauseEnd,Ukončit hru,Quit,Spel verlaten
+GameXWins,"Vyhrává
+{}","{}
+Wins","{}
+Wint"
+GameWinScreenEnd,KONEC,FINISH,FINISH
+CreditsThankYou,"Hexalema, vytvořili společně Daniel, Monika, Honza, a Žaneta.
+Děkujeme za pomoc Filipovi a Lukášovi.
+Lokalizaci do angličtiny a nizozemštiny napsal Timo.","Hexalema, created by Daniel, Monika, Honza, and Žaneta.
+Special thanks to Filip and Lukáš.
+Dutch and English localization were done by Timo.","Hexalema, gemaakt door Daniel, Monika, Honza, en Žaneta.
+Speciale dank aan Filip and Lukáš.
+Nederlandse en Engelse lokalisaties zijn gedaan door Timo."
+CreditsPixabay,"Ve hře je použito pár obrázků z Pixabay.
+
+https://pixabay.com/users/blickpixel-52945/ - Textura dřeva v pozadí.
+https://pixabay.com/users/openclipart-vectors-30363/ - Pohár vítěze.","The game uses a few images from Pixabay:
+
+https://pixabay.com/users/blickpixel-52945/ - The wood texture in the background.
+https://pixabay.com/users/openclipart-vectors-30363/ - The winner's trophy.","Het spel gebruikt een paar afbeeldingen van Pixabay:
+
+https://pixabay.com/users/blickpixel-52945/ - De houttextuur in de achtergrond.
+https://pixabay.com/users/openclipart-vectors-30363/ - De winnaar's trofee."
+CreditsGDEngine,"Hra byla vytvořena v Godot Engine.
+Licence:","This game was made using the Godot Engine.
+Licence:","Dit spel was gemaakt met de Godot Engine.
+Licentie:"
+WhatsNew130,"Verze 1.3.0
+-----------------
+- Přidali jsme angličtinu a nizozemštinu jako podporované jazyky.
+- Přidali jsme sekci o nově přidaných funkcích.
+- Malé úpravy k českým textům.","Version 1.3.0
+-----------------
+- Added support for English and Dutch.
+- Added the changelog section.
+- Tweaked some Czech text.","Version 1.3.0
+-----------------
+- Ondersteuning toegevoegd voor Engels en Nederlands.
+- Wijzigingsoverzicht toegevoegd.
+- Kleine wijzigingen aan wat Tsjechische tekst."

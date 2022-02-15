@@ -11,7 +11,7 @@ config_version=4
 [application]
 
 config/name="Hexalema"
-run/main_scene="res://Main.tscn"
+run/main_scene="res://Scenes/Main.tscn"
 boot_splash/image="res://icon.png"
 boot_splash/fullsize=false
 boot_splash/bg_color=Color( 0.101961, 0.101961, 0.101961, 1 )
@@ -19,7 +19,7 @@ config/icon="res://icon.png"
 
 [autoload]
 
-Kb="*res://kb.gd"
+KeyboardDaemon="*res://Scripts/KeyboardDaemon.gd"
 
 [display]
 
@@ -113,7 +113,8 @@ roll={
 
 [locale]
 
-translations=PoolStringArray(  )
+translations=PoolStringArray( "res://Localisation.en.translation", "res://Localisation.cs.translation", "res://Localisation.nl.translation" )
+locale_filter=[ 0, [  ] ]
 
 [physics]
 
