@@ -5,13 +5,13 @@ import copy
 #  0 1 2 3 4 5 6 7 8 9 0 1 2 3 4
 # [-,-,-,-,_,*,_,_,_,*,_,-,-,-,-]
 #
-# - je privat
-# * je kvocna
-# _ je spolecny
+# - is enter/exit
+# * is a crystal
+# _ is joint space
 #
-# Kameny necht jsou oznaceny A a B.
+# Stones shall be referred to as A and B.
 
-sance_na_hozeni = {
+chance_of_rolling = {
     0: 1/2**5,
     1: 5/2**5,
     2: 5/2**4,
@@ -20,138 +20,150 @@ sance_na_hozeni = {
     5: 1/2**5
 }
 
-def hod_kostkama():
+def roll_dice():
     return sum([random.randint(0,1),random.randint(0,1),random.randint(0,1),random.randint(0,1),random.randint(0,1)])
 
-def kolik_ohrozuji(stav,MOJE_KAMENY,NEPRITEL_KAMENY):
-    mnou_obsazene = []
-    for i in range(len(stav)):
-        if MOJE_KAMENY in stav[i]:
-            mnou_obsazene.append(i)
+def how_many_i_threaten(state,MY_STONES,ENEMY_STONES):
+    occupied_by_me = []
+    for i in range(len(state)):
+        if MY_STONES in state[i]:
+            occupied_by_me.append(i)
     
-    sance_ze_vyhodim = []
-    for ja in mnou_obsazene:
-        moznosti = range(ja+1,ja+6)
-        for moznost in moznosti:
-            if moznost in [5,9]: continue # Pokud by kamen skoncil na kvocne, urcite neohrozuje souperuv kamen
-            if moznost < 4 or moznost > 10: continue # Pokud by kamen skoncil v soukrome casti, urcite neohrozuje souperuv kamen
+    chance_that_i_reset_a_stone = []
+    for me in occupied_by_me:
+        options = range(me+1,me+6)
+        for option in options:
+            if option in [5,9]: continue # We can't reset stones that are on crystals, so if one of the moves involves landing on a crystal space,
+                                         # then it's definitely not a threat to the enemy
+            if option < 4 or option > 10: continue # If the move involves landing on a entry/exit space, it can't be threatening an enemy's stone
 
-            if NEPRITEL_KAMENY in stav[moznost]:
-                prob = sance_na_hozeni[moznost-ja]
-                sance_ze_vyhodim.append(prob)
+            if ENEMY_STONES in state[option]:
+                prob = chance_of_rolling[option-me]
+                chance_that_i_reset_a_stone.append(prob)
     
-    return sum(sance_ze_vyhodim)
+    return sum(chance_that_i_reset_a_stone)
 
-def kolik_me_ohrozuje(stav,MOJE_KAMENY,NEPRITEL_KAMENY):
-    nepritelem_obsazene = []
-    for i in range(len(stav)):
-        if NEPRITEL_KAMENY in stav[i]:
-            nepritelem_obsazene.append(i)
+def how_many_threaten_me(state,MY_STONES,ENEMY_STONES):
+    occupied_by_enemy = []
+    for i in range(len(state)):
+        if ENEMY_STONES in state[i]:
+            occupied_by_enemy.append(i)
     
-    sance_ze_me_vyhodi = []
-    for on in nepritelem_obsazene:
-        moznosti = range(on+1,on+6)
-        for moznost in moznosti:
-            if moznost in [5,9]: continue # Pokud by kamen skoncil na kvocne, urcite neohrozuje muj kamen
-            if moznost < 4 or moznost > 10: continue # Pokud by kamen skoncil v soukrome casti, urcite neohrozuje muj kamen
+    chance_that_enemy_resets_my_stone = []
+    for on in occupied_by_enemy:
+        options = range(on+1,on+6)
+        for option in options:
+            if option in [5,9]: continue # We can't reset stones that are on crystals, so if one of the moves involves landing on a crystal space,
+                                         # it's definitely not a threat to me
+            if option < 4 or option > 10: continue # If the move involves landing on a entry/exit space, it can't be threatening my stones
 
-            if MOJE_KAMENY in stav[moznost]:
-                prob = sance_na_hozeni[moznost-on]
-                sance_ze_me_vyhodi.append(prob)
+            if MY_STONES in state[option]:
+                prob = chance_of_rolling[option-on]
+                chance_that_enemy_resets_my_stone.append(prob)
     
-    return sum(sance_ze_me_vyhodi)
+    return sum(chance_that_enemy_resets_my_stone)
 
-def vyhodnotit_stav(stav,MOJE_KAMENY,ai_params):
-    NEPRITEL_KAMENY = {"A":"B","B":"A"}[MOJE_KAMENY] # Pokud je to A, vrat B. Pokud je to B, vrat A.
+def evaluate_state(state,MY_STONES,ai_params):
+    ENEMY_STONES = {"A":"B","B":"A"}[MY_STONES] # Invert A to B and vice versa
 
-    nepritel_odevzdane = stav[-1].count(NEPRITEL_KAMENY)
-    moje_odevzdane = stav[-1].count(MOJE_KAMENY)
+    enemy_exited_stones = state[-1].count(ENEMY_STONES)
+    my_exited_stones = state[-1].count(MY_STONES)
 
-    # Cim bliz je k 1, tim lip se mi dari.
-    koeficient_uspechu = min((moje_odevzdane+1)/(nepritel_odevzdane+1),1)
+    # The closer it is to 1 the better I am doing
+    success_coefficient = min((my_exited_stones+1)/(enemy_exited_stones+1),1)
 
-    # Pokud se mi dari, nechci prijit o kameny, a chci bit bliz k cili.
-    # Pokud se mi nedari, chci spis ohrozovat nepritele.
+    # If I'm doing well, I want to get closer to the exiting spaces, and I don't want to lose my stones
+    # If I'm NOT doing well, I want to threaten my enemy 
 
-    hroz = 1
+    threat = 1
 
-    vliv = kolik_ohrozuji(stav,MOJE_KAMENY,NEPRITEL_KAMENY) / ([1,hroz,1][ai_params[1]]) # pozitivni 
-    hrozby = kolik_me_ohrozuje(stav,MOJE_KAMENY,NEPRITEL_KAMENY) / ([hroz,1,1][ai_params[1]]) # negativni
-    kvocna = stav[5].count(MOJE_KAMENY) + stav[9].count(MOJE_KAMENY) # pozitivni
-    zabezpecene_kameny = sum([stav[i].count(MOJE_KAMENY) for i in range(11,14)]) # pozitivni
+    influence = how_many_i_threaten(state,MY_STONES,ENEMY_STONES) / ([1,threat,1][ai_params[1]]) # positive 
+    threats = how_many_threaten_me(state,MY_STONES,ENEMY_STONES) / ([threat,1,1][ai_params[1]]) # negative
+    crystals_occupied = state[5].count(MY_STONES) + state[9].count(MY_STONES) # positive
+    safe_stones = sum([state[i].count(MY_STONES) for i in range(11,14)]) # positive
 
-    return (vliv - hrozby) + (kvocna * ai_params[0]) + zabezpecene_kameny
+    return (influence - threats) + (crystals_occupied * ai_params[0]) + safe_stones
 
-def muzu_tahnout(stav,od,o_kolik,MOJE_KAMENY):
-    NEPRITEL_KAMENY = {"A":"B","B":"A"}[MOJE_KAMENY]
-    if od + o_kolik > 14: return False # Pokud bych skoncil mimo herni desku, tak nemuzu
-    if od + o_kolik == 14: return 2 # Vyvadet muzu vzdy
-    if len(stav[od+o_kolik]) == 0: return 3 # Pokud na poli nic neni, tak muzu
-    if len(stav[od+o_kolik]) == 1:
-        if stav[od+o_kolik][0] == MOJE_KAMENY: return False # Pokud bych si stoupl na svuj vlastni kamen, tak ne
-        elif od+o_kolik in [5,9]: return False # Kamen na kvocne nemuzu vyhodit
-        elif od+o_kolik > 3 and od+o_kolik < 11: return 1 # Vyhozeni kamene
-        else: return 3 # Pokud na poli nic neni, tak muzu
-    
+def can_i_make_a_move(state,from_where,how_many_spaces,MY_STONES):
+    ENEMY_STONES = {"A":"B","B":"A"}[MY_STONES]
+    if from_where + how_many_spaces > 14: return False # If I end outside of the board (overshoot) then I can't make the move
+    if from_where + how_many_spaces == 14: return 2 # I can always exit a piece
+    if len(state[from_where+how_many_spaces]) == 0: return 3 # If there's nothing on the board, move is legal
+    if len(state[from_where+how_many_spaces]) == 1:
+        if state[from_where+how_many_spaces][0] == MY_STONES: return False # If I land on my own stone the move is not legal
+        elif from_where+how_many_spaces in [5,9]: return False # I can't reset a stone on a crystal
+        elif from_where+how_many_spaces > 3 and from_where+how_many_spaces < 11: return 1 # 1 means a stone reset
+        else: return 3 # If the space is clean, move is legal
+                       # This is here because the game only has one array for the entire board
+                       # If, say, the stone lands on the first space of the entire board, but the enemy
+                       # has a stone on the first space of the board too, the space counts as "occupied"
+                       # even though the board is split in two paths physically
 
-def hra(ai_params):
+                       # This is so I don't have to deal with weird data structures   
+
+def game_simulation(ai_params):
+    # Prerequisites...
     turn = random.choice(["A","B"])
     gameBoard = [["A","B"] * 7,[],[],[],[],[],[],[],[],[],[],[],[],[],[]]
     done = False
     winner = ""
+
+    # Game loop
     while not done:
-        k = hod_kostkama() # Napred hodim kostkou...
-        if k == 0: # Ztrata tahu.
+        k = roll_dice() # Roll dice first...
+        if k == 0: # Turn lost.
             turn = {"A":"B","B":"A"}[turn]
             continue
 
-        moje_pole = [] # Kde vsude mam kameny?
+        # What positions are my stones in?
+        my_spaces = []
         for i in range(len(gameBoard)):
             if turn in gameBoard[i]:
-                moje_pole.append(i)
+                my_spaces.append(i)
 
-        mozne_tahy = [(pole,muzu_tahnout(gameBoard,pole,k,turn)) for pole in moje_pole]
-        mozne_tahy = [tah for tah in mozne_tahy if tah[1]]
+        possible_moves = [(space,can_i_make_a_move(gameBoard,space,k,turn)) for space in my_spaces]
+        possible_moves = [move for move in possible_moves if move[1]]
 
-        if len(mozne_tahy) == 0: # Ztrata tahu.
+        if len(possible_moves) == 0: # Turn lost.
             turn = {"A":"B","B":"A"}[turn]
             continue
 
-        puvodni_stav = vyhodnotit_stav(gameBoard,turn,ai_params[turn])
-        nejlepsi_skore = -999999
-        nejlepsi_tah = None
-        for tah in mozne_tahy:
+        original_state = evaluate_state(gameBoard,turn,ai_params[turn])
+        best_score = -999999
+        best_move = None
+        for move in possible_moves:
+            # Make a copy of the board, this is for separating the game field from the calculation
             tempGameBoard = copy.deepcopy(gameBoard)
-            pole = tah[0]
-            typ = tah[1]
-            odkud = tempGameBoard[pole]
-            kam = tempGameBoard[pole+k]
-            if typ == 1: # Pokud dochazi k vyhazovani...
-                tempGameBoard[0].append(kam.pop(0)) # Kamen na destinaci vrat na zacatek
-                odkud.remove(turn) # Seber jeden muj kamen
-                kam.append(turn) # Pridej tam jeden muj kamen
+            space = move[0]
+            _type = move[1]
+            from_where = tempGameBoard[space]
+            to_where = tempGameBoard[space+k]
+            if _type == 1: # Type = 1 if there is resetting involved
+                tempGameBoard[0].append(to_where.pop(0)) # Return the stone in the destination to the beginning
+                from_where.remove(turn) # Remove one stone of mine from the index
+                to_where.append(turn) # Add one stone of mine to that index
             else:
-                odkud.remove(turn) # Seber jeden muj kamen
-                kam.append(turn) # Pridej tam jeden muj kamen
+                from_where.remove(turn) # Remove one stone of mine from the index
+                to_where.append(turn) # Add one stone of mine to that index
 
-            s = vyhodnotit_stav(tempGameBoard,turn,ai_params[turn]) - puvodni_stav
-            if s > nejlepsi_skore:
-                nejlepsi_skore = s
-                nejlepsi_tah = tah
+            s = evaluate_state(tempGameBoard,turn,ai_params[turn]) - original_state
+            if s > best_score:
+                best_score = s
+                best_move = move
 
-        pole = nejlepsi_tah[0]
-        typ = nejlepsi_tah[1]
-        odkud = gameBoard[pole] # Pozice ze ktere tahnu
-        kam = gameBoard[pole+k]
-        if typ == 1: # Pokud dochazi k vyhazovani...
-            gameBoard[0].append(kam.pop(0)) # Kamen na destinaci vrat na zacatek
-            odkud.remove(turn) # Seber jeden muj kamen
-            kam.append(turn) # Pridej tam jeden muj kamen
+        space = best_move[0]
+        _type = best_move[1]
+        from_where = gameBoard[space] # Position I move from
+        to_where = gameBoard[space+k]
+        if _type == 1: # If there is resetting involved...
+            gameBoard[0].append(to_where.pop(0)) # Return the stone in the destination to the beginning
+            from_where.remove(turn) # Remove one stone of mine from the index
+            to_where.append(turn) # Add one stone of mine to that index
         else:
-            odkud.remove(turn) # Seber jeden muj kamen
-            kam.append(turn) # Pridej tam jeden muj kamen
+            from_where.remove(turn) # Remove one stone of mine from the index
+            to_where.append(turn) # Add one stone of mine to that index
 
-        if pole+k in [5,9]:
+        if space+k in [5,9]:
             turn = {"A":"B","B":"A"}[turn]
         turn = {"A":"B","B":"A"}[turn]
 
@@ -167,9 +179,12 @@ def hra(ai_params):
 def test(a_params,b_params):
     h = []
     for i in range(100):
-        h.append(hra({"A":a_params,"B":b_params}))
-    print("A vyhral {} her.".format(h.count("A")))
-    print("B vyhral {} her.".format(h.count("B")))
+        h.append(game_simulation({"A":a_params,"B":b_params}))
+    print("A won {} simulated games.".format(h.count("A")))
+    print("B won {} simulated games.".format(h.count("B")))
 
 
-test((3,1),(3,2))
+test(
+    (3,1),
+    (3,2)
+)
