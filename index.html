@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hexalema</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+
+        body {
+            margin: 0;
+            background-color: #2d2d2d;
+            background: url(img/3drender.png) no-repeat center center fixed;
+            -webkit-background-size: cover;
+            -moz-background-size: cover;
+            -o-background-size: cover;
+            background-size: cover;
+        }
+
+        h1 {
+            text-align: center;
+            color: white;
+            font-family: Roboto, sans-serif;
+            font-weight: bold;
+            font-size: 64px;
+            margin-bottom: 8px;
+
+        }
+
+        h1.space {
+            letter-spacing: 16px;
+
+        }
+
+        p {
+            text-align: center;
+            color: white;
+            font-family: Roboto, sans-serif;
+            font-size: 32px;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        a.notYet {
+            opacity: 0.5;
+        }
+
+        a div,
+        button {
+            border: none;
+            width: 300px;
+            max-width: 80%;
+            height: 150px;
+            background: white;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0 16px 0 16px;
+            color: black;
+            font-family: Roboto, sans-serif;
+            font-size: 32px;
+
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+            transition: all 0.3s cubic-bezier(.25, .8, .25, 1);
+
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        a div:hover,
+        button:hover {
+            box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+        }
+
+        a div svg {
+            margin-right: 8px;
+        }
+
+        div.downloads {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+        }
+
+        div.downloads a {
+            margin: 8px;
+            user-select: none;
+            -moz-user-select: none;
+            -webkit-user-select: none;
+            -ms-user-select: none;
+        }
+
+        p {
+            text-shadow: 0px 0px 5px #2d2d2d;
+        }
+
+        #install-android,
+        #install-ios {
+            display: flex;
+            flex-direction: column;
+            align-content: center;
+            align-items: center;
+        }
+
+        div img {
+            max-width: 100%;
+        }
+
+        div.no {
+            display: none !important;
+        }
+
+
+        @media only screen and (max-width: 600px) {
+            h1 {
+                font-size: 48px;
+            }
+
+            h1.space {
+                letter-spacing: 6px;
+            }
+
+            p {
+                font-size: 24px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div id="main">
+        <h1 class="space">HEXALEMA</h1>
+        <p style="margin-top: 0;"><i>Hra, která Vám způsobí hexagonální dilema...</i></p>
+
+        <p class="d">Zahrajte si Hexalemu:</p>
+        <div class="downloads">
+            <a href="game/">
+                <div>
+                    <svg style="width:64px;height:64px" viewBox="0 0 24 24">
+                        <path fill="currentColor"
+                            d="M12,17.56L16.07,16.43L16.62,10.33H9.38L9.2,8.3H16.8L17,6.31H7L7.56,12.32H14.45L14.22,14.9L12,15.5L9.78,14.9L9.64,13.24H7.64L7.93,16.43L12,17.56M4.07,3H19.93L18.5,19.2L12,21L5.5,19.2L4.07,3Z" />
+                    </svg>Hrát nyní
+                </div>
+            </a><br>
+
+            <a href="https://github.com/sykdan/hexalema/releases/latest" target="_blank">
+                <div>
+                    <svg style="width:64px;height:64px" viewBox="0 0 24 24">
+                        <path
+                            d="M4,6H20V16H4M20,18A2,2 0 0,0 22,16V6C22,4.89 21.1,4 20,4H4C2.89,4 2,4.89 2,6V16A2,2 0 0,0 4,18H0V20H24V18H20Z" />
+                    </svg>Stáhnout
+                </div>
+            </a><br>
+        </div>
+
+        <p class="d">Přidejte hru do Vašeho telefonu:</p>
+        <div class="downloads">
+            <a id="android" onclick="installAndroid(true)">
+                <div>
+                    <svg style="width:64px;height:64px" viewBox="0 0 24 24">
+                        <path fill="currentColor"
+                            d="M16.61 15.15C16.15 15.15 15.77 14.78 15.77 14.32S16.15 13.5 16.61 13.5H16.61C17.07 13.5 17.45 13.86 17.45 14.32C17.45 14.78 17.07 15.15 16.61 15.15M7.41 15.15C6.95 15.15 6.57 14.78 6.57 14.32C6.57 13.86 6.95 13.5 7.41 13.5H7.41C7.87 13.5 8.24 13.86 8.24 14.32C8.24 14.78 7.87 15.15 7.41 15.15M16.91 10.14L18.58 7.26C18.67 7.09 18.61 6.88 18.45 6.79C18.28 6.69 18.07 6.75 18 6.92L16.29 9.83C14.95 9.22 13.5 8.9 12 8.91C10.47 8.91 9 9.24 7.73 9.82L6.04 6.91C5.95 6.74 5.74 6.68 5.57 6.78C5.4 6.87 5.35 7.08 5.44 7.25L7.1 10.13C4.25 11.69 2.29 14.58 2 18H22C21.72 14.59 19.77 11.7 16.91 10.14H16.91Z" />
+                    </svg>Android<br>
+                </div>
+            </a><a>
+
+                <div id="ios" onclick="installIos(true)">
+                    <svg style="width:64px;height:64px" viewBox="0 0 24 24">
+                        <path fill="currentColor"
+                            d="M2.09 16.8H3.75V9.76H2.09M2.92 8.84C3.44 8.84 3.84 8.44 3.84 7.94C3.84 7.44 3.44 7.04 2.92 7.04C2.4 7.04 2 7.44 2 7.94C2 8.44 2.4 8.84 2.92 8.84M9.25 7.06C6.46 7.06 4.7 8.96 4.7 12C4.7 15.06 6.46 16.96 9.25 16.96C12.04 16.96 13.8 15.06 13.8 12C13.8 8.96 12.04 7.06 9.25 7.06M9.25 8.5C10.96 8.5 12.05 9.87 12.05 12C12.05 14.15 10.96 15.5 9.25 15.5C7.54 15.5 6.46 14.15 6.46 12C6.46 9.87 7.54 8.5 9.25 8.5M14.5 14.11C14.57 15.87 16 16.96 18.22 16.96C20.54 16.96 22 15.82 22 14C22 12.57 21.18 11.77 19.23 11.32L18.13 11.07C16.95 10.79 16.47 10.42 16.47 9.78C16.47 9 17.2 8.45 18.28 8.45C19.38 8.45 20.13 9 20.21 9.89H21.84C21.8 8.2 20.41 7.06 18.29 7.06C16.21 7.06 14.73 8.21 14.73 9.91C14.73 11.28 15.56 12.13 17.33 12.53L18.57 12.82C19.78 13.11 20.27 13.5 20.27 14.2C20.27 15 19.47 15.57 18.31 15.57C17.15 15.57 16.26 15 16.16 14.11H14.5Z" />
+                    </svg>iPhone/iPad<br>
+                </div>
+
+            </a><br>
+        </div>
+    </div>
+    <div id="install-android" class="no">
+        <button onclick="installAndroid(false)"
+            style="font-size: 1em; padding: 2px; height: 50px; margin-top: 16px">Přejít zpět</button>
+        <h1>Nainstalovat do Android telefonu</h1>
+        <p>Pokud stránku nemáte otevřenou pomocí Google Chrome, přepněte na něj.<br>Instalace webových stránek funguje
+            pouze v Chrome.</p>
+
+        <p>Na konci stránky je tlačítko k otevření, stiskněte na něj.</p>
+
+        <p>Otevřená stránka Vám nabídne přidat hru na Vaše zařízení:</p>
+        <img src="img/android-add.png">
+        <p>Pokud se možnost nezobrazí, použijte kontextovou nabídku vpravo nahoře (tři tečky), a zvolte možnost
+            "Instalovat aplikaci":</p>
+        <img src="img/android-install.png">
+        <a href="game/" style="margin-top: 16px">
+            <div>
+                <svg style="width:48px;height:48px" viewBox="0 0 24 24">
+                    <path fill="currentColor"
+                        d="M14,3V5H17.59L7.76,14.83L9.17,16.24L19,6.41V10H21V3M19,19H5V5H12V3H5C3.89,3 3,3.9 3,5V19A2,2 0 0,0 5,21H19A2,2 0 0,0 21,19V12H19V19Z" />
+                </svg>Otevřít
+            </div>
+        </a><br>
+    </div>
+    <div id="install-ios" class="no">
+        <button onclick="installIos(false)" style="font-size: 1em; padding: 2px; height: 50px; margin-top: 16px">Přejít
+            zpět</button>
+        <h1>Přidat do zařízení iOS</h1>
+        <p>Pokud stránku nemáte otevřenou pomocí Safari, přepněte na něj.<br>Instalace webových stránek funguje pouze v
+            Safari.</p>
+
+        <p>Po otevření stránky zvolte možnost Sdílet:</p>
+        <img src="img/ios-sharebutton.png">
+        <p>Zvolte možnost "Přidat na plochu":</p>
+        <img src="img/ios-instruction.png">
+        <a href="game/" style="margin-top: 16px">
+            <div>
+                <svg style="width:48px;height:48px" viewBox="0 0 24 24">
+                    <path fill="currentColor"
+                        d="M14,3V5H17.59L7.76,14.83L9.17,16.24L19,6.41V10H21V3M19,19H5V5H12V3H5C3.89,3 3,3.9 3,5V19A2,2 0 0,0 5,21H19A2,2 0 0,0 21,19V12H19V19Z" />
+                </svg>Otevřít
+            </div>
+        </a><br>
+    </div>
+
+    <script>
+        function android() {
+            window.open("/releases/Hexalema121.Android.apk", "_blank");
+        }
+
+        function installAndroid(state) {
+            window.scrollTo(0, 0)
+            if (state) {
+                document.getElementById("install-android").classList.remove("no");
+                document.getElementById("main").classList.add("no");
+            } else {
+                document.getElementById("install-android").classList.add("no");
+                document.getElementById("main").classList.remove("no");
+            }
+        }
+
+        function installIos(state) {
+            window.scrollTo(0, 0)
+            if (state) {
+                document.getElementById("install-ios").classList.remove("no");
+                document.getElementById("main").classList.add("no");
+            } else {
+                document.getElementById("install-ios").classList.add("no");
+                document.getElementById("main").classList.remove("no");
+            }
+        }
+        // <sub style="font-size: 16px; margin-left: 16px;">APK</sub>
+    </script>
+</body>
+
+</html>
