@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/icon144.png-781ced8122673e40f8d2bd0d87acf451.stex"
+path="res://.import/android_icon.png-4ae9c38fb95cf93ed0bc662888fa3fc0.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://icon144.png"
-dest_files=[ "res://.import/icon144.png-781ced8122673e40f8d2bd0d87acf451.stex" ]
+source_file="res://pwa/android_icon.png"
+dest_files=[ "res://.import/android_icon.png-4ae9c38fb95cf93ed0bc662888fa3fc0.stex" ]
 
 [params]
 
