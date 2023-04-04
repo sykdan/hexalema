@@ -113,7 +113,7 @@ roll={
 
 [locale]
 
-translations=PoolStringArray( "res://Localisation.en.translation", "res://Localisation.cs.translation", "res://Localisation.nl.translation" )
+translations=PoolStringArray( "res://Resources/Localisation.cs.translation", "res://Resources/Localisation.en.translation", "res://Resources/Localisation.nl.translation" )
 locale_filter=[ 0, [  ] ]
 
 [physics]

@@ -100,7 +100,7 @@ UpdateNudgeText,Vyšla nová aktualizace! Z našich stránek můžete stáhnout 
 GamePlayerRed,ČERVENÝ,RED,ROOD
 GamePlayerBlue,MODRÝ,BLUE,BLAUW
 GameButtonDice,Kostky,Roll,Gooi
-GameTextUndeployed,Na startu,Undeployed pieces,Niet-ingezette stukken
+GameTextUndeployed,Na startu,Waiting pieces,Niet-ingezette stukken
 GameTextExited,V domečku,Exited pieces,"Stukken die het bord
 zijn verlaten"
 GameCrystalLanded,"Stoupli jste na krystalové políčko!

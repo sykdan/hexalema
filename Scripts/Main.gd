@@ -1,9 +1,14 @@
 extends TextureRect
 
+const GAME_VERSION = "v1_3_0"
+
 func _ready():
 	randomize()
 	if OS.get_name() == "HTML5": $Options/Panel/ls/End.hide()
-	$HTTPRequest.request("https://hexalema.znachor.cz/version.txt")
+	CheckForUpdates()
+	
+	for lang in $OptionsCover/Languages.get_children():
+		lang.connect("pressed", TranslationServer, "set_locale", [lang.name])
 
 func Play():
 	get_tree().change_scene("res://Scenes/Game.tscn")
@@ -31,21 +36,12 @@ func WhatsNew():
 func Quit():
 	get_tree().quit()
 
-func verize(ver):
-	ver = Array(ver.rsplit("."))
-	for i in range(len(ver)):
-		ver[i] = int(ver[i])
-	return ver
+func CheckForUpdates():
+	$HTTPRequest.request("https://api.github.com/repos/sykdan/hexalema/releases/latest")
 
 func _on_HTTPRequest_request_completed(result, response_code, headers, body):
-	var ver = body.get_string_from_utf8()
-	var server = verize(ver)
-	var local = verize($Version.text)
-	if server[0] > local[0]:
-		$UpdateTxt.text = tr("UpdateNudgeText")
-	if server[0] < local[0]: return
-	if server[1] > local[1]:
-		$UpdateTxt.text = tr("UpdateNudgeText")
-	if server[1] < local[1]: return
-	if server[2] > local[2]:
-		$UpdateTxt.text = tr("UpdateNudgeText")
+	var recv = body.get_string_from_utf8()
+	var data = JSON.parse(recv).result
+	
+	if data.tag_name != GAME_VERSION:
+		$UpdateTxt.visible = true
