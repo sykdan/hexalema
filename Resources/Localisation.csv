@@ -1,12 +1,12 @@
-keys,cs,en,nl
-MenuGameName,HEXALEMA,HEXALEMA,HEXALEMA
-MenuPlayButton,HRÁT,PLAY,SPEEL
-MenuOptionsTitle,Možnosti,Settings,Opties
-MenuGameRules,Pravidla hry,How to play,Speluitleg
-MenuCredits,Zdroje,Credits,Credits
-MenuCloseGame,Zavřít hru,Quit,Sluit spel
-MenuWhatsNew,Novinky,Changelog,Wijzigingsoverzicht
-RulesTitle,JAK HRÁT HEXALEMA?,HOW DO I PLAY HEXALEMA?,HOE SPEEL IK HEXALEMA?
+keys,cs,en,nl,la
+MenuGameName,HEXALEMA,HEXALEMA,HEXALEMA,HEXALEMA
+MenuPlayButton,HRÁT,PLAY,SPEEL,LUDERE
+MenuOptionsTitle,Možnosti,Settings,Opties,Optiones
+MenuGameRules,Pravidla hry,How to play,Speluitleg,Leges ludi
+MenuCredits,Zdroje,Credits,Credits,Fontes
+MenuCloseGame,Zavřít hru,Quit,Sluit spel,Desine ludum
+MenuWhatsNew,Novinky,Changelog,Wijzigingsoverzicht,Nuntii
+RulesTitle,JAK HRÁT HEXALEMA?,HOW DO I PLAY HEXALEMA?,HOE SPEEL IK HEXALEMA?,QUAEMADMODUM HEXALEMA LUDAM?
 RulesScreenText,"[center]Cíl hry:[/center]
 
   - Cílem hry je vynést všech 7 hracích kamenů své barvy ven z hrací desky
@@ -95,18 +95,48 @@ RulesScreenText,"[center]Cíl hry:[/center]
 [center]Het bord opkomen en verlaten:[/center]
 
   - Je kunt een spelstuk het bord op laten lopen, en hem de hoeveelheid velden laten lopen die je hebt gegooid, zolang de bestemming niet bezet is.
-  - Je kunt alleen het bord verlaten door de EXACTE HOEVEELDEID VELDEN TE GOOIEN. Je mag er niet overheen gaan."
+  - Je kunt alleen het bord verlaten door de EXACTE HOEVEELDEID VELDEN TE GOOIEN. Je mag er niet overheen gaan.","[center]Cíl hry:[/center]
+
+  - Cílem hry je vynést všech 7 hracích kamenů své barvy ven z hrací desky
+
+[center]Popis herního pole:[/center]
+
+  - Na herním plánu jsou políčka 3 různých barev.
+  - Červená a modrá políčka označují tzv. nasazovací a vyváděcí části, tyto políčka jsou určena pouze pro hráče dané barvy
+  - Fialová políčka značí společnou část - místo, kde se hráči mohou (až na výjimky) vyhazovat
+
+[center]Jak hrát:[/center]
+
+  - Na začátku tahu hráč hodí 5ti speciálními šestiplochými kostkami
+  - Každá kostka má 3 označené stěny a 3 neoznačené
+  - Označená = 1 bod, neoznačená = 0 bodů
+  - Hráč posune jeden ze svých kamenů o hozený počet bodů (tj. kolikrát padla označená stěna kostky)
+  - Na jednom políčku nemůžou být 2 hrací kameny současně
+  - Pokud hráč hodí 0 bodů, ztrácí tím tah a hraje soupeř.
+  - Hráč také ztrácí tah, když nemůže posunout žádný kámen o počet hozených bodů
+  - Hráči se smějí navzájem vyhazovat, podobně jako u hry Člověče, nezlob se!
+
+[center]Výjimečné situace:[/center]
+
+  - Ve hře je několik označených políček
+  - Pokud se hráč na nějakém z nich ocitne, hází ještě jednou
+  - Hrací kámen, ležící na takto označeném políčku, nemůže být vyhozen 
+
+[center]Nasazování a vyvádění kamenů:[/center]
+
+  - Hráč může nasadit kámen o hozený počet bodů, pokud ještě může nějaký nasadit a pokud už na daném políčku nestojí další kámen
+  - Kameny se vyvádějí hozením POUZE PŘESNÉHO ČÍSLA, nikoliv hozením vyššího (př: hráč má hrací kámen 2 políčka před koncem desky a hodí 3 body; hrací kámen tak nemůže vyvést)"
 UpdateNudgeText,Vyšla nová aktualizace! Z našich stránek můžete stáhnout novou verzi hry!,An update is available! You can download the latest version of the game from our website!,Een update is beschikbaar! Je kunt de nieuwste versie van het spel van onze website downloaden.
-GamePlayerRed,ČERVENÝ,RED,ROOD
-GamePlayerBlue,MODRÝ,BLUE,BLAUW
-GameButtonDice,Kostky,Roll,Gooi
-GameTextUndeployed,Na startu,Waiting pieces,Niet-ingezette stukken
+GamePlayerRed,ČERVENÝ,RED,ROOD,RUBER
+GamePlayerBlue,MODRÝ,BLUE,BLAUW,CAERULEUS
+GameButtonDice,Kostky,Roll,Gooi,Aleae
+GameTextUndeployed,Na startu,Waiting pieces,Niet-ingezette stukken,Lantruculi expectantes
 GameTextExited,V domečku,Exited pieces,"Stukken die het bord
-zijn verlaten"
+zijn verlaten",Lantruculi in domo
 GameCrystalLanded,"Stoupli jste na krystalové políčko!
 Můžete házet znovu.","You have landed on a crystal!
 You get to roll again.","Je bent op een kristal geland!
-Je mag opnieuw gooien."
+Je mag opnieuw gooien.","Stas in crystallo! 
 GameZeroRolled,"Nemůžete táhnout!
 Na kostkách jste hodili součet 0.","You rolled 0 marks!
 Your turn has ended, because you can't move.","Je hebt 0 gegooid!
@@ -119,15 +149,17 @@ GamePauseEnd,Ukončit hru,Quit,Spel verlaten
 GameXWins,"Vyhrává
 {}","{}
 Wins","{}
-Wint"
-GameWinScreenEnd,KONEC,FINISH,FINISH
+Wint","{} vincit."
+GameWinScreenEnd,KONEC,FINISH,FINISH,FINIS
 CreditsThankYou,"Hexalema, vytvořili společně Daniel, Monika, Honza, a Žaneta.
 Děkujeme za pomoc Filipovi a Lukášovi.
 Lokalizaci do angličtiny a nizozemštiny napsala Charlotte.","Hexalema, created by Daniel, Monika, Honza, and Žaneta.
 Special thanks to Filip and Lukáš.
 Dutch and English localization were done by  Charlotte.","Hexalema, gemaakt door Daniel, Monika, Honza, en Žaneta.
 Speciale dank aan Filip and Lukáš.
-Nederlandse en Engelse lokalisaties zijn gedaan door Charlotte."
+Nederlandse en Engelse lokalisaties zijn gedaan door Charlotte.","Hexalema a Daniel, Monika, Honza, Žanetque creatur.
+Gratias agimus Filip Lukášque.
+Linguae Angliae et linguae Bataviae versum a Charlotte."
 CreditsPixabay,"Ve hře je použito pár obrázků z Pixabay.
 
 https://pixabay.com/users/blickpixel-52945/ - Textura dřeva v pozadí.
@@ -137,11 +169,11 @@ https://pixabay.com/users/blickpixel-52945/ - The wood texture in the background
 https://pixabay.com/users/openclipart-vectors-30363/ - The winner's trophy.","Het spel gebruikt een paar afbeeldingen van Pixabay:
 
 https://pixabay.com/users/blickpixel-52945/ - De houttextuur in de achtergrond.
-https://pixabay.com/users/openclipart-vectors-30363/ - De winnaar's trofee."
+https://pixabay.com/users/openclipart-vectors-30363/ - De winnaar's trofee.","
 CreditsGDEngine,"Hra byla vytvořena v Godot Engine.
 Licence:","This game was made using the Godot Engine.
 Licence:","Dit spel was gemaakt met de Godot Engine.
-Licentie:"
+Licentie:","Ludus per Godot Engine faciebatur."
 WhatsNew130,"Verze 1.3.0
 -----------------
 - Přidali jsme angličtinu a nizozemštinu jako podporované jazyky.
@@ -154,4 +186,8 @@ WhatsNew130,"Verze 1.3.0
 -----------------
 - Ondersteuning toegevoegd voor Engels en Nederlands.
 - Wijzigingsoverzicht toegevoegd.
-- Kleine wijzigingen aan wat Tsjechische tekst."
+- Kleine wijzigingen aan wat Tsjechische tekst.","Forma I.III.nihil
+-----------------
+- Přidali jsme angličtinu a nizozemštinu jako podporované jazyky.
+- Přidali jsme sekci o nově přidaných funkcích.
+- Mutationes parvae in scripta linguae Bohemiae."
