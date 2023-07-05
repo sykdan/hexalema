@@ -141,7 +141,7 @@ GameZeroRolled,"Nemůžete táhnout!
 Na kostkách jste hodili součet 0.","You rolled 0 marks!
 Your turn has ended, because you can't move.","Je hebt 0 gegooid!
 Je beurt is over, omdat je niet kan bewegen.","Nihil punctum iacebas! 
-Ambitus tuus amittet." 
+Ambitus tuus amittet."
 GameNoFreeSpaces,"Nemůžete táhnout!
 Všechna pole jsou obsazena jinými kameny...","Your turn has ended, because you can't move.","Je beurt is over, omdat je niet kan bewegen.","Non potes movere. Loci omnia occupantur."
 GamePauseTitle,Pozastaveno,Paused,Gepauzeerd,In mora
