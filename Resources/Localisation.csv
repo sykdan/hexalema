@@ -1,12 +1,12 @@
-keys,cs,en,nl
-MenuGameName,HEXALEMA,HEXALEMA,HEXALEMA
-MenuPlayButton,HRÁT,PLAY,SPEEL
-MenuOptionsTitle,Možnosti,Settings,Opties
-MenuGameRules,Pravidla hry,How to play,Speluitleg
-MenuCredits,Zdroje,Credits,Credits
-MenuCloseGame,Zavřít hru,Quit,Sluit spel
-MenuWhatsNew,Novinky,Changelog,Wijzigingsoverzicht
-RulesTitle,JAK HRÁT HEXALEMA?,HOW DO I PLAY HEXALEMA?,HOE SPEEL IK HEXALEMA?
+keys,cs,en,nl,la
+MenuGameName,HEXALEMA,HEXALEMA,HEXALEMA,HEXALEMA
+MenuPlayButton,HRÁT,PLAY,SPEEL,LUDERE
+MenuOptionsTitle,Možnosti,Settings,Opties,Optiones
+MenuGameRules,Pravidla hry,How to play,Speluitleg,Leges ludi
+MenuCredits,Zdroje,Credits,Credits,Fontes
+MenuCloseGame,Zavřít hru,Quit,Sluit spel,Ludum desinere
+MenuWhatsNew,Novinky,Changelog,Wijzigingsoverzicht,Nuntii
+RulesTitle,JAK HRÁT HEXALEMA?,HOW DO I PLAY HEXALEMA?,HOE SPEEL IK HEXALEMA?,QUAEMADMODUM HEXALEMA LUDAM?
 RulesScreenText,"[center]Cíl hry:[/center]
 
   - Cílem hry je vynést všech 7 hracích kamenů své barvy ven z hrací desky
@@ -95,39 +95,72 @@ RulesScreenText,"[center]Cíl hry:[/center]
 [center]Het bord opkomen en verlaten:[/center]
 
   - Je kunt een spelstuk het bord op laten lopen, en hem de hoeveelheid velden laten lopen die je hebt gegooid, zolang de bestemming niet bezet is.
-  - Je kunt alleen het bord verlaten door de EXACTE HOEVEELDEID VELDEN TE GOOIEN. Je mag er niet overheen gaan."
-UpdateNudgeText,Vyšla nová aktualizace! Z našich stránek můžete stáhnout novou verzi hry!,An update is available! You can download the latest version of the game from our website!,Een update is beschikbaar! Je kunt de nieuwste versie van het spel van onze website downloaden.
-GamePlayerRed,ČERVENÝ,RED,ROOD
-GamePlayerBlue,MODRÝ,BLUE,BLAUW
-GameButtonDice,Kostky,Roll,Gooi
-GameTextUndeployed,Na startu,Waiting pieces,Niet-ingezette stukken
+  - Je kunt alleen het bord verlaten door de EXACTE HOEVEELDEID VELDEN TE GOOIEN. Je mag er niet overheen gaan.","[center]Meta ludi:[/center]
+
+  - Ludum desinebatur, quam omnis septem lantruculis uni coloris ex abacum ludi emoventur.
+
+[center]Descriptio abaci ludi:[/center]
+
+  - In abaco ludi sunt loci colorum trium.
+  - Loci rubres et caerulei partes initii et finis desingant, hi loci destinantur ad aleatorem colori eii.
+  - Loci purpurei partem communem desingant, ubi aleatores permittuntur lantruculos calcitrare.
+
+[center]Quaemadmodum ludere?:[/center]
+
+  - In initium ambiti aleator quinque aleas cum sex lateribus iacet. 
+  - Alea omnis lateres tres insignia et tres inana habet.
+  - Latus insignia aequat unum punctum, inana aequat nihil punctum.
+  - Aleator movet unum ex suis lantruculis praeter quantum locis ut punctis.
+  - In uno loco duo lantruculi non debent essere.
+  - Quam aleator nihil punctum iacet, amittet suum ambitum.
+  - Etiam aleator suum ambitum amittet, quam nihil lantruculum praeter quantum locis ut punctis movere posset.
+  - Aleatores inter se calcitrare possunt, sicut in ludo ""Vir, non inrita!""
+
+[center]Crystalla:[/center]
+
+  - In abaco loci crystallo designantur.
+  - Quam aleator in hic loco lantruculum statuit, iacet iterum.
+  - Lantruculum, qui in crystallo stat, ex abaco ludi calcitrare prohibitur.
+
+[center]Lantruculorum adductio et eductio:[/center]
+
+  - Aleator potest suum lantruculum in abacum addere et praeter quantum locis ut punctis movere, si habet es si ibi lantruculus alius non stat.
+  - Lantruculi eductimur per motu locorum exacti, sed non superiores."
+UpdateNudgeText,Vyšla nová aktualizace! Z našich stránek můžete stáhnout novou verzi hry!,An update is available! You can download the latest version of the game from our website!,Een update is beschikbaar! Je kunt de nieuwste versie van het spel van onze website downloaden.,Permutatio nova oritur. Versionem novissimam e situm interretis eges adquirere.
+GamePlayerRed,ČERVENÝ,RED,ROOD,RUBER
+GamePlayerBlue,MODRÝ,BLUE,BLAUW,CAERULEUS
+GameButtonDice,Kostky,Roll,Gooi,Aleae
+GameTextUndeployed,Na startu,Waiting pieces,Niet-ingezette stukken,Lantruculi expectantes
 GameTextExited,V domečku,Exited pieces,"Stukken die het bord
-zijn verlaten"
+zijn verlaten",Lantruculi post eductionem
 GameCrystalLanded,"Stoupli jste na krystalové políčko!
 Můžete házet znovu.","You have landed on a crystal!
 You get to roll again.","Je bent op een kristal geland!
-Je mag opnieuw gooien."
+Je mag opnieuw gooien.","Stas in crystallo! Iace iterum."
 GameZeroRolled,"Nemůžete táhnout!
 Na kostkách jste hodili součet 0.","You rolled 0 marks!
 Your turn has ended, because you can't move.","Je hebt 0 gegooid!
-Je beurt is over, omdat je niet kan bewegen."
+Je beurt is over, omdat je niet kan bewegen.","Nihil punctum iacebas! 
+Ambitus tuus amittet."
 GameNoFreeSpaces,"Nemůžete táhnout!
-Všechna pole jsou obsazena jinými kameny...","Your turn has ended, because you can't move.","Je beurt is over, omdat je niet kan bewegen."
-GamePauseTitle,Pozastaveno,Paused,Gepauzeerd
-GamePauseFullscreen,Na celou obrazovku,Fullscreen,Volledig scherm
-GamePauseEnd,Ukončit hru,Quit,Spel verlaten
+Všechna pole jsou obsazena jinými kameny...","Your turn has ended, because you can't move.","Je beurt is over, omdat je niet kan bewegen.","Non potes movere. Loci omnia occupantur."
+GamePauseTitle,Pozastaveno,Paused,Gepauzeerd,In mora
+GamePauseFullscreen,Na celou obrazovku,Fullscreen,Volledig scherm,Tabulam magnifice
+GamePauseEnd,Ukončit hru,Quit,Spel verlaten,"Ludum neca!"
 GameXWins,"Vyhrává
 {}","{}
 Wins","{}
-Wint"
-GameWinScreenEnd,KONEC,FINISH,FINISH
+Wint","{} vincit."
+GameWinScreenEnd,KONEC,FINISH,FINISH,FINIS
 CreditsThankYou,"Hexalema, vytvořili společně Daniel, Monika, Honza, a Žaneta.
 Děkujeme za pomoc Filipovi a Lukášovi.
 Lokalizaci do angličtiny a nizozemštiny napsala Charlotte.","Hexalema, created by Daniel, Monika, Honza, and Žaneta.
 Special thanks to Filip and Lukáš.
-Dutch and English localization were done by  Charlotte.","Hexalema, gemaakt door Daniel, Monika, Honza, en Žaneta.
+Dutch and English localization were done by Charlotte.","Hexalema, gemaakt door Daniel, Monika, Honza, en Žaneta.
 Speciale dank aan Filip and Lukáš.
-Nederlandse en Engelse lokalisaties zijn gedaan door Charlotte."
+Nederlandse en Engelse lokalisaties zijn gedaan door Charlotte.","Hexalema a Daniel, Monika, Honza, Žanetque creatur.
+Gratias agimus Filip Lukášque.
+Linguae Angliae et linguae Bataviae versum a Charlotte."
 CreditsPixabay,"Ve hře je použito pár obrázků z Pixabay.
 
 https://pixabay.com/users/blickpixel-52945/ - Textura dřeva v pozadí.
@@ -137,11 +170,15 @@ https://pixabay.com/users/blickpixel-52945/ - The wood texture in the background
 https://pixabay.com/users/openclipart-vectors-30363/ - The winner's trophy.","Het spel gebruikt een paar afbeeldingen van Pixabay:
 
 https://pixabay.com/users/blickpixel-52945/ - De houttextuur in de achtergrond.
-https://pixabay.com/users/openclipart-vectors-30363/ - De winnaar's trofee."
+https://pixabay.com/users/openclipart-vectors-30363/ - De winnaar's trofee.","In ludo picturae paucae e Pixabay adhibentur.
+
+https://pixabay.com/users/blickpixel-52945/ - Structura ligni in umbris.
+https://pixabay.com/users/openclipart-vectors-30363/ - Trophaeum victoris."
 CreditsGDEngine,"Hra byla vytvořena v Godot Engine.
 Licence:","This game was made using the Godot Engine.
 Licence:","Dit spel was gemaakt met de Godot Engine.
-Licentie:"
+Licentie:","Ludus per Godot Engine faciebatur.
+Potestas:"
 WhatsNew130,"Verze 1.3.0
 -----------------
 - Přidali jsme angličtinu a nizozemštinu jako podporované jazyky.
@@ -154,4 +191,8 @@ WhatsNew130,"Verze 1.3.0
 -----------------
 - Ondersteuning toegevoegd voor Engels en Nederlands.
 - Wijzigingsoverzicht toegevoegd.
-- Kleine wijzigingen aan wat Tsjechische tekst."
+- Kleine wijzigingen aan wat Tsjechische tekst.","Versio I.III.nihil
+-----------------
+- Addebamus linguam Angliae et linguam Bataviae sic linguas subnixas.
+- Addebamus partem hic de instrumentis novis.
+- Vellicabamus inscripta in lingua Bohemicae."
