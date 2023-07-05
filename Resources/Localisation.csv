@@ -4,7 +4,7 @@ MenuPlayButton,HRÁT,PLAY,SPEEL,LUDERE
 MenuOptionsTitle,Možnosti,Settings,Opties,Optiones
 MenuGameRules,Pravidla hry,How to play,Speluitleg,Leges ludi
 MenuCredits,Zdroje,Credits,Credits,Fontes
-MenuCloseGame,Zavřít hru,Quit,Sluit spel,Desine ludum
+MenuCloseGame,Zavřít hru,Quit,Sluit spel,Ludum desinere
 MenuWhatsNew,Novinky,Changelog,Wijzigingsoverzicht,Nuntii
 RulesTitle,JAK HRÁT HEXALEMA?,HOW DO I PLAY HEXALEMA?,HOE SPEEL IK HEXALEMA?,QUAEMADMODUM HEXALEMA LUDAM?
 RulesScreenText,"[center]Cíl hry:[/center]
@@ -102,37 +102,37 @@ RulesScreenText,"[center]Cíl hry:[/center]
 [center]Descriptio abaci ludi:[/center]
 
   - In abaco ludi sunt loci colorum trium.
-  - Loci rubres et caerulei desingant partes intii et finis, hi loci destinantur ad aleatorem colori sui.
-  - Loci purpurei designant partem communem, ubi aleatores permittuntur (až na výjimky) vyhazovat
+  - Loci rubres et caerulei partes initii et finis desingant, hi loci destinantur ad aleatorem colori eii.
+  - Loci purpurei partem communem desingant, ubi aleatores permittuntur lantruculos calcitrare.
 
 [center]Quaemadmodum ludere?:[/center]
 
-  - Na začátku tahu hráč hodí 5ti speciálními šestiplochými kostkami
+  - In initium ambiti aleator quinque aleas cum sex lateribus iacet. 
   - Alea omnis lateres tres insignia et tres inana habet.
-  - Latus insignia = unum punctum, inana = nihil punctum
-  - Aleator posune jeden ze svých kamenů o hozený počet bodů (tj. kolikrát padla označená stěna kostky)
-  - Na jednom políčku nemůžou být II lantruculi současně
-  - Pokud hráč hodí 0 bodů, ztrácí  tím tah a hraje soupeř.
-  - Hráč také ztrácí tah, když nemůže posunout žádný kámen o počet hozených bodů
-  - Aleatores se smějí navzájem vyhazovat, podobně jako u hry Vir, non inrita!
+  - Latus insignia aequat unum punctum, inana aequat nihil punctum.
+  - Aleator movet unum ex suis lantruculis praeter quantum locis ut punctis.
+  - In uno loco duo lantruculi non debent essere.
+  - Quam aleator nihil punctum iacet, amittet suum ambitum.
+  - Etiam aleator suum ambitum amittet, quam nihil lantruculum praeter quantum locis ut punctis movere posset.
+  - Aleatores inter se calcitrare possunt, sicut in ludo ""Vir, non inrita!""
 
 [center]Crystalla:[/center]
 
-  - Ve hře je několik označených políček
-  - Pokud se hráč na nějakém z nich ocitne, hází ještě jednou
-  - Hrací kámen, ležící na takto označeném políčku, nemůže být vyhozen 
+  - In abaco loci crystallo designantur.
+  - Quam aleator in hic loco lantruculum statuit, iacet iterum.
+  - Lantruculum, qui in crystallo stat, ex abaco ludi calcitrare prohibitur.
 
-[center]Nasazování a vyvádění kamenů:[/center]
+[center]Lantruculorum adductio et eductio:[/center]
 
-  - Hráč může nasadit kámen o hozený počet bodů, pokud ještě může nějaký nasadit a pokud už na daném políčku nestojí další kámen
-  - Kameny se vyvádějí hozením POUZE PŘESNÉHO ČÍSLA, nikoliv hozením vyššího (př: hráč má hrací kámen 2 políčka před koncem desky a hodí 3 body; hrací kámen tak nemůže vyvést)"
-UpdateNudgeText,Vyšla nová aktualizace! Z našich stránek můžete stáhnout novou verzi hry!,An update is available! You can download the latest version of the game from our website!,Een update is beschikbaar! Je kunt de nieuwste versie van het spel van onze website downloaden.,
+  - Aleator potest suum lantruculum in abacum addere et praeter quantum locis ut punctis movere, si habet es si ibi lantruculus alius non stat.
+  - Lantruculi eductimur per motu locorum exacti, sed non superiores."
+UpdateNudgeText,Vyšla nová aktualizace! Z našich stránek můžete stáhnout novou verzi hry!,An update is available! You can download the latest version of the game from our website!,Een update is beschikbaar! Je kunt de nieuwste versie van het spel van onze website downloaden.,Permutatio nova oritur. Versionem novissimam e situm interretis eges adquirere.
 GamePlayerRed,ČERVENÝ,RED,ROOD,RUBER
 GamePlayerBlue,MODRÝ,BLUE,BLAUW,CAERULEUS
 GameButtonDice,Kostky,Roll,Gooi,Aleae
 GameTextUndeployed,Na startu,Waiting pieces,Niet-ingezette stukken,Lantruculi expectantes
 GameTextExited,V domečku,Exited pieces,"Stukken die het bord
-zijn verlaten",Lantruculi in domo
+zijn verlaten",Lantruculi post eductionem
 GameCrystalLanded,"Stoupli jste na krystalové políčko!
 Můžete házet znovu.","You have landed on a crystal!
 You get to roll again.","Je bent op een kristal geland!
@@ -140,9 +140,9 @@ Je mag opnieuw gooien.","Stas in crystallo! Iace iterum."
 GameZeroRolled,"Nemůžete táhnout!
 Na kostkách jste hodili součet 0.","You rolled 0 marks!
 Your turn has ended, because you can't move.","Je hebt 0 gegooid!
-Je beurt is over, omdat je niet kan bewegen.","Nihil punctum iacebas! 
+Je beurt is over, omdat je niet kan bewegen.","Nihil punctum iacebas! Ambitus tuus amittet." 
 GameNoFreeSpaces,"Nemůžete táhnout!
-Všechna pole jsou obsazena jinými kameny...","Your turn has ended, because you can't move.","Je beurt is over, omdat je niet kan bewegen.",
+Všechna pole jsou obsazena jinými kameny...","Your turn has ended, because you can't move.","Je beurt is over, omdat je niet kan bewegen.","Non potes movere. Loci omnia occupantur."
 GamePauseTitle,Pozastaveno,Paused,Gepauzeerd,In mora
 GamePauseFullscreen,Na celou obrazovku,Fullscreen,Volledig scherm,Tabulam magnifice
 GamePauseEnd,Ukončit hru,Quit,Spel verlaten,"Ludum neca!"
@@ -169,9 +169,9 @@ https://pixabay.com/users/blickpixel-52945/ - The wood texture in the background
 https://pixabay.com/users/openclipart-vectors-30363/ - The winner's trophy.","Het spel gebruikt een paar afbeeldingen van Pixabay:
 
 https://pixabay.com/users/blickpixel-52945/ - De houttextuur in de achtergrond.
-https://pixabay.com/users/openclipart-vectors-30363/ - De winnaar's trofee.","In ludo picturae paucae e Pixabay uterit.
+https://pixabay.com/users/openclipart-vectors-30363/ - De winnaar's trofee.","In ludo picturae paucae e Pixabay adhibentur.
 
-https://pixabay.com/users/blickpixel-52945/ - Structura ligni in umbras.
+https://pixabay.com/users/blickpixel-52945/ - Structura ligni in umbris.
 https://pixabay.com/users/openclipart-vectors-30363/ - Trophaeum victoris."
 CreditsGDEngine,"Hra byla vytvořena v Godot Engine.
 Licence:","This game was made using the Godot Engine.
