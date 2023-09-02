@@ -19,6 +19,7 @@ config/icon="res://icon.png"
 
 [autoload]
 
+SettingsManager="*res://Scripts/SettingsManager.gd"
 KeyboardDaemon="*res://Scripts/KeyboardDaemon.gd"
 
 [display]

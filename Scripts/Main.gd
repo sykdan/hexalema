@@ -8,7 +8,10 @@ func _ready():
 	CheckForUpdates()
 	
 	for lang in $OptionsCover/Languages.get_children():
-		lang.connect("pressed", TranslationServer, "set_locale", [lang.name])
+		lang.connect("pressed", self, "set_locale", [lang.name])
+	
+	if SettingsManager.lang:
+		TranslationServer.set_locale(SettingsManager.lang)
 
 func Play():
 	get_tree().change_scene("res://Scenes/Game.tscn")
@@ -45,3 +48,8 @@ func _on_HTTPRequest_request_completed(result, response_code, headers, body):
 	
 	if data.tag_name != GAME_VERSION:
 		$UpdateTxt.visible = true
+
+func set_locale(lang):
+	SettingsManager.lang = lang
+	TranslationServer.set_locale(SettingsManager.lang)
+	SettingsManager.store_save()

@@ -122,6 +122,7 @@ self_modulate = Color( 0, 0, 0, 0.737255 )
 anchor_right = 1.0
 anchor_bottom = 1.0
 __meta__ = {
+"_edit_lock_": true,
 "_edit_use_anchors_": false
 }
 
@@ -203,29 +204,35 @@ __meta__ = {
 }
 
 [node name="Languages" type="VBoxContainer" parent="OptionsCover"]
-anchor_top = 1.0
-anchor_bottom = 1.0
-margin_left = 16.0
-margin_top = -147.0
-margin_right = 263.0
-margin_bottom = -16.0
+anchor_top = 0.5
+anchor_bottom = 0.5
+margin_left = 48.0
+margin_top = -130.0
+margin_right = 526.0
+margin_bottom = 130.0
 custom_constants/separation = 16
+__meta__ = {
+"_edit_group_": true
+}
 
 [node name="cs" type="Button" parent="OptionsCover/Languages"]
-margin_right = 247.0
-margin_bottom = 33.0
+margin_right = 478.0
+margin_bottom = 76.0
+custom_fonts/font = ExtResource( 5 )
 text = "Česky"
 
 [node name="en" type="Button" parent="OptionsCover/Languages"]
-margin_top = 49.0
-margin_right = 247.0
-margin_bottom = 82.0
+margin_top = 92.0
+margin_right = 478.0
+margin_bottom = 168.0
+custom_fonts/font = ExtResource( 5 )
 text = "English"
 
 [node name="nl" type="Button" parent="OptionsCover/Languages"]
-margin_top = 98.0
-margin_right = 247.0
-margin_bottom = 131.0
+margin_top = 184.0
+margin_right = 478.0
+margin_bottom = 260.0
+custom_fonts/font = ExtResource( 5 )
 text = "Nederlans"
 
 [node name="MoreThings" type="Button" parent="."]
