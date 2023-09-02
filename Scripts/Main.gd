@@ -1,6 +1,6 @@
 extends TextureRect
 
-const GAME_VERSION = "v1_3_0"
+const GAME_VERSION = "v1_4_0"
 
 func _ready():
 	randomize()
