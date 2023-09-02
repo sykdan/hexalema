@@ -20,9 +20,6 @@ texture = ExtResource( 1 )
 stretch_mode = 7
 flip_h = true
 script = ExtResource( 2 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="Rules" type="RichTextLabel" parent="."]
 anchor_right = 1.0
@@ -48,10 +45,10 @@ text = "<-"
 [node name="TitleBg" type="Panel" parent="."]
 anchor_left = 0.5
 anchor_right = 0.5
-margin_left = -450.0
-margin_top = 15.0
-margin_right = 450.0
-margin_bottom = 117.0
+margin_left = -665.0
+margin_top = 16.0
+margin_right = 665.0
+margin_bottom = 118.0
 custom_styles/panel = ExtResource( 4 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -65,6 +62,7 @@ text = "RulesTitle"
 align = 1
 valign = 1
 __meta__ = {
+"_edit_lock_": true,
 "_edit_use_anchors_": false
 }
 
