@@ -1,4 +1,4 @@
-# Hexalema
+# Hexalema TP
 
 *Hra, která vám způsobí hexagonální dilema...*  
 Pokud chcete hrát, jste tu špatně! Toto je *zdrojový kód*, program, ze kterého se Hexalema skládá.  
